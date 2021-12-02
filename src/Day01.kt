@@ -3,18 +3,15 @@ fun main() {
         return input
             .map{ it.toInt() }
             .zipWithNext()
-            .filter { it.second > it.first }
-            .size
+            .count { (a,b) -> b > a }
     }
 
     fun part2(input: List<String>): Int {
         return input
             .map { it.toInt() }
-            .windowed(3,1)
-            .map { it.sum() }
+            .windowed(3) { it.sum() }
             .zipWithNext()
-            .filter { it.second > it.first }
-            .size
+            .count { (a,b) -> b > a }
     }
 
     val testInput = readInput("Day01_test")
