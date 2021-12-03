@@ -16,7 +16,7 @@ fun String.md5(): String = BigInteger(1, MessageDigest.getInstance("MD5").digest
  * Creates empty files for given day
  */
 fun main() {
-    val day = "03"
+    val day = "04"
     val path = "src"
     File("$path\\Day$day.txt").createNewFile()
     File("$path\\Day${day}_test.txt").createNewFile()
@@ -33,7 +33,7 @@ fun main() {
                 "\n" +
                 "    val testInput = readInput(\"Day${day}_test\")\n" +
                 "    check(part1(testInput) == 7)\n" +
-                "    check(part2(testInput) == 5)\n" +
+                "    //check(part2(testInput) == 5)\n" +
                 "\n" +
                 "    val input = readInput(\"Day$day\")\n" +
                 "    println(part1(input))\n" +
