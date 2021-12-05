@@ -1,21 +1,37 @@
 fun main() {
-    fun part1(input: List<String>): Int {
+    fun createVentMap(): MutableMap<Pair<Int, Int>, Int> {
         val vents = mutableMapOf<Pair<Int, Int>, Int>()
         for(i in 0..999) {
             for(j in 0..999) {
                 vents[i to j] = 0
             }
         }
-        val a = input.map { it.replace(" -> ", ",").split(',').map { itt -> itt.toInt() } }
+        return vents
+    }
+    fun processInput(input: List<String>) = input
+        .map {
+            it
+                .replace(" -> ", ",")
+                .split(',')
+                .map { itt -> itt.toInt() }
+        }
+
+    fun part1(input: List<String>): Int {
+        val vents = createVentMap()
+        val a = processInput(input)
         a.forEach {
-            if(it[0] == it[2]) {
-                (it[1] toward it[3]).forEach { y ->
-                    vents[it[0] to y] = vents[it[0] to y]!! + 1
+            val x1 = it[0]
+            val y1 = it[1]
+            val x2 = it[2]
+            val y2 = it[3]
+            if(x1 == x2) {
+                (y1 toward y2).forEach { y ->
+                    vents[x1 to y] = vents[x1 to y]!! + 1
                 }
             }
-            if(it[1] == it[3]) {
-                (it[0] toward it[2]).forEach { x ->
-                    vents[x to it[1]] = vents[x to it[1]]!! + 1
+            if(y1 == y2) {
+                (x1 toward x2).forEach { x ->
+                    vents[x to y1] = vents[x to y1]!! + 1
                 }
             }
         }
@@ -23,27 +39,26 @@ fun main() {
     }
 
     fun part2(input: List<String>): Int {
-        val vents = mutableMapOf<Pair<Int, Int>, Int>()
-        for(i in 0..999) {
-            for(j in 0..999) {
-                vents[i to j] = 0
-            }
-        }
-        val a = input.map { it.replace(" -> ", ",").split(',').map { itt -> itt.toInt() } }
+        val vents = createVentMap()
+        val a = processInput(input)
         a.forEach {
-            if(it[0] == it[2] && it[1] != it[3]) {
-                (it[1] toward it[3]).forEach { y ->
-                    vents[it[0] to y] = vents[it[0] to y]!! + 1
+            val x1 = it[0]
+            val y1 = it[1]
+            val x2 = it[2]
+            val y2 = it[3]
+            if(x1 == x2 && y1 != y2) {
+                (y1 toward y2).forEach { y ->
+                    vents[x1 to y] = vents[x1 to y]!! + 1
                 }
             }
-            else if(it[1] == it[3] && it[0] != it[2]) {
-                (it[0] toward it[2]).forEach { x ->
-                    vents[x to it[1]] = vents[x to it[1]]!! + 1
+            else if(y1 == y2 && x1 != x2) {
+                (x1 toward x2).forEach { x ->
+                    vents[x to y1] = vents[x to y1]!! + 1
                 }
             }
             //Must be a diagonal
             else {
-                ((it[0] toward it[2]) zip (it[1] toward it[3])).forEach { pair ->
+                ((x1 toward x2) zip (y1 toward y2)).forEach { pair ->
                     vents[pair] = vents[pair]!! + 1
                 }
             }
