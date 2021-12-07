@@ -24,7 +24,7 @@ infix fun Int.toward(to: Int): IntProgression {
  * Creates empty files for given day
  */
 fun main() {
-    val day = "07"
+    val day = "08"
     val path = "src"
     File("$path\\Day$day.txt").createNewFile()
     File("$path\\Day${day}_test.txt").createNewFile()
