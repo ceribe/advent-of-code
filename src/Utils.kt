@@ -21,6 +21,12 @@ infix fun Int.toward(to: Int): IntProgression {
 }
 
 /**
+ * Sorts the string alphabetically
+ */
+fun String.sort() = String(toCharArray().apply { sort() })
+
+
+/**
  * Creates empty files for given day
  */
 fun main() {
