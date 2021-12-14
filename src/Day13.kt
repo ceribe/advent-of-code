@@ -21,7 +21,7 @@ fun main() {
         var map = mutableListOf<String>()
         val maxX = dots.maxOf { it.first } + 1
         val maxY = dots.maxOf { it.second } + 1 //+1 to account for 0 based indexing
-        (1..maxY).forEach { _ ->
+        repeat(maxY) {
             map.add(".".repeat(maxX))
         }
         fun MutableList<String>.set(x: Int, y: Int) {
