@@ -1,7 +1,7 @@
 fun main() {
     fun part1(input: List<String>): Int {
         val fish = input[0].split(',').map { it.toInt() }.toMutableList()
-        (1..80).forEach { _ ->
+        repeat(80) { _ ->
             var newFishCount = 0
             fish.forEachIndexed { index, it ->
                 if(it == 0) {
@@ -12,9 +12,7 @@ fun main() {
                     fish[index] = fish[index] - 1
                 }
             }
-            (1..newFishCount).forEach { _ ->
-                fish.add(8)
-            }
+            fish.addAll(MutableList(newFishCount) { 8 })
         }
         return fish.size
     }
@@ -23,20 +21,20 @@ fun main() {
         val fish = input[0].split(',').map { it.toInt() }.toMutableList()
         val fishMap = mutableMapOf<Int, Long>()
         fish.forEach {
-            fishMap[it] = (fishMap[it] ?: 0) + 1
+            fishMap[it] = fishMap.getOrDefault(it,0) + 1
         }
-        (1..256).forEach { _ ->
-           val newFishCount = fishMap[0] ?: 0
-            fishMap[0] = fishMap[1] ?: 0
-            fishMap[1] = fishMap[2] ?: 0
-            fishMap[2] = fishMap[3] ?: 0
-            fishMap[3] = fishMap[4] ?: 0
-            fishMap[4] = fishMap[5] ?: 0
-            fishMap[5] = fishMap[6] ?: 0
-            fishMap[6] = fishMap[7] ?: 0
-            fishMap[7] = fishMap[8] ?: 0
+        repeat(256) {
+           val newFishCount = fishMap.getOrDefault(0,0)
+            fishMap[0] = fishMap.getOrDefault(1,0)
+            fishMap[1] = fishMap.getOrDefault(2,0)
+            fishMap[2] = fishMap.getOrDefault(3,0)
+            fishMap[3] = fishMap.getOrDefault(4,0)
+            fishMap[4] = fishMap.getOrDefault(5,0)
+            fishMap[5] = fishMap.getOrDefault(6,0)
+            fishMap[6] = fishMap.getOrDefault(7,0)
+            fishMap[7] = fishMap.getOrDefault(8,0)
             fishMap[8] = newFishCount
-            fishMap[6] = (fishMap[6] ?: 0) + newFishCount
+            fishMap[6] = fishMap.getOrDefault(6,0) + newFishCount
         }
         return fishMap.map { it.value }.sum()
     }
