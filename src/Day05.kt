@@ -20,10 +20,7 @@ fun main() {
         val vents = createVentMap()
         val a = processInput(input)
         a.forEach {
-            val x1 = it[0]
-            val y1 = it[1]
-            val x2 = it[2]
-            val y2 = it[3]
+            val (x1,y1,x2,y2) = it
             if(x1 == x2) {
                 (y1 toward y2).forEach { y ->
                     vents[x1 to y] = vents[x1 to y]!! + 1
@@ -42,10 +39,7 @@ fun main() {
         val vents = createVentMap()
         val a = processInput(input)
         a.forEach {
-            val x1 = it[0]
-            val y1 = it[1]
-            val x2 = it[2]
-            val y2 = it[3]
+            val (x1,y1,x2,y2) = it
             if(x1 == x2 && y1 != y2) {
                 (y1 toward y2).forEach { y ->
                     vents[x1 to y] = vents[x1 to y]!! + 1

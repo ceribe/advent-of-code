@@ -14,6 +14,8 @@ fun String.md5(): String = BigInteger(1, MessageDigest.getInstance("MD5").digest
 
 /**
  * Creates a universal range
+ *
+ * 5 towards 2 => 5, 4, 3, 2
  */
 infix fun Int.toward(to: Int): IntProgression {
     val step = if (this > to) -1 else 1
