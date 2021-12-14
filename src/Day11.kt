@@ -4,7 +4,7 @@ fun main() {
     fun part1(input: List<String>): Int {
         val octoMap = input.map { it.map { it2 -> Octopus(it2.toString().toInt()) } }
         var flashesTotal = 0
-        (1..100).forEach { _ ->
+        repeat(100) {
             //Increase energy of all by 1
             octoMap.map { it.map { it2 -> it2.energy++ } }
             var newFlashHappened = false
