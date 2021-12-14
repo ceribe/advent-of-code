@@ -2,12 +2,11 @@ fun main() {
     fun part1(input: List<String>): Int {
         var x = 0
         var y = 0
-        input.map { it.split(' ') }.forEach {
-            val value = it[1].toInt()
-            when (it[0]) {
-                "forward" -> x += value
-                "up" -> y -= value
-                "down" -> y += value
+        input.map { it.split(' ') }.forEach { (direction, value) ->
+            when (direction) {
+                "forward" -> x += value.toInt()
+                "up" -> y -= value.toInt()
+                "down" -> y += value.toInt()
             }
         }
         return x * y
@@ -17,14 +16,13 @@ fun main() {
         var x = 0
         var y = 0
         var aim = 0
-        input.map { it.split(' ') }.forEach {
-            val value = it[1].toInt()
-            when (it[0]) {
+        input.map { it.split(' ') }.forEach { (direction, value) ->
+            when (direction) {
                 "forward" -> {
-                    x += value; y += aim * value
+                    x += value.toInt(); y += aim * value.toInt()
                 }
-                "up" -> aim -= value
-                "down" -> aim += value
+                "up" -> aim -= value.toInt()
+                "down" -> aim += value.toInt()
             }
         }
         return x * y
