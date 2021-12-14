@@ -5,8 +5,8 @@ fun main() {
         val maxX = input[0].length
         val maxY = input.size
         var total = 0
-        (0 until maxX).forEach { x ->
-             (0 until maxY).forEach { y ->
+        repeat(maxX) { x ->
+             repeat(maxY) { y ->
                 val currVal = input[y][x]
                 val isLowest =
                             ((y-1) < 0 || currVal < input[y-1][x]) &&
@@ -24,8 +24,8 @@ fun main() {
         val maxX = input[0].length
         val maxY = input.size
         val lowPoints = mutableListOf<Basin>()
-        (0 until maxX).forEach { x ->
-            (0 until maxY).forEach { y ->
+        repeat(maxX)  { x ->
+            repeat(maxY) { y ->
                 val currVal = input[y][x]
                 val isLowest =
                     ((y-1) < 0 || currVal < input[y-1][x]) &&
@@ -39,8 +39,8 @@ fun main() {
                 }
             }
         }
-        //99 is enough iterations to find the whole basin. Ineffective but faster to write
-        (0..99).forEach { _ ->
+        //100 iterations is enough to find the whole basin. Ineffective but faster to write
+        repeat(100) { _ ->
             lowPoints.forEach { basin ->
                 val pointsToAdd = mutableSetOf<Pair<Int, Int>>()
                 basin.points.forEach {
