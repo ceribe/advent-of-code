@@ -1,11 +1,12 @@
 fun main() {
     fun part1(input: List<String>): Int {
-        val connectionMap = mutableMapOf<String, List<String>>()
-        //Build map of connections
-        input.forEach {
-            val (cave1, cave2) = it.split('-')
-            connectionMap[cave1] = (connectionMap[cave1]?.toMutableList() ?: mutableListOf()) + cave2
-            connectionMap[cave2] = (connectionMap[cave2]?.toMutableList() ?: mutableListOf()) + cave1
+        val connectionMap = buildMap<String, List<String>> {
+            //Build map of connections
+            input.forEach {
+                val (cave1, cave2) = it.split('-')
+                put(cave1, getOrDefault(cave1, mutableListOf()) + cave2)
+                put(cave2, getOrDefault(cave2, mutableListOf()) + cave1)
+            }
         }
         val paths = mutableListOf<List<String>>()
         fun explore(path: List<String>) {
@@ -23,12 +24,13 @@ fun main() {
     }
 
     fun part2(input: List<String>): Int {
-        val connectionMap = mutableMapOf<String, List<String>>()
-        //Build map of connections
-        input.forEach {
-            val (cave1, cave2) = it.split('-')
-            connectionMap[cave1] = (connectionMap[cave1]?.toMutableList() ?: mutableListOf()) + cave2
-            connectionMap[cave2] = (connectionMap[cave2]?.toMutableList() ?: mutableListOf()) + cave1
+        val connectionMap = buildMap<String, List<String>> {
+            //Build map of connections
+            input.forEach {
+                val (cave1, cave2) = it.split('-')
+                put(cave1, getOrDefault(cave1, mutableListOf()) + cave2)
+                put(cave2, getOrDefault(cave2, mutableListOf()) + cave1)
+            }
         }
         val paths = mutableListOf<List<String>>()
         fun List<String>.canVisitSmallCave(): Boolean {
