@@ -4,7 +4,7 @@ fun main() {
             it
                 .split("|")[1]
                 .split(' ')
-                .count { it2 -> it2.length == 2 || it2.length == 3 || it2.length == 4 || it2.length == 7 }
+                .count { it2 -> it2.length in listOf(2,3,4,7) }
         }
     }
     fun part2(input: List<String>): Int {
