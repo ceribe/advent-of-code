@@ -1,8 +1,8 @@
 fun main() {
     fun createVentMap(): MutableMap<Pair<Int, Int>, Int> {
         val vents = mutableMapOf<Pair<Int, Int>, Int>()
-        for(i in 0..999) {
-            for(j in 0..999) {
+        repeat(1000) { i ->
+            repeat(1000) { j ->
                 vents[i to j] = 0
             }
         }
