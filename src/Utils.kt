@@ -32,7 +32,7 @@ fun String.sort() = String(toCharArray().apply { sort() })
  * Creates empty files for given day
  */
 fun main() {
-    val day = "18"
+    val day = "19"
     val path = "src"
     File("$path\\Day$day.txt").createNewFile()
     File("$path\\Day${day}_test.txt").createNewFile()
