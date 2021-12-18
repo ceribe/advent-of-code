@@ -11,20 +11,19 @@ fun main() {
         fun parse(): Number {
             if (s[i] == '[') {
                 i++
-                val l = parse()
-                check(s[i++] == ',')
-                val r = parse()
-                check(s[i++] == ']')
-                val newNumber = SFNumber(l, r)
-                l.parent = newNumber
-                r.parent = newNumber
+                val left = parse()
+                i++
+                val right = parse()
+                i++
+                val newNumber = SFNumber(left, right)
+                left.parent = newNumber
+                right.parent = newNumber
                 return newNumber
             }
-            val start = i
-            while (s[i] in '0'..'9') i++
+            val start = i++
             return Ordinary(s.substring(start, i).toInt())
         }
-        return parse().also { check(i == s.length) }
+        return parse()
     }
 
     fun SFNumber.findNumberOnDepth(depth: Int): SFNumber? {
