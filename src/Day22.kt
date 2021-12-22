@@ -2,9 +2,23 @@ import kotlin.math.max
 import kotlin.math.min
 
 fun main() {
-    fun part1(input: List<String>): Int {
+    data class Cube(
+            val on: Boolean,
+            val x: IntRange,
+            val y: IntRange,
+            val z: IntRange
+    ) {
+        infix fun overlaps(o: Cube): Boolean {
+            return x.last >= o.x.first && x.first <= o.x.last &&
+                    y.last >= o.y.first && y.first <= o.y.last &&
+                    z.last >= o.z.first && z.first <= o.z.last
+        }
+    }
+
+
+    fun parseInstructions(input: List<String>): List<Cube> {
         val onList = input.map { it.split(' ')[0] }
-        val ranges = input.map {
+        val numbers = input.map {
             it
                 .split(' ')[1]
                 .replace(Regex("[^-0-9]"), " ")
@@ -13,17 +27,33 @@ fun main() {
                 .split(' ')
                 .map { it2 -> it2.toInt() }
         }
-        data class Cube(val x: Int, val y: Int, val z: Int)
-        val activeCubes = mutableSetOf<Cube>()
-        ranges.zip(onList).forEach {
-            for (x in max(it.first[0], -50)..min(it.first[1], 50)) {
-                for (y in max(it.first[2],-50)..min(it.first[3],50)) {
-                    for (z in max(it.first[4],-50)..min(it.first[5],50)) {
-                        if(it.second == "on") {
-                            activeCubes.add(Cube(x,y,z))
+        return buildList {
+            onList.zip(numbers).forEach {
+                add(
+                    Cube(
+                        it.first == "on",
+                        it.second[0]..it.second[1],
+                        it.second[2]..it.second[3],
+                        it.second[4]..it.second[5],
+                    )
+                )
+            }
+        }
+    }
+
+    fun part1(input: List<String>): Int {
+        val instructions = parseInstructions(input)
+        data class MiniCube(val x: Int, val y: Int, val z: Int)
+        val activeCubes = mutableSetOf<MiniCube>()
+        instructions.forEach {
+            for (x in max(it.x.first, -50)..min(it.x.last, 50)) {
+                for (y in max(it.y.first,-50)..min(it.y.last,50)) {
+                    for (z in max(it.z.first,-50)..min(it.z.last,50)) {
+                        if(it.on) {
+                            activeCubes.add(MiniCube(x,y,z))
                         }
                         else {
-                            activeCubes.remove(Cube(x,y,z))
+                            activeCubes.remove(MiniCube(x,y,z))
                         }
                     }
                 }
@@ -34,69 +64,30 @@ fun main() {
     }
 
     fun part2(input: List<String>): Long {
-        data class Range(
-            val on: Boolean,
-            val x1: Long,
-            val x2: Long,
-            val y1: Long,
-            val y2: Long,
-            val z1: Long,
-            val z2: Long
-        )
-
-        val onList = input.map { it.split(' ')[0] }
-        val numbers = input.map {
-            it
-                .split(' ')[1]
-                .replace(Regex("[^-0-9]"), " ")
-                .replace("\\s+".toRegex(), " ")
-                .trim()
-                .split(' ')
-                .map { it2 -> it2.toLong() }
-        }
-        val ranges = buildList {
-            onList.zip(numbers).forEach {
-                add(
-                    Range(
-                        it.first == "on",
-                        it.second[0],
-                        it.second[1],
-                        it.second[2],
-                        it.second[3],
-                        it.second[4],
-                        it.second[5]
-                    )
-                )
-            }
-        }
-
-        infix fun Range.overlaps(o: Range): Boolean {
-            return x2 >= o.x1 && x1 <= o.x2 && y2 >= o.y1 && y1 <= o.y2 && z2 >= o.z1 && z1 <= o.z2
-        }
-
-        val reactorState = mutableListOf<Range>()
-        ranges.forEach {
-            val overlaps = mutableListOf<Range>()
+        val instructions = parseInstructions(input)
+        val reactorState = mutableListOf<Cube>()
+        instructions.forEach {
+            val overlaps = mutableListOf<Cube>()
             reactorState.forEach { range ->
-                //Always cut overlaps from reactor state. Cutting from off state needs to add an on state so calculations later on are correct
+                //Always cut overlaps from reactor state. When cutting from "on" cube an "off" cube is added.
+                //Thanks to this the next time when there would be a cut from the same region two overlaps would be added
+                //one positive and one negative effectively negating each other. Always cutting also ensures that
+                //when two positive cubes overlap the overlap cube is added as a negative cube. (Kind of like Vien Diagram
+                //where you have to subtract the shared values)
                 if (it overlaps range) {
-                    overlaps.add(Range(
+                    overlaps.add(Cube(
                         !range.on,
-                        max(it.x1, range.x1),
-                        min(it.x2, range.x2),
-                        max(it.y1, range.y1),
-                        min(it.y2, range.y2),
-                        max(it.z1, range.z1),
-                        min(it.z2, range.z2),
+                        max(it.x.first, range.x.first)..min(it.x.last, range.x.last),
+                        max(it.y.first, range.y.first)..min(it.y.last, range.y.last),
+                        max(it.z.first, range.z.first)..min(it.z.last, range.z.last)
                     ))
                 }
             }
-
             reactorState.addAll(overlaps)
             if (it.on) reactorState.add(it)
         }
-        return reactorState.fold(0L) { acc: Long, r: Range ->
-            acc + (if (r.on) 1L else -1L) * (r.x2 - r.x1 + 1) * (r.y2 - r.y1 + 1) * (r.z2 - r.z1 + 1)
+        return reactorState.fold(0L) { acc: Long, c: Cube ->
+            acc + (if (c.on) 1L else -1L) * (c.x.last - c.x.first + 1) * (c.y.last - c.y.first + 1) * (c.z.last - c.z.first + 1)
         }
     }
 
