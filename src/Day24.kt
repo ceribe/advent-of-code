@@ -1,24 +1,19 @@
 enum class InstructionType {
-    inp, add1, add2, mul1, mul2, div1, div2, mod1, mod2, eql1, eql2, zer
+    inp, add, mul, div, mod, eql, zer
 }
 
-data class Instruction(val type: InstructionType, val arg1: Char, val arg2: Char, val arg3: Int)
+data class Instruction(val type: InstructionType, val arg1: Char, val arg2: Char, val arg3: Int?)
 
 data class Alu(var w: Int = 0, var x: Int = 0, var y: Int = 0, var z: Int = 0, var number: Long = 0L) {
     fun performInstruction(i: Instruction) {
         when(i.type) {
-            InstructionType.add1 -> set(i.arg1, get(i.arg1) + i.arg3)
-            InstructionType.add2 -> set(i.arg1, get(i.arg1) + get(i.arg2))
-            InstructionType.mul1 -> set(i.arg1, get(i.arg1) * i.arg3)
-            InstructionType.mul2 -> set(i.arg1, get(i.arg1) * get(i.arg2))
-            InstructionType.div1 -> set(i.arg1, get(i.arg1) / i.arg3)
-            InstructionType.div2 -> set(i.arg1, get(i.arg1) / get(i.arg2))
-            InstructionType.mod1 -> set(i.arg1, get(i.arg1).mod(i.arg3))
-            InstructionType.mod2 -> set(i.arg1, get(i.arg1).mod(get(i.arg2)))
-            InstructionType.eql1 -> set(i.arg1, if(get(i.arg1) == i.arg3) 1 else 0)
-            InstructionType.eql2 -> set(i.arg1, if(get(i.arg1) == get(i.arg2)) 1 else 0)
-            InstructionType.zer  -> set(i.arg1, 0)
-            InstructionType.inp  -> throw Error("Input passed to alu")
+            InstructionType.add -> set(i.arg1, get(i.arg1) + (i.arg3 ?: get(i.arg2)))
+            InstructionType.mul -> set(i.arg1, get(i.arg1) * (i.arg3 ?: get(i.arg2)))
+            InstructionType.div -> set(i.arg1, get(i.arg1) / (i.arg3 ?: get(i.arg2)))
+            InstructionType.mod -> set(i.arg1, get(i.arg1).mod(i.arg3 ?: get(i.arg2)))
+            InstructionType.eql -> set(i.arg1, if(get(i.arg1) == (i.arg3 ?: get(i.arg2))) 1 else 0)
+            InstructionType.zer -> set(i.arg1, 0)
+            InstructionType.inp -> throw Error("Input passed to alu")
         }
     }
 
@@ -46,32 +41,30 @@ fun parseInput(input: List<String>): List<Instruction> {
             val splits = it.split(' ')
             if(splits.getOrNull(2)?.toIntOrNull() != null) {
                 when(splits[0]) {
-                    "add" -> add(Instruction(InstructionType.add1, splits[1][0], ' ', splits[2].toInt()))
+                    "add" -> add(Instruction(InstructionType.add, splits[1][0], ' ', splits[2].toInt()))
                     "mul" -> {
                         if(splits[2].toInt() == 0)
                             add(Instruction(InstructionType.zer, splits[1][0], ' ', 0))
                         else
-                            add(Instruction(InstructionType.mul1, splits[1][0], ' ', splits[2].toInt()))
+                            add(Instruction(InstructionType.mul, splits[1][0], ' ', splits[2].toInt()))
                     }
                     "div" -> {
                         if(splits[2].toInt() != 1)
-                        add(Instruction(InstructionType.div1, splits[1][0], ' ', splits[2].toInt()))
+                        add(Instruction(InstructionType.div, splits[1][0], ' ', splits[2].toInt()))
                     }
-                    "mod" -> add(Instruction(InstructionType.mod1, splits[1][0], ' ', splits[2].toInt()))
-                    "eql" -> add(Instruction(InstructionType.eql1, splits[1][0], ' ', splits[2].toInt()))
+                    "mod" -> add(Instruction(InstructionType.mod, splits[1][0], ' ', splits[2].toInt()))
+                    "eql" -> add(Instruction(InstructionType.eql, splits[1][0], ' ', splits[2].toInt()))
                 }
             }
             else {
                 when(splits[0]) {
-                    "add" -> add(Instruction(InstructionType.add2, splits[1][0], splits[2][0], 0))
-                    "mul" -> add(Instruction(InstructionType.mul2, splits[1][0], splits[2][0], 0))
-                    "div" -> add(Instruction(InstructionType.div2, splits[1][0], splits[2][0], 0))
-                    "mod" -> add(Instruction(InstructionType.mod2, splits[1][0], splits[2][0], 0))
-                    "eql" -> add(Instruction(InstructionType.eql2, splits[1][0], splits[2][0], 0))
+                    "add" -> add(Instruction(InstructionType.add, splits[1][0], splits[2][0], null))
+                    "mul" -> add(Instruction(InstructionType.mul, splits[1][0], splits[2][0], null))
+                    "div" -> add(Instruction(InstructionType.div, splits[1][0], splits[2][0], null))
+                    "mod" -> add(Instruction(InstructionType.mod, splits[1][0], splits[2][0], null))
+                    "eql" -> add(Instruction(InstructionType.eql, splits[1][0], splits[2][0], null))
+                    "inp" -> add(Instruction(InstructionType.inp, splits[1][0], ' ', 0))
                 }
-            }
-            when(splits[0]) {
-                "inp" -> add(Instruction(InstructionType.inp, splits[1][0], ' ', 0))
             }
         }
     }
