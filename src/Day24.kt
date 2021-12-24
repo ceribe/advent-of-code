@@ -1,20 +1,8 @@
-enum class InstructionType {
-    inp, add, mul, div, mod, eql, zer
-}
-
-data class Instruction(val type: InstructionType, val arg1: Char, val arg2: Char, val arg3: Int?)
+data class Instruction(val op: (Int, Int) -> Int, val arg1: Char, val arg2: Char, val arg3: Int?)
 
 data class Alu(var w: Int = 0, var x: Int = 0, var y: Int = 0, var z: Int = 0, var number: Long = 0L) {
     fun performInstruction(i: Instruction) {
-        when(i.type) {
-            InstructionType.add -> set(i.arg1, get(i.arg1) + (i.arg3 ?: get(i.arg2)))
-            InstructionType.mul -> set(i.arg1, get(i.arg1) * (i.arg3 ?: get(i.arg2)))
-            InstructionType.div -> set(i.arg1, get(i.arg1) / (i.arg3 ?: get(i.arg2)))
-            InstructionType.mod -> set(i.arg1, get(i.arg1).mod(i.arg3 ?: get(i.arg2)))
-            InstructionType.eql -> set(i.arg1, if(get(i.arg1) == (i.arg3 ?: get(i.arg2))) 1 else 0)
-            InstructionType.zer -> set(i.arg1, 0)
-            InstructionType.inp -> throw Error("Input passed to alu")
-        }
+        set(i.arg1, i.op(get(i.arg1), (i.arg3 ?: get(i.arg2))))
     }
 
     fun set(variable: Char, value: Int) {
@@ -35,35 +23,39 @@ data class Alu(var w: Int = 0, var x: Int = 0, var y: Int = 0, var z: Int = 0, v
     }
 }
 
+object Ops {
+    val add = { a: Int, b: Int -> a + b }
+    val mul = { a: Int, b: Int -> a * b }
+    val div = { a: Int, b: Int -> a / b }
+    val mod = { a: Int, b: Int -> a.mod(b) }
+    val eql = { a: Int, b: Int -> if (a == b) 1 else 0 }
+    val non = { _: Int, _: Int -> 0 }
+}
+
 fun parseInput(input: List<String>): List<Instruction> {
     return buildList {
         input.forEach {
             val splits = it.split(' ')
             if(splits.getOrNull(2)?.toIntOrNull() != null) {
                 when(splits[0]) {
-                    "add" -> add(Instruction(InstructionType.add, splits[1][0], ' ', splits[2].toInt()))
-                    "mul" -> {
-                        if(splits[2].toInt() == 0)
-                            add(Instruction(InstructionType.zer, splits[1][0], ' ', 0))
-                        else
-                            add(Instruction(InstructionType.mul, splits[1][0], ' ', splits[2].toInt()))
-                    }
+                    "add" -> add(Instruction(Ops.add, splits[1][0], ' ', splits[2].toInt()))
+                    "mul" -> add(Instruction(Ops.mul, splits[1][0], ' ', splits[2].toInt()))
                     "div" -> {
                         if(splits[2].toInt() != 1)
-                        add(Instruction(InstructionType.div, splits[1][0], ' ', splits[2].toInt()))
+                        add(Instruction(Ops.div, splits[1][0], ' ', splits[2].toInt()))
                     }
-                    "mod" -> add(Instruction(InstructionType.mod, splits[1][0], ' ', splits[2].toInt()))
-                    "eql" -> add(Instruction(InstructionType.eql, splits[1][0], ' ', splits[2].toInt()))
+                    "mod" -> add(Instruction(Ops.mod, splits[1][0], ' ', splits[2].toInt()))
+                    "eql" -> add(Instruction(Ops.eql, splits[1][0], ' ', splits[2].toInt()))
                 }
             }
             else {
                 when(splits[0]) {
-                    "add" -> add(Instruction(InstructionType.add, splits[1][0], splits[2][0], null))
-                    "mul" -> add(Instruction(InstructionType.mul, splits[1][0], splits[2][0], null))
-                    "div" -> add(Instruction(InstructionType.div, splits[1][0], splits[2][0], null))
-                    "mod" -> add(Instruction(InstructionType.mod, splits[1][0], splits[2][0], null))
-                    "eql" -> add(Instruction(InstructionType.eql, splits[1][0], splits[2][0], null))
-                    "inp" -> add(Instruction(InstructionType.inp, splits[1][0], ' ', 0))
+                    "add" -> add(Instruction(Ops.add, splits[1][0], splits[2][0], null))
+                    "mul" -> add(Instruction(Ops.mul, splits[1][0], splits[2][0], null))
+                    "div" -> add(Instruction(Ops.div, splits[1][0], splits[2][0], null))
+                    "mod" -> add(Instruction(Ops.mod, splits[1][0], splits[2][0], null))
+                    "eql" -> add(Instruction(Ops.eql, splits[1][0], splits[2][0], null))
+                    "inp" -> add(Instruction(Ops.non, splits[1][0], ' ', -1))
                 }
             }
         }
@@ -71,7 +63,7 @@ fun parseInput(input: List<String>): List<Instruction> {
 }
 
 fun main() {
-    fun part1(input: List<String>): Long {
+    fun part1and2(input: List<String>, searchMax: Boolean): Long {
         val instructions = parseInput(input)
         val firstInstruction = instructions[0]
         var states = buildList {
@@ -80,8 +72,13 @@ fun main() {
             }
         }
         instructions.drop(1).forEach { instruction ->
-            if(instruction.type == InstructionType.inp) {
-                states = states.sortedByDescending { it.number }
+            //If instruction is "inp"
+            if(instruction.arg3 == -1) {
+                states = if(searchMax) {
+                    states.sortedByDescending { it.number }
+                } else {
+                    states.sortedBy { it.number }
+                }
                 states = states.distinctBy { it.z }
                 states = buildList {
                     states.forEach {
@@ -97,39 +94,17 @@ fun main() {
                 }
             }
         }
-        return states.filter { it.z == 0 }.maxOf { it.number }
-    }
-
-    fun part2(input: List<String>): Long {
-        val instructions = parseInput(input)
-        val firstInstruction = instructions[0]
-        var states = buildList {
-            for (i in 1..9) {
-                add(Alu().apply { set(firstInstruction.arg1, i); number = i.toLong() })
+        return states
+            .filter { it.z == 0 }
+            .let {
+                if(searchMax)
+                    it.maxOf { itt -> itt.number }
+                else 
+                    it.minOf { itt -> itt.number }
             }
-        }
-        instructions.drop(1).forEach { instruction ->
-            if(instruction.type == InstructionType.inp) {
-                states = states.sortedBy { it.number }
-                states = states.distinctBy { it.z }
-                states = buildList {
-                    states.forEach {
-                        for (i in 1..9) {
-                            add(it.copy().apply { set(instruction.arg1, i); number = number * 10 + i.toLong() })
-                        }
-                    }
-                }
-            }
-            else {
-                states.forEach { state ->
-                    state.performInstruction(instruction)
-                }
-            }
-        }
-        return states.filter { it.z == 0 }.minOf { it.number }
     }
 
     val input = readInput("Day24")
-    println(part1(input))
-    println(part2(input))
+    println(part1and2(input, true))
+    println(part1and2(input, false))
 }
