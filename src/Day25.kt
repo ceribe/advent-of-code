@@ -31,6 +31,7 @@ fun main() {
             //Deep copy cucumbers matrix
             //To simulate cucumbers moving all at once positions need to be checked on unchanged matrix
             val newCucumbers = intermediateCucumbers.map { it.toMutableList() }
+
             //Mode down
             for (y in cucumbers.indices) {
                 for (x in cucumbers[0].indices) {
