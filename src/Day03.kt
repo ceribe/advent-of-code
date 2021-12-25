@@ -1,47 +1,31 @@
 fun main() {
     fun part1(input: List<String>): Int {
-        val len = input[0].length
-        var gamma = ""
-        for (i in 0 until len) {
+        var gammaRate = ""
+        for (i in 0 until input[0].length) {
             val numberOfOnes = input.map { it[i] }.count { it == '1' }
             val numberOfZeros = input.size - numberOfOnes
-            gamma += if (numberOfOnes > numberOfZeros) "1" else "0"
+            gammaRate += if (numberOfOnes > numberOfZeros) "1" else "0"
         }
-        val epsilon = gamma.map { if(it == '1') '0' else '1' }.joinToString("")
-        return gamma.toInt(2) * epsilon.toInt(2)
+        val epsilonRate = gammaRate.map { if(it == '1') '0' else '1' }.joinToString("")
+        return gammaRate.toInt(2) * epsilonRate.toInt(2)
     }
 
     fun part2(input: List<String>): Int {
-        val len = input[0].length
-        var filteredRecords = input
-        for (i in 0 until len) {
-            val numberOfOnes = filteredRecords.map { it[i] }.count { it == '1' }
-            val numberOfZeros = filteredRecords.size - numberOfOnes
-            val mostCommonBit = when {
-                numberOfOnes > numberOfZeros -> '1'
-                numberOfOnes == numberOfZeros -> '1'
-                else -> '0'
+        fun process(b1: Char, b2: Char): String {
+            var filteredRecords = input
+            for (i in 0 until input[0].length) {
+                val numberOfOnes = filteredRecords.map { it[i] }.count { it == '1' }
+                val numberOfZeros = filteredRecords.size - numberOfOnes
+                val mostCommonBit = if (numberOfOnes >= numberOfZeros) b1 else b2
+                filteredRecords = filteredRecords.filter { it[i] == mostCommonBit }
+                if (filteredRecords.size == 1) { break }
             }
-            filteredRecords = filteredRecords.filter { it[i] == mostCommonBit }
-            if(filteredRecords.size == 1)
-                break
+            return filteredRecords[0]
         }
-        val oxygen = filteredRecords[0]
-        filteredRecords = input
-        for (i in 0 until len) {
-            val numberOfOnes = filteredRecords.map { it[i] }.count { it == '1' }
-            val numberOfZeros = filteredRecords.size - numberOfOnes
-            val leastCommonBit = when {
-                numberOfOnes > numberOfZeros -> '0'
-                numberOfOnes == numberOfZeros -> '0'
-                else -> '1'
-            }
-            filteredRecords = filteredRecords.filter { it[i] == leastCommonBit }
-            if(filteredRecords.size == 1)
-                break
-        }
-        val co2Scrubber = filteredRecords[0]
-        return oxygen.toInt(2) * co2Scrubber.toInt(2)
+
+        val oxygenGeneratorRating = process('1', '0')
+        val co2ScrubberRating = process('0', '1')
+        return oxygenGeneratorRating.toInt(2) * co2ScrubberRating.toInt(2)
     }
 
     val testInput = readInput("Day03_test")
