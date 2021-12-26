@@ -13,7 +13,7 @@ fun main() {
     fun part1(input: List<String>): Long {
         var dieState = 1
         var dieRollCount = 0L
-        fun rollDie() = dieState.also { dieState++; if(dieState == 101) dieState = 1; dieRollCount++ }
+        fun rollDie() = dieState.also { dieState++; if (dieState == 101) dieState = 1; dieRollCount++ }
 
         var p1Pos = input[0].last().digitToInt()
         var p2Pos = input[1].last().digitToInt()
@@ -36,7 +36,7 @@ fun main() {
         val p1Pos = input[0].last().digitToInt()
         val p2Pos = input[1].last().digitToInt()
         data class Wins(var w1: Long = 0L, var w2: Long = 0L)
-        //Cache could be of smaller (11 -> 10) but figuring out the offsets is not worth the effort
+        // Cache could be of smaller (11 -> 10) but figuring out the offsets is not worth the effort
         val cache: List<List<List<MutableList<Wins?>>>> = List(11) { List(21)  { List(11) { MutableList(21) { null } } } }
         fun roll(p1: Int, s1: Int, p2: Int, s2: Int): Wins {
             cache[p1][s1][p2][s2]?.let { return it }
@@ -46,11 +46,11 @@ fun main() {
                     for (z in 1..3) {
                         val p1New = reducePos(p1 + x + y + z)
                         val s1New = s1 + p1New
-                        if(s1New > 20) { timelineWins.w1++ }
+                        if (s1New > 20) { timelineWins.w1++ }
                         else {
-                            //Swap players, so I don't have to write second mirror-like function
+                            // Swap players, so I don't have to write second mirror-like function
                             val futureWins = roll(p2, s2, p1New, s1New)
-                            //After returning from the future players need to be unswapped and their wins added to this timeline
+                            // After returning from the future players need to be unswapped and their wins added to this timeline
                             timelineWins.apply {
                                 w1 += futureWins.w2
                                 w2 += futureWins.w1
@@ -59,7 +59,7 @@ fun main() {
                     }
                 }
             }
-            //Update cache
+            // Update cache
             cache[p1][s1][p2][s2] = timelineWins
             return  timelineWins
         }

@@ -11,23 +11,23 @@ fun main() {
         fun isInside(x: Int, y: Int) = x in minX..maxX && y in minY..maxY
         var globalMaxHeight = 0
         var count = 0
-        for(_xVel in 1..1000) {
-            for(_yVel in -1000..1000) {
+        for (_xVel in 1..1000) {
+            for (_yVel in -1000..1000) {
                 var xVel = _xVel
                 var yVel = _yVel
                 var (x, y) = listOf(0, 0)
                 var wasInside = false
                 var maxHeight = 0
-                while(y >= minY) {
+                while (y >= minY) {
                     x += xVel
                     y += yVel
-                    if(xVel > 0) xVel--
-                    if(xVel < 0) xVel++
+                    if (xVel > 0) xVel--
+                    if (xVel < 0) xVel++
                     yVel--
                     maxHeight = max(y, maxHeight)
-                    if(isInside(x, y)) wasInside = true
+                    if (isInside(x, y)) wasInside = true
                 }
-                if(wasInside) {
+                if (wasInside) {
                     globalMaxHeight = max(globalMaxHeight, maxHeight)
                     count++
                 }

@@ -7,7 +7,7 @@ import kotlin.math.max
 /**
  * Returns cost of moving one step for [this]
  */
-fun Char.cost() = when(this) {
+fun Char.cost() = when (this) {
     'A' -> 1
     'B' -> 10
     'C' -> 100
@@ -18,7 +18,7 @@ fun Char.cost() = when(this) {
 /**
  * Returns position in hallway of room which id = [this]
  */
-fun Int.getRoomPos() = when(this) {
+fun Int.getRoomPos() = when (this) {
     0 -> 2
     1 -> 4
     2 -> 6
@@ -32,9 +32,9 @@ fun Int.getRoomPos() = when(this) {
  */
 fun canMove(hallway: MutableList<Char>, startPos: Int, endPos: Int, skip: Char = 'E'): Boolean {
     var sublist: List<Char> = hallway.subList(min(startPos, endPos), max(startPos, endPos) +1)
-    if(sublist.first() == skip)
+    if (sublist.first() == skip)
         sublist = sublist.drop(1)
-    else if(sublist.last() == skip)
+    else if (sublist.last() == skip)
         sublist = sublist.dropLast(1)
     return startPos != endPos && sublist.all { it == '.' }
 }
@@ -46,7 +46,7 @@ fun main() {
              * Removes [amphipod] nearest to hallway from this room.
              */
             fun moveOut(amphipod: Char) {
-                if(topAmphipod == amphipod)
+                if (topAmphipod == amphipod)
                     topAmphipod = '.'
                 else
                     bottomAmphipod = '.'
@@ -82,40 +82,40 @@ fun main() {
         }
         val hallway = MutableList(11) { '.' }
 
-        var globalMinEnergy = 9999999
+        var globalMinEnergy = Int.MAX_VALUE
 
         fun makeMove(rooms: List<Room>, hallway: MutableList<Char>, energy: Int) {
             if (energy > globalMinEnergy) return
             if (rooms.areOrganized()) {
-                if(globalMinEnergy > energy)
+                if (globalMinEnergy > energy)
                     globalMinEnergy = energy
                 return
             }
             //Make all possible moves causing amphipods to leave a room
             rooms.forEachIndexed { idx, room ->
-                val shouldStay = when(idx) {
+                val shouldStay = when (idx) {
                     0 -> room.shouldAllStay('A')
                     1 -> room.shouldAllStay('B')
                     2 -> room.shouldAllStay('C')
                     3 -> room.shouldAllStay('D')
                     else -> false
                 }
-                if(shouldStay) return@forEachIndexed
+                if (shouldStay) return@forEachIndexed
 
                 var stepsCount = 0
                 var amphipod = room.topAmphipod
-                if(amphipod == '.') {
+                if (amphipod == '.') {
                     amphipod = room.bottomAmphipod
                     stepsCount++
                 }
 
                 fun moveRoomToRoom(amphipodRoomId: Int): Boolean {
                     if (canMove(hallway, idx.getRoomPos(), amphipodRoomId.getRoomPos()) && rooms[amphipodRoomId].canMoveIn(amphipod)) {
-                        stepsCount += (idx.getRoomPos() - amphipodRoomId.getRoomPos()).absoluteValue + 2 //+2 because of moving out of room AND moving in to room
+                        stepsCount += (idx.getRoomPos() - amphipodRoomId.getRoomPos()).absoluteValue + 2 // +2 because of moving out of room AND moving in to room
                         val cRooms = rooms.map { it.copy() }
                         cRooms[amphipodRoomId].topAmphipod = amphipod
                         cRooms[idx].moveOut(amphipod)
-                        if(cRooms[amphipodRoomId].bottomAmphipod == '.') {
+                        if (cRooms[amphipodRoomId].bottomAmphipod == '.') {
                             stepsCount++
                             cRooms[amphipodRoomId].bottomAmphipod = amphipod
                             cRooms[amphipodRoomId].topAmphipod = '.'
@@ -136,28 +136,28 @@ fun main() {
                         }
                     }
                 }
-                when(amphipod) {
+                when (amphipod) {
                     'A' -> {
-                        if(moveRoomToRoom(0)) return@forEachIndexed
+                        if (moveRoomToRoom(0)) return@forEachIndexed
                         moveRoomToHallway()
                     }
                     'B' -> {
-                        if(moveRoomToRoom(1)) return@forEachIndexed
+                        if (moveRoomToRoom(1)) return@forEachIndexed
                         moveRoomToHallway()
                     }
                     'C' -> {
-                        if(moveRoomToRoom(2)) return@forEachIndexed
+                        if (moveRoomToRoom(2)) return@forEachIndexed
                         moveRoomToHallway()
                     }
                     'D' -> {
-                        if(moveRoomToRoom(3)) return@forEachIndexed
+                        if (moveRoomToRoom(3)) return@forEachIndexed
                         moveRoomToHallway()
                     }
                     else -> {}
                 }
             }
 
-            //Make all possible moves causing amphipods to move from hallway to a room
+            // Make all possible moves causing amphipods to move from hallway to a room
             hallway.forEachIndexed { idx, c ->
                 /**
                  * Moves amphipod from hallway (from position = idx) to room with id = [roomId]
@@ -169,7 +169,7 @@ fun main() {
                         var stepsCount = (idx - roomId.getRoomPos()).absoluteValue + 1
                         cHallway[idx] = '.'
                         cRooms[roomId].topAmphipod = c
-                        if(cRooms[roomId].bottomAmphipod == '.') {
+                        if (cRooms[roomId].bottomAmphipod == '.') {
                             stepsCount++
                             cRooms[roomId].bottomAmphipod = c
                             cRooms[roomId].topAmphipod = '.'
@@ -177,7 +177,7 @@ fun main() {
                         makeMove(cRooms, cHallway, energy + stepsCount * c.cost())
                     }
                 }
-                when(c) {
+                when (c) {
                     'A' -> moveHallwayToRoom(0)
                     'B' -> moveHallwayToRoom(1)
                     'C' -> moveHallwayToRoom(2)
@@ -195,7 +195,7 @@ fun main() {
              * Removes [amphipod] nearest to hallway from this room.
              */
             fun moveOut(amphipod: Char) {
-                if(a1 == amphipod)
+                if (a1 == amphipod)
                     a1 = '.'
                 else if (a2 == amphipod)
                     a2 = '.'
@@ -237,7 +237,7 @@ fun main() {
         }
         val hallway = MutableList(11) { '.' }
 
-        var globalMinEnergy = 9999999
+        var globalMinEnergy = Int.MAX_VALUE
 
         fun makeMove(rooms: List<Room>, hallway: MutableList<Char>, energy: Int) {
             if (energy > globalMinEnergy) return
@@ -246,7 +246,7 @@ fun main() {
                     globalMinEnergy = energy
                 return
             }
-            //Make all possible moves causing amphipods to leave a room
+            // Make all possible moves causing amphipods to leave a room
             rooms.forEachIndexed { idx, room ->
                 val shouldStay = when(idx) {
                     0 -> room.shouldAllStay('A')
@@ -255,19 +255,19 @@ fun main() {
                     3 -> room.shouldAllStay('D')
                     else -> false
                 }
-                if(shouldStay) return@forEachIndexed
+                if (shouldStay) return@forEachIndexed
 
                 var stepsCount = 0
                 var amphipod = room.a1
-                if(amphipod == '.') {
+                if (amphipod == '.') {
                     amphipod = room.a2
                     stepsCount++
                 }
-                if(amphipod == '.') {
+                if (amphipod == '.') {
                     amphipod = room.a3
                     stepsCount++
                 }
-                if(amphipod == '.') {
+                if (amphipod == '.') {
                     amphipod = room.a4
                     stepsCount++
                 }
@@ -278,17 +278,17 @@ fun main() {
                         val cRooms = rooms.map { it.copy() }
                         cRooms[amphipodRoomId].a1 = amphipod
                         cRooms[idx].moveOut(amphipod)
-                        if(cRooms[amphipodRoomId].a2 == '.') {
+                        if (cRooms[amphipodRoomId].a2 == '.') {
                             stepsCount++
                             cRooms[amphipodRoomId].a2 = amphipod
                             cRooms[amphipodRoomId].a1 = '.'
                         }
-                        if(cRooms[amphipodRoomId].a3 == '.') {
+                        if (cRooms[amphipodRoomId].a3 == '.') {
                             stepsCount++
                             cRooms[amphipodRoomId].a3 = amphipod
                             cRooms[amphipodRoomId].a2 = '.'
                         }
-                        if(cRooms[amphipodRoomId].a4 == '.') {
+                        if (cRooms[amphipodRoomId].a4 == '.') {
                             stepsCount++
                             cRooms[amphipodRoomId].a4 = amphipod
                             cRooms[amphipodRoomId].a3 = '.'
@@ -299,7 +299,7 @@ fun main() {
                     return false
                 }
                 fun moveRoomToHallway() {
-                    for(i in listOf(0,1,3,5,7,9,10)) {
+                    for (i in listOf(0,1,3,5,7,9,10)) {
                         if (canMove(hallway, idx.getRoomPos(), i)) {
                             val cHallway = hallway.toMutableList()
                             val cRooms = rooms.map { it.copy() }
@@ -309,7 +309,7 @@ fun main() {
                         }
                     }
                 }
-                when(amphipod) {
+                when (amphipod) {
                     'A' -> {
                         if(moveRoomToRoom(0)) return@forEachIndexed
                         moveRoomToHallway()
@@ -330,7 +330,7 @@ fun main() {
                 }
             }
 
-            //Make all possible moves causing amphipods to move from hallway to a room
+            // Make all possible moves causing amphipods to move from hallway to a room
             hallway.forEachIndexed { idx, amphipod ->
                 /**
                  * Moves amphipod from hallway (from position = idx) to room with id = [roomId]
@@ -342,17 +342,17 @@ fun main() {
                         var stepsCount = (idx - roomId.getRoomPos()).absoluteValue + 1
                         cHallway[idx] = '.'
                         cRooms[roomId].a1 = amphipod
-                        if(cRooms[roomId].a2 == '.') {
+                        if (cRooms[roomId].a2 == '.') {
                             stepsCount++
                             cRooms[roomId].a2 = amphipod
                             cRooms[roomId].a1 = '.'
                         }
-                        if(cRooms[roomId].a3 == '.') {
+                        if (cRooms[roomId].a3 == '.') {
                             stepsCount++
                             cRooms[roomId].a3 = amphipod
                             cRooms[roomId].a2 = '.'
                         }
-                        if(cRooms[roomId].a4 == '.') {
+                        if (cRooms[roomId].a4 == '.') {
                             stepsCount++
                             cRooms[roomId].a4 = amphipod
                             cRooms[roomId].a3 = '.'
@@ -360,7 +360,7 @@ fun main() {
                         makeMove(cRooms, cHallway, energy + stepsCount * amphipod.cost())
                     }
                 }
-                when(amphipod) {
+                when (amphipod) {
                     'A' -> moveHallwayToRoom(0)
                     'B' -> moveHallwayToRoom(1)
                     'C' -> moveHallwayToRoom(2)

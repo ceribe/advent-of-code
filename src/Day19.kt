@@ -54,6 +54,7 @@ fun main() {
         }
         val placedScanners = scanners.take(1).toMutableList()
         val unplacedScanners = scanners.drop(1).toMutableList()
+        // Loops go brrrrrr
         mainLoop@ while (unplacedScanners.isNotEmpty()) {
             for (dir in directions) {
                 for (uScanner in unplacedScanners) {
@@ -72,8 +73,8 @@ fun main() {
                             }
                         }
                         val filteredMatchMap = matchMap.filter { it.value >= 12 }
-                        if(filteredMatchMap.isNotEmpty()) {
-                            //Get first (and only) key from map and extract x,y,z from it
+                        if (filteredMatchMap.isNotEmpty()) {
+                            // Get first (and only) key from map and extract x,y,z from it
                             val (x,y,z) = filteredMatchMap
                                 .entries
                                 .iterator()
@@ -88,12 +89,12 @@ fun main() {
                             uScanner.z = pScanner.z + z
                             unplacedScanners.remove(uScanner)
                             placedScanners.add(uScanner)
-                            //Transform all beacons to normalize them so direction does not need to be saved
+                            // Transform all beacons to normalize them so direction does not need to be saved
                             uScanner.beacons = uScanner.beacons.map {
                                 Beacon(
-                                    (if(dir.first == 0) it.x else if(dir.first == 1) it.y else it.z) * dir.rotX,
-                                    (if(dir.second == 0) it.x else if(dir.second == 1) it.y else it.z) * dir.rotY,
-                                    (if(dir.third == 0) it.x else if(dir.third == 1) it.y else it.z) * dir.rotZ
+                                    (if (dir.first == 0) it.x else if (dir.first == 1) it.y else it.z) * dir.rotX,
+                                    (if (dir.second == 0) it.x else if (dir.second == 1) it.y else it.z) * dir.rotY,
+                                    (if (dir.third == 0) it.x else if (dir.third == 1) it.y else it.z) * dir.rotZ
                                 )
                             }
                             continue@mainLoop
@@ -102,16 +103,15 @@ fun main() {
                 }
             }
         }
-
         return placedScanners
     }
 
     fun part1(input: List<String>): Int {
         val scanners = createScannerMap(input)
-        val beaconMap = buildMap {
+        val beaconMap = buildMap<String, Int> {
             scanners.forEach { scanner ->
                 scanner.beacons.forEach { beacon ->
-                    put("${beacon.x+scanner.x},${beacon.y+scanner.y},${beacon.z+scanner.z}", 1)
+                    put("${beacon.x + scanner.x},${beacon.y + scanner.y},${beacon.z + scanner.z}", 1)
                 }
             }
         }
@@ -123,7 +123,7 @@ fun main() {
         val map = createScannerMap(input)
         map.forEach { i ->
             map.forEach { j ->
-                val dist = (i.x-j.x).absoluteValue + (i.y-j.y).absoluteValue + (i.z-j.z).absoluteValue
+                val dist = (i.x - j.x).absoluteValue + (i.y - j.y).absoluteValue + (i.z - j.z).absoluteValue
                 max = kotlin.math.max(max, dist)
             }
         }

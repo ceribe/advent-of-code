@@ -5,13 +5,13 @@ fun main() {
     var infiniteState = 0
 
     fun enhance(image: List<List<Int>>, alg: List<Int>): List<List<Int>> {
-        //Add two lines of zeros to top and bottom of the image
+        // Add two lines of zeros to top and bottom of the image
         var extendedImage= buildList {
             repeat(2) { add(List(image.size) { infiniteState }) }
             addAll(image)
             repeat(2) { add(List(image.size) { infiniteState }) }
         }
-        //Add two lines of zeros to right and left side of the image
+        // Add two lines of zeros to right and left side of the image
         extendedImage = extendedImage.map {
             buildList {
                 repeat(2) { add(infiniteState) }
@@ -41,29 +41,20 @@ fun main() {
         return enhancedImage.drop(1).dropLast(1).map { it.drop(1).dropLast(1) }
     }
 
-    fun part1(input: List<String>): Int {
-        val alg = input[0].map { if(it=='.') 0 else 1 }
+    fun part1and2(input: List<String>, times: Int): Int {
+        val alg = input[0].map { if (it=='.') 0 else 1 }
         var image = input.drop(2).map { line -> line.map { if(it=='.') 0 else 1 } }
-        repeat(2) {
-            image = enhance(image, alg)
-        }
-        return image.sumOf { it.sum() }
-    }
-
-    fun part2(input: List<String>): Int {
-        val alg = input[0].map { if(it=='.') 0 else 1 }
-        var image = input.drop(2).map { line -> line.map { if(it=='.') 0 else 1 } }
-        repeat(50) {
+        repeat(times) {
             image = enhance(image, alg)
         }
         return image.sumOf { it.sum() }
     }
 
     val testInput = readInput("Day20_test")
-    check(part1(testInput) == 35)
-    check(part2(testInput) == 3351)
+    check(part1and2(testInput, 2) == 35)
+    check(part1and2(testInput, 50) == 3351)
 
     val input = readInput("Day20")
-    println(part1(input))
-    println(part2(input))
+    println(part1and2(input, 2))
+    println(part1and2(input, 50))
 }

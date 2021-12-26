@@ -45,21 +45,25 @@ fun main() {
         return costMap[maxY][maxX]
     }
 
+    fun getChitos(input: List<String>) = input.map { it.toCharArray().map { it2-> it2.digitToInt() } }
+
     fun part1(input: List<String>): Int {
-        val chitos = input.map { it.toCharArray().map { it2-> it2.digitToInt() } }
+        val chitos = getChitos(input)
         return getSmallestRisk(chitos)
     }
 
     fun part2(input: List<String>): Int {
-        val chitos = input.map { it.toCharArray().map { it2-> it2.digitToInt() } }
+        val chitos = getChitos(input)
         val y = chitos.size
         val x = chitos[0].size
         val newY = 5 * y
         val newX = 5 * x
-        val newChitos = List(newY) { i -> MutableList(newX) { j ->
-            val k = i / y + j / x
-            (chitos[i % y][j % x] + k - 1) % 9 + 1
-        } }
+        val newChitos = List(newY) { i ->
+            MutableList(newX) { j ->
+                val k = i / y + j / x
+                (chitos[i % y][j % x] + k - 1) % 9 + 1
+            }
+        }
         return getSmallestRisk(newChitos)
     }
 

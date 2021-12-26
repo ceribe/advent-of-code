@@ -6,7 +6,7 @@ data class Alu(var w: Int = 0, var x: Int = 0, var y: Int = 0, var z: Int = 0, v
     }
 
     fun set(variable: Char, value: Int) {
-        when(variable) {
+        when (variable) {
             'w' -> w = value
             'x' -> x = value
             'y' -> y = value
@@ -14,7 +14,7 @@ data class Alu(var w: Int = 0, var x: Int = 0, var y: Int = 0, var z: Int = 0, v
         }
     }
 
-    fun get(variable: Char) = when(variable) {
+    fun get(variable: Char) = when (variable) {
         'w' -> w
         'x' -> x
         'y' -> y
@@ -36,12 +36,12 @@ fun parseInput(input: List<String>): List<Instruction> {
     return buildList {
         input.forEach {
             val splits = it.split(' ')
-            if(splits.getOrNull(2)?.toIntOrNull() != null) {
-                when(splits[0]) {
+            if (splits.getOrNull(2)?.toIntOrNull() != null) {
+                when (splits[0]) {
                     "add" -> add(Instruction(Ops.add, splits[1][0], ' ', splits[2].toInt()))
                     "mul" -> add(Instruction(Ops.mul, splits[1][0], ' ', splits[2].toInt()))
                     "div" -> {
-                        if(splits[2].toInt() != 1)
+                        if (splits[2].toInt() != 1)
                         add(Instruction(Ops.div, splits[1][0], ' ', splits[2].toInt()))
                     }
                     "mod" -> add(Instruction(Ops.mod, splits[1][0], ' ', splits[2].toInt()))
@@ -49,7 +49,7 @@ fun parseInput(input: List<String>): List<Instruction> {
                 }
             }
             else {
-                when(splits[0]) {
+                when (splits[0]) {
                     "add" -> add(Instruction(Ops.add, splits[1][0], splits[2][0], null))
                     "mul" -> add(Instruction(Ops.mul, splits[1][0], splits[2][0], null))
                     "div" -> add(Instruction(Ops.div, splits[1][0], splits[2][0], null))
@@ -72,7 +72,7 @@ fun main() {
             }
         }
         instructions.drop(1).forEach { instruction ->
-            //If instruction is "inp"
+            // If instruction is "inp"
             if(instruction.arg3 == -1) {
                 states = if(searchMax) {
                     states.sortedByDescending { it.number }
@@ -97,7 +97,7 @@ fun main() {
         return states
             .filter { it.z == 0 }
             .let {
-                if(searchMax)
+                if (searchMax)
                     it.maxOf { itt -> itt.number }
                 else 
                     it.minOf { itt -> itt.number }

@@ -57,7 +57,7 @@ fun main() {
     }
 
     fun SFNumber.reduce(): SFNumber {
-        while(true) {
+        while (true) {
             val number = findNumberOnDepth(4)
             if (number != null) {
                 val parent = (number.parent as SFNumber)
@@ -65,23 +65,23 @@ fun main() {
                 val rVal = (number.right as Ordinary).value
                 val newNumber = Ordinary(0)
                 newNumber.parent = parent
-                if(parent.left === number) {
+                if (parent.left === number) {
                     parent.left = newNumber
                 }
-                if(parent.right === number) {
+                if (parent.right === number) {
                     parent.right = newNumber
                 }
                 val (leftN, rightN) = this.findNeighboursOf(newNumber)
-                if(leftN != null) {
+                if (leftN != null) {
                     leftN.value += lVal
                 }
-                if(rightN != null) {
+                if (rightN != null) {
                     rightN.value += rVal
                 }
                 continue
             }
             val number2 = findNumberWithValue(10)
-            if(number2 != null) {
+            if (number2 != null) {
                 val parent = (number2.parent as SFNumber)
                 val ordinary = number2 as Ordinary
                 val splitNumber = SFNumber(
@@ -91,10 +91,10 @@ fun main() {
                 splitNumber.parent = parent
                 splitNumber.left.parent = splitNumber
                 splitNumber.right.parent = splitNumber
-                if(parent.left === number2) {
+                if (parent.left === number2) {
                     parent.left = splitNumber
                 }
-                if(parent.right === number2) {
+                if (parent.right === number2) {
                     parent.right = splitNumber
                 }
                 continue
@@ -104,7 +104,7 @@ fun main() {
         return this
     }
 
-    fun Number.magnitude(): Long = when(this) {
+    fun Number.magnitude(): Long = when (this) {
         is Ordinary -> value.toLong()
         is SFNumber -> left.magnitude() * 3 + right.magnitude() * 2
         else -> 0L
@@ -126,12 +126,12 @@ fun main() {
         val magnitudes = buildList {
             numbers.indices.forEach { i ->
                 numbers.indices.forEach { j ->
-                    if(i != j) {
+                    if (i != j) {
                         val newNumber = SFNumber(numbers[i], numbers[j])
                         numbers[i].parent = newNumber
                         numbers[j].parent = newNumber
                         add(newNumber.reduce().magnitude())
-                        //Numbers are references and are changed by "reduce()" so for each iteration they have to be refreshed
+                        // Numbers are references and are changed by "reduce()" so for each iteration they have to be refreshed
                         numbers = input.map { parseSFNumber(it) }
                     }
                 }

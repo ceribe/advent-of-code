@@ -8,10 +8,10 @@ fun main() {
         val dots = mutableListOf<Pair<Int,Int>>()
         var dividerFound = false
         input.forEach {
-            if(it=="") {
+            if (it == "") {
                 dividerFound = true
             }
-            else if(!dividerFound)
+            else if (!dividerFound)
                 dots.add(it.split(',')[0].toInt() to it.split(',')[1].toInt())
             else {
                 val (axis, pos) = it.split(' ')[2].split('=')
@@ -33,31 +33,31 @@ fun main() {
             map.set(it.first, it.second)
         }
         fun foldHorizontally(map: MutableList<String>, pos: Int) {
-            for(i in 0 until pos) {
-                for(x in 0 until map[0].length) {
+            for (i in 0 until pos) {
+                for (x in 0 until map[0].length) {
                     try {
                         if (map[pos * 2 - i][x] == '#') {
                             map.set(x, i)
                         }
                     }
-                    catch (e: Exception) {}
+                    catch (_: Exception) {}
                 }
             }
         }
         fun foldVertically(map: MutableList<String>, pos: Int) {
-            for(i in 0 until pos) {
-                for(y in 0 until map.size) {
+            for (i in 0 until pos) {
+                for (y in 0 until map.size) {
                     try {
                         if (map[y][pos * 2 - i] == '#') {
                             map.set(i, y)
                         }
                     }
-                    catch (e: Exception) {}
+                    catch (_: Exception) {}
                 }
             }
         }
         instructions.forEachIndexed { idx, it ->
-            when(it.axis) {
+            when (it.axis) {
                 'x' -> {
                     foldVertically(map, it.pos)
                     map = map.map { s -> s.substring(0, it.pos) }.toMutableList()
@@ -67,7 +67,7 @@ fun main() {
                     map = map.subList(0, it.pos)
                 }
             }
-            if(idx == 0) {
+            if (idx == 0) {
                 println("After first fold: " + map.sumOf { it.map { it2-> if(it2 == '#') 1 else 0 }.sum() })
             }
         }

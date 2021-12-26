@@ -49,7 +49,7 @@ fun main() {
             for (x in max(it.x.first, -50)..min(it.x.last, 50)) {
                 for (y in max(it.y.first,-50)..min(it.y.last,50)) {
                     for (z in max(it.z.first,-50)..min(it.z.last,50)) {
-                        if(it.on) {
+                        if (it.on) {
                             activeCubes.add(MiniCube(x,y,z))
                         }
                         else {
@@ -69,11 +69,11 @@ fun main() {
         instructions.forEach {
             val overlaps = mutableListOf<Cube>()
             reactorState.forEach { range ->
-                //Always cut overlaps from reactor state. When cutting from "on" cube an "off" cube is added.
-                //Thanks to this the next time when there would be a cut from the same region two overlaps would be added
-                //one positive and one negative effectively negating each other. Always cutting also ensures that
-                //when two positive cubes overlap the overlap cube is added as a negative cube. (Kind of like Vien Diagram
-                //where you have to subtract the shared values)
+                // Always cut overlaps from reactor state. When cutting from "on" cube an "off" cube is added.
+                // Thanks to this the next time when there would be a cut from the same region two overlaps would be added
+                // one positive and one negative effectively negating each other. Always cutting also ensures that
+                // when two positive cubes overlap the overlap cube is added as a negative cube. (Kind of like Vien Diagram
+                // where you have to subtract the shared values)
                 if (it overlaps range) {
                     overlaps.add(Cube(
                         !range.on,
