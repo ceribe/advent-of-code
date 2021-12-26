@@ -2,12 +2,9 @@ import {check, readInput} from "../Utils.js";
 import MD5 from "crypto-js/md5.js";
 
 function part1and2(input, zerosCount) {
-    let current = "111111111111"
-    let counter = 0
-    let secretKey = input[0]
+    let [current, counter, secretKey] = ["1", 0, input[0]]
     while(!current.slice(0, zerosCount).split('').every(char => char === '0')) {
-        current = MD5(secretKey+counter).toString()
-        counter++
+        current = MD5(secretKey + counter++).toString()
     }
     return counter - 1
 }
