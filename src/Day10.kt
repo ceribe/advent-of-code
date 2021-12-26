@@ -23,6 +23,9 @@ fun main() {
         return ' '
     }
 
+    /**
+     * Returns list of chars which complete [line]
+     */
     fun getAutoComplete(line: String): List<Char> {
         val stack = mutableListOf<Char>()
         line.forEach {
@@ -37,27 +40,32 @@ fun main() {
 
 
     fun part1(input: List<String>): Int {
-        fun Char.points() = when(this) {
+        fun Char.points() = when (this) {
             ')' -> 3
             ']' -> 57
             '}' -> 1197
             '>' -> 25137
-            else -> throw Exception("Unexpected character")
+            else -> throw Exception("Unexpected character $this")
         }
         return input.map { it.corruptedStatus() }.filter { it != ' ' }.sumOf { it.points() }
     }
 
     fun part2(input: List<String>): Int {
-        fun Char.points() = when(this) {
+        fun Char.points() = when (this) {
             ')' -> 1
             ']' -> 2
             '}' -> 3
             '>' -> 4
             else -> throw Exception("Unexpected character: $this")
         }
+
+        /**
+         * Returns middle element of [this] list
+         */
         fun<T> List<T>.middle(): T {
-            return get(size/2)
+            return get(size / 2)
         }
+
         return input
             .filter { it.corruptedStatus() == ' ' }
             .map {

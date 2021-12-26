@@ -1,4 +1,9 @@
 fun main() {
+    /**
+     * Sorts the string alphabetically
+     */
+    fun String.sort() = String(toCharArray().apply { sort() })
+
     fun part1(input: List<String>): Int {
         return input.sumOf {
             it

@@ -13,7 +13,7 @@ fun main() {
                             ((x-1) < 0 || currVal < input[y][x-1]) &&
                             ((x+1) >= maxX || currVal < input[y][x+1]) &&
                             ((y+1) >= maxY || currVal < input[y+1][x])
-                 if(isLowest)
+                 if (isLowest)
                      total += currVal.toString().toInt() + 1
             }
         }
@@ -24,7 +24,7 @@ fun main() {
         val maxX = input[0].length
         val maxY = input.size
         val lowPoints = mutableListOf<Basin>()
-        repeat(maxX)  { x ->
+        repeat(maxX) { x ->
             repeat(maxY) { y ->
                 val currVal = input[y][x]
                 val isLowest =
@@ -32,7 +32,7 @@ fun main() {
                     ((x-1) < 0 || currVal < input[y][x-1]) &&
                     ((x+1) >= maxX || currVal < input[y][x+1]) &&
                     ((y+1) >= maxY || currVal < input[y+1][x])
-                if(isLowest) {
+                if (isLowest) {
                     val basin = Basin(x, y)
                     basin.points.add(x to y)
                     lowPoints.add(basin)
