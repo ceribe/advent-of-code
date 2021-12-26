@@ -1,49 +1,30 @@
 fun main() {
-    fun part1(input: List<String>): Int {
-        val fish = input[0].split(',').map { it.toInt() }.toMutableList()
-        repeat(80) { _ ->
-            var newFishCount = 0
-            fish.forEachIndexed { index, it ->
-                if(it == 0) {
-                    fish[index] = 6
-                    newFishCount++
-                }
-                else {
-                    fish[index] = fish[index] - 1
-                }
+    fun part1and2(input: List<String>, days: Int): Long {
+        val fishList = input[0].split(',').map { it.toInt() }
+        val fishMap = buildMap<Int, Long> {
+            fishList.forEach { set(it, getOrDefault(it, 0) + 1) }
+            repeat(days) {
+                val newFishCount = getOrDefault(0, 0)
+                set(0, getOrDefault(1, 0))
+                set(1, getOrDefault(2, 0))
+                set(2, getOrDefault(3, 0))
+                set(3, getOrDefault(4, 0))
+                set(4, getOrDefault(5, 0))
+                set(5, getOrDefault(6, 0))
+                set(6, getOrDefault(7, 0))
+                set(7, getOrDefault(8, 0))
+                set(8, newFishCount)
+                set(6, getOrDefault(6, 0) + newFishCount)
             }
-            fish.addAll(MutableList(newFishCount) { 8 })
-        }
-        return fish.size
-    }
-
-    fun part2(input: List<String>): Long {
-        val fish = input[0].split(',').map { it.toInt() }.toMutableList()
-        val fishMap = mutableMapOf<Int, Long>()
-        fish.forEach {
-            fishMap[it] = fishMap.getOrDefault(it,0) + 1
-        }
-        repeat(256) {
-           val newFishCount = fishMap.getOrDefault(0,0)
-            fishMap[0] = fishMap.getOrDefault(1,0)
-            fishMap[1] = fishMap.getOrDefault(2,0)
-            fishMap[2] = fishMap.getOrDefault(3,0)
-            fishMap[3] = fishMap.getOrDefault(4,0)
-            fishMap[4] = fishMap.getOrDefault(5,0)
-            fishMap[5] = fishMap.getOrDefault(6,0)
-            fishMap[6] = fishMap.getOrDefault(7,0)
-            fishMap[7] = fishMap.getOrDefault(8,0)
-            fishMap[8] = newFishCount
-            fishMap[6] = fishMap.getOrDefault(6,0) + newFishCount
         }
         return fishMap.map { it.value }.sum()
     }
 
     val testInput = readInput("Day06_test")
-    check(part1(testInput) == 5934)
-    check(part2(testInput) == 26984457539)
+    check(part1and2(testInput, 80) == 5934L)
+    check(part1and2(testInput, 256) == 26984457539L)
 
     val input = readInput("Day06")
-    println(part1(input))
-    println(part2(input))
+    println(part1and2(input, 80))
+    println(part1and2(input, 256))
 }
