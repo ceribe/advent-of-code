@@ -5,6 +5,6 @@ would mean a hexadecimal number would follow, so I can skip next 3 chars. If not
 \. In that case I had to skip only one char.
 
 Part 2 was even simpler. Total size counting remained the same, but in memory size got replace by encoded size. 
-It only required to check string for \ and ". If such a char was found then I increased totalEncodedSize. After 
+It has only required to check string for \ and ". If such a char was found then I increased totalEncodedSize. After 
 checking the string totalEncodedSize was further increased by line's length as all of its chars had to be encoded and 
 an additional 2 for the surrounding quotes.
