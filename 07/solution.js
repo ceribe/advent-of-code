@@ -77,6 +77,3 @@ const input = readInput("input.txt")
 
 check(part1and2(testInput), 114)
 console.log("Part 1 or 2: " + part1and2(input))
-
-//There is no need to write any code for part 2.
-// Simply change "14146 -> b" located on line 90 of input.txt to "956 -> b" and run program again
