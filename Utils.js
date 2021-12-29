@@ -20,6 +20,10 @@ Array.prototype.sum = function sum() {
     )
 }
 
+Array.prototype.last = function() {
+    return this[this.length - 1];
+}
+
 export function readInput(filename) {
     return fs.readFileSync(filename, 'utf8').toString().lines()
 }
