@@ -3,7 +3,7 @@ import {check, readInput} from "../Utils.js";
 function parseInput(input) {
     const map = new Map()
     function addToMap(from, to, cost) {
-        if(map.has(from)) {
+        if (map.has(from)) {
             map.get(from).push([to, cost])
         }
         else {
@@ -24,17 +24,17 @@ function part1(input) {
     const map = parseInput(input)
     let minCost = Number.MAX_VALUE
     function go(visited, cost) {
-        if(minCost < cost)
+        if (minCost < cost)
             return
-        if(visited.length === map.size) {
+        if (visited.length === map.size) {
             minCost = cost
             return
         }
         const nextCities = map.get(visited.last())
-        if(typeof nextCities === 'undefined')
+        if (typeof nextCities === 'undefined')
             return
         nextCities.forEach(city => {
-            if(!visited.includes(city[0])) {
+            if (!visited.includes(city[0])) {
                 go(visited.concat([city[0]]), cost + city[1])
             }
         })
@@ -49,15 +49,15 @@ function part2(input) {
     const map = parseInput(input)
     let maxCost = Number.MIN_VALUE
     function go(visited, cost) {
-        if(visited.length === map.size && maxCost < cost) {
+        if (visited.length === map.size && maxCost < cost) {
             maxCost = cost
             return
         }
         const nextCities = map.get(visited.last())
-        if(typeof nextCities === 'undefined')
+        if (typeof nextCities === 'undefined')
             return
         nextCities.forEach(city => {
-            if(!visited.includes(city[0])) {
+            if (!visited.includes(city[0])) {
                 go(visited.concat([city[0]]), cost + city[1])
             }
         })
