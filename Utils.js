@@ -1,11 +1,11 @@
 import fs from "fs";
 
 Array.prototype.sortNumbers = function sortNumbers() {
-    return this.sort((a, b) => a - b)
+    return [...this].sort((a, b) => a - b)
 }
 
 Array.prototype.sortNumbersDesc = function sortNumbersDesc() {
-    return this.sort((a, b) => b - a)
+    return [...this].sort((a, b) => b - a)
 }
 
 String.prototype.lines = function lines() {
