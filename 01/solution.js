@@ -1,7 +1,9 @@
 import {check, readInput} from "../Utils.js";
 
 function part1(input) {
-    return input[0].split('').map(a => { if (a === '(') return 1; else return -1 } ).sum()
+    return input[0].split('').map(a => {
+        if (a === '(') return 1; else return -1
+    }).sum()
 }
 
 function part2(input) {

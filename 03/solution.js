@@ -7,10 +7,18 @@ function part1(input) {
     let currentY = 0
     input[0].split('').forEach(direction => {
         switch (direction) {
-            case '>': currentX++; break
-            case '<': currentX--; break
-            case 'v': currentY--; break
-            case '^': currentY++; break
+            case '>':
+                currentX++
+                break
+            case '<':
+                currentX--
+                break
+            case 'v':
+                currentY--
+                break
+            case '^':
+                currentY++
+                break
         }
         visited.add("" + currentX + "," + currentY)
     })
@@ -25,10 +33,18 @@ function part2(input) {
     let turn = 0
     input[0].split('').forEach(direction => {
         switch (direction) {
-            case '>': currentX[turn]++; break
-            case '<': currentX[turn]--; break
-            case 'v': currentY[turn]--; break
-            case '^': currentY[turn]++; break
+            case '>':
+                currentX[turn]++
+                break
+            case '<':
+                currentX[turn]--
+                break
+            case 'v':
+                currentY[turn]--
+                break
+            case '^':
+                currentY[turn]++
+                break
         }
         visited.add("" + currentX[turn] + "," + currentY[turn])
         turn = (turn + 1) % 2

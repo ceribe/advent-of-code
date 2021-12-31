@@ -3,7 +3,7 @@ import {check, readInput} from "../Utils.js";
 function part1(input) {
     return input.map(dims => {
             let [x, y, z] = dims.split('x').map(num => parseInt(num)).sortNumbers()
-            return 2 * ( x * y + y * z + z * x) + x * y
+            return 2 * (x * y + y * z + z * x) + x * y
         }
     ).sum()
 }

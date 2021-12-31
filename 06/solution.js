@@ -20,16 +20,14 @@ function part1(input) {
                 const light = `${x},${y}`
                 if (instruction.type === "on") {
                     lights.add(light)
-                }
-                else if (instruction.type === "off") {
+                } else if (instruction.type === "off") {
                     lights.delete(light)
                 }
                 // toggle
                 else {
                     if (lights.has(light)) {
                         lights.delete(light)
-                    }
-                    else {
+                    } else {
                         lights.add(light)
                     }
                 }
@@ -55,8 +53,7 @@ function part2(input) {
                 const light = `${x},${y}`
                 if (instruction.type === "on") {
                     lights.set(light, lights.get(light) + 1)
-                }
-                else if (instruction.type === "toggle") {
+                } else if (instruction.type === "toggle") {
                     lights.set(light, lights.get(light) + 2)
                 }
                 // off

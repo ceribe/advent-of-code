@@ -3,11 +3,12 @@ import {check} from "../Utils.js";
 function increase(password) {
     password[password.length - 1] = password.last() + 1
     for (let i = password.length - 2; i >= 0; i--) {
-        if (password[i+1] === 123) {
-            password[i+1] = 97
+        if (password[i + 1] === 123) {
+            password[i + 1] = 97
             password[i] = password[i] + 1
+        } else {
+            break
         }
-        else { break }
     }
     return password
 }

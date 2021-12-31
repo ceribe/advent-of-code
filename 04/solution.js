@@ -3,7 +3,7 @@ import MD5 from "crypto-js/md5.js";
 
 function part1and2(input, zerosCount) {
     let [current, counter, secretKey] = ["1", 0, input]
-    while(!current.slice(0, zerosCount).split('').every(char => char === '0')) {
+    while (!current.slice(0, zerosCount).split('').every(char => char === '0')) {
         current = MD5(secretKey + counter++).toString()
     }
     return counter - 1

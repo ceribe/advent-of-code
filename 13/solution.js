@@ -10,8 +10,7 @@ function generatePerms(xs) {
 
         if (!rest.length) {
             ret.push([xs[i]])
-        }
-        else {
+        } else {
             for (let j = 0; j < rest.length; j++) {
                 ret.push([xs[i]].concat(rest[j]))
             }
@@ -74,7 +73,7 @@ function part1(input) {
 function insertMe(happinessMap) {
     const people = [...happinessMap.keys()]
     happinessMap.set("Me", new Map())
-    for(const person of people) {
+    for (const person of people) {
         happinessMap.get(person).set("Me", 0)
         happinessMap.get("Me").set(person, 0)
     }

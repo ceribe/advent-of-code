@@ -4,7 +4,7 @@ function part1(input) {
     function hasAtLeastTreeVowels(string) {
         const vowels = "aeiou"
         return string.split('').map(char => {
-            if(vowels.includes(char))
+            if (vowels.includes(char))
                 return 1
             else
                 return 0
@@ -30,7 +30,7 @@ function part1(input) {
     }
 
     return input.map(line => {
-        if(hasAtLeastTreeVowels(line) && hasDoubledLetter(line) && doesNotContainDisallowedSubstrings(line))
+        if (hasAtLeastTreeVowels(line) && hasDoubledLetter(line) && doesNotContainDisallowedSubstrings(line))
             return 1
         else
             return 0
@@ -40,24 +40,26 @@ function part1(input) {
 function part2(input) {
     function hasTwoPairs(string) {
         for (let i = 0; i < string.length - 1; i++) {
-            for (let j = 0; j < string.length -1; j++) {
-                if(string.substr(i, 2) === string.substr(j, 2) && i !== j && i + 1 !== j && i - 1 !== j) {
+            for (let j = 0; j < string.length - 1; j++) {
+                if (string.substr(i, 2) === string.substr(j, 2) && i !== j && i + 1 !== j && i - 1 !== j) {
                     return true
                 }
             }
         }
         return false
     }
+
     function hasOneSplitPair(string) {
         for (let i = 0; i < string.length - 2; i++) {
-            if(string[i] === string[i+2]) {
+            if (string[i] === string[i + 2]) {
                 return true
             }
         }
         return false
     }
+
     return input.map(line => {
-        if(hasTwoPairs(line) && hasOneSplitPair(line))
+        if (hasTwoPairs(line) && hasOneSplitPair(line))
             return 1
         else
             return 0

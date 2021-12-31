@@ -9,8 +9,7 @@ class Operation {
             this.arg2 = words[2]
             this.type = words[1]
             this.result = words[4]
-        }
-        else if (line.includes("NOT")) {
+        } else if (line.includes("NOT")) {
             this.arg1 = words[1]
             this.type = words[0]
             this.result = words[3]
@@ -28,9 +27,11 @@ class Operation {
             case "AND":
             case "OR":
             case "LSHIFT":
-            case "RSHIFT": return (!isNaN(this.arg1) || map.has(this.arg1)) && (!isNaN(this.arg2) || map.has(this.arg2))
+            case "RSHIFT":
+                return (!isNaN(this.arg1) || map.has(this.arg1)) && (!isNaN(this.arg2) || map.has(this.arg2))
             case "NOT":
-            case "ASSIGN": return (!isNaN(this.arg1) || map.has(this.arg1))
+            case "ASSIGN":
+                return (!isNaN(this.arg1) || map.has(this.arg1))
         }
     }
 
@@ -47,12 +48,24 @@ class Operation {
             arg2 = parseInt(this.arg2)
 
         switch (this.type) {
-            case "AND": map.set(this.result, arg1 & arg2); break
-            case "OR": map.set(this.result, arg1 | arg2); break
-            case "LSHIFT": map.set(this.result, arg1 << arg2); break
-            case "RSHIFT": map.set(this.result, arg1 >> arg2); break
-            case "NOT": map.set(this.result, ~arg1); break
-            case "ASSIGN": map.set(this.result, arg1); break
+            case "AND":
+                map.set(this.result, arg1 & arg2)
+                break
+            case "OR":
+                map.set(this.result, arg1 | arg2)
+                break
+            case "LSHIFT":
+                map.set(this.result, arg1 << arg2)
+                break
+            case "RSHIFT":
+                map.set(this.result, arg1 >> arg2)
+                break
+            case "NOT":
+                map.set(this.result, ~arg1)
+                break
+            case "ASSIGN":
+                map.set(this.result, arg1)
+                break
         }
     }
 }
@@ -60,9 +73,9 @@ class Operation {
 function part1and2(input) {
     let ops = input.map(line => new Operation(line))
     const map = new Map()
-    while(!map.has('a')) {
+    while (!map.has('a')) {
         for (let i = 0; i < ops.length; i++) {
-            if(ops[i].isActive(map)) {
+            if (ops[i].isActive(map)) {
                 ops[i].perform(map)
                 ops.splice(i, 1)
                 break

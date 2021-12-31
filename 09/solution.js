@@ -2,14 +2,15 @@ import {check, readInput} from "../Utils.js";
 
 function parseInput(input) {
     const map = new Map()
+
     function addToMap(from, to, cost) {
         if (map.has(from)) {
             map.get(from).push([to, cost])
-        }
-        else {
+        } else {
             map.set(from, [[to, cost]])
         }
     }
+
     input.map(line => line.split(" ")).forEach(line => {
         const from = line[0]
         const to = line[2]
@@ -23,6 +24,7 @@ function parseInput(input) {
 function part1(input) {
     const map = parseInput(input)
     let minCost = Number.MAX_VALUE
+
     function go(visited, cost) {
         if (minCost < cost)
             return
@@ -39,6 +41,7 @@ function part1(input) {
             }
         })
     }
+
     map.forEach((_, key) => {
         go([key], 0)
     })
@@ -48,6 +51,7 @@ function part1(input) {
 function part2(input) {
     const map = parseInput(input)
     let maxCost = Number.MIN_VALUE
+
     function go(visited, cost) {
         if (visited.length === map.size && maxCost < cost) {
             maxCost = cost
@@ -62,6 +66,7 @@ function part2(input) {
             }
         })
     }
+
     map.forEach((_, key) => {
         go([key], 0)
     })

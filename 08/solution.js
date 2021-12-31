@@ -6,9 +6,12 @@ function part1(input) {
     for (const line of input) {
         totalSize += line.length
         for (let i = 1; i < line.length - 1; i++) {
-            if(line[i] === '\\') {
-                if (line[i+1] === 'x') { i += 3}
-                else { i++ }
+            if (line[i] === '\\') {
+                if (line[i + 1] === 'x') {
+                    i += 3
+                } else {
+                    i++
+                }
             }
             totalInMemorySize++
         }

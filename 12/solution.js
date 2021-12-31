@@ -7,16 +7,15 @@ function part1(input) {
 function part2(input) {
     let sum = 0
     const parsed = JSON.parse(input[0])
+
     function go(json) {
         if (Array.isArray(json)) {
             for (const elem of json) {
                 go(elem)
             }
-        }
-        else if (typeof json === 'number') {
+        } else if (typeof json === 'number') {
             sum += json
-        }
-        else if (typeof json === 'object') {
+        } else if (typeof json === 'object') {
             // If any of values is red then skip this object
             for (const [, value] of Object.entries(json)) {
                 if (value === "red") {
@@ -28,6 +27,7 @@ function part2(input) {
             }
         }
     }
+
     go(parsed)
     return sum
 }
