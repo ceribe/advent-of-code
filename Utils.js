@@ -16,7 +16,7 @@ Array.prototype.sum = function sum() {
     return this.map(Number).reduce(
         function (prev, curr) {
             return prev+curr
-        }
+        }, 0
     )
 }
 
@@ -32,24 +32,26 @@ export function check(real, expected) {
     console.assert(expected === real, 'Expected %s, got %s', expected, real)
 }
 
-export function findSubsets(a, min) {
+export function findSubsets(a, min, max = a.length) {
     function fn(n, src, got, all) {
         if (n === 0) {
             if (got.length > 0) {
-                all[all.length] = got;
+                all[all.length] = got
             }
-            return;
+            return
         }
         for (let j = 0; j < src.length; j++) {
-            fn(n - 1, src.slice(j + 1), got.concat([src[j]]), all);
+            fn(n - 1, src.slice(j + 1), got.concat([src[j]]), all)
         }
     }
-    let all = [];
-    for (let i = min; i < a.length; i++) {
-        fn(i, a, [], all);
+    let all = []
+    for (let i = min; i <= max; i++) {
+        fn(i, a, [], all)
     }
-    all.push(a);
-    return all;
+    if (a.length === max) {
+        all.push(a)
+    }
+    return all
 }
 
 export function getDivisors(num) {
