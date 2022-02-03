@@ -4,10 +4,6 @@ Array.prototype.sortNumbers = function sortNumbers() {
     return [...this].sort((a, b) => a - b)
 }
 
-Array.prototype.sortNumbersDesc = function sortNumbersDesc() {
-    return [...this].sort((a, b) => b - a)
-}
-
 String.prototype.lines = function lines() {
     return this.match(/[^\r\n]+/g)
 }
