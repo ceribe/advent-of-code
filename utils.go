@@ -3,6 +3,8 @@ package advent_of_code_2016
 import (
 	"io/ioutil"
 	"log"
+	"sort"
+	"strings"
 )
 
 func ReadInput(dayNumber string, fileName string) string {
@@ -15,7 +17,7 @@ func ReadInput(dayNumber string, fileName string) string {
 
 func Check(expected string, value string) {
 	if expected != value {
-		log.Fatal("Expected", expected, "got", value+"\n")
+		log.Fatal("Expected ", expected, " got ", value+"\n")
 	}
 }
 
@@ -31,4 +33,14 @@ func Max(a, b int) int {
 		return a
 	}
 	return b
+}
+
+func Sort(w string) string {
+	s := strings.Split(w, "")
+	sort.Strings(s)
+	return strings.Join(s, "")
+}
+
+func SplitIntoLines(text string) []string {
+	return strings.Split(strings.ReplaceAll(text, "\r\n", "\n"), "\n")
 }

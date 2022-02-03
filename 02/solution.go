@@ -4,13 +4,12 @@ import (
 	utils "advent-of-code-2016"
 	"fmt"
 	"strconv"
-	"strings"
 )
 
 func part1(input string) string {
 	x, y := 1, 1
 	code := ""
-	for _, line := range strings.Split(input, "\n") {
+	for _, line := range utils.SplitIntoLines(input) {
 		for _, instruction := range line {
 			switch string(instruction) {
 			case "U":
@@ -32,7 +31,7 @@ func part2(input string) string {
 	x, y := 0, 2
 	numpad := [5]string{"  1  ", " 234 ", "56789", " ABC ", "  D  "}
 	code := ""
-	for _, line := range strings.Split(input, "\n") {
+	for _, line := range utils.SplitIntoLines(input) {
 		for _, instruction := range line {
 			switch string(instruction) {
 			case "U":
