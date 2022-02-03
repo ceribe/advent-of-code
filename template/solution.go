@@ -18,8 +18,8 @@ func main() {
 	input := utils.ReadInput("00", "input.txt")
 
 	utils.Check("0", part1(testInput))
-	fmt.Printf("Part 1: %s", part1(input))
+	fmt.Printf("Part 1: %s\n", part1(input))
 
 	utils.Check("0", part2(testInput))
-	fmt.Printf("Part 2: %s", part2(input))
+	fmt.Printf("Part 2: %s\n", part2(input))
 }
