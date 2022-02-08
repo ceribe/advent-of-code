@@ -1,6 +1,8 @@
 package advent_of_code_2016
 
 import (
+	"crypto/md5"
+	"encoding/hex"
 	"io/ioutil"
 	"log"
 	"sort"
@@ -43,4 +45,9 @@ func Sort(w string) string {
 
 func SplitIntoLines(text string) []string {
 	return strings.Split(strings.ReplaceAll(text, "\r\n", "\n"), "\n")
+}
+
+func Hash(data string) string {
+	h := md5.Sum([]byte(data))
+	return hex.EncodeToString(h[:])
 }
