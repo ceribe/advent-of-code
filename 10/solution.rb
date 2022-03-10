@@ -16,31 +16,8 @@ def part1(lengths, no_elements)
     numbers[0] * numbers[1]
 end
 
-class Integer
-    def to_hex
-        self.to_s(16).rjust(2, '0')
-    end
-end
-
 def part2(input)
-    input = input.chars.map(&:ord)
-    lengths = input + [17, 31, 73, 47, 23]
-    position = 0
-    skip_size = 0
-    numbers = (0...256).to_a
-    64.times { 
-        lengths.each { |length|
-            numbers.rotate!(position)
-            numbers[0...length] = numbers[0...length].reverse
-            numbers.rotate!(-position)
-            position += (length + skip_size) % 256
-            skip_size += 1
-        }
-    }
-    numbers
-        .each_slice(16)
-        .map { |arr| arr.reduce(:^).to_hex }
-        .join("")
+    calculate_knot_hash(input) 
 end
 
 input = read_input("input")[0]
