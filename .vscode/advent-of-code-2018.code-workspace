@@ -1,0 +1,13 @@
+{
+  "folders": [
+    {
+      "path": ".."
+    }
+  ],
+  "settings": {
+    "workspaceKeybindings.ocaml.enabled": true,
+    "ocaml.sandbox": {
+      "kind": "global"
+    }
+  }
+}
