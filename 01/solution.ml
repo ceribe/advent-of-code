@@ -2,7 +2,6 @@
 open Printf;;
 module Ints = Set.Make(Int)
 
-(* let part1 input = string_of_int (List.fold_left (+) 0 (List.map (fun x -> int_of_string x) input));; *)
 let part1 input = input |> List.map (fun x -> int_of_string x) |> List.fold_left (+) 0 |> string_of_int;;
 
 let part2 input = 
