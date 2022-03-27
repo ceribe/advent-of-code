@@ -1,0 +1,23 @@
+b = 109_900
+c = 126_900
+9: f = 1
+d = 2
+11: e = 2
+12: g = d
+g *= e
+g -= b
+if g == 0
+  f = 0
+end
+e += 1
+goto 12 if e != b
+d += 1
+goto 11 if d != b
+if f == 0
+  h += 1
+end
+if b == c
+  exit
+end
+b += 17
+goto 9
