@@ -2,23 +2,22 @@
 open Printf;;
 module Ints = Set.Make(Int)
 
-let part1 input = input |> List.map (fun x -> int_of_string x) |> List.fold_left (+) 0 |> string_of_int;;
+let part1 input = input 
+  |> List.map int_of_string
+  |> List.fold_left (+) 0 
+  |> string_of_int;;
 
-let part2 input = 
-  let numbers = List.map (fun x -> int_of_string x) input in
-  let reached_freqs = ref (Ints.of_list []) in
-  let pos = ref 0 in
-  let curr_freq = ref 0 in
-  let found = ref false in
-  while not !found do
-    let i = List.nth numbers !pos in
-    curr_freq := !curr_freq + i;
-    if (Ints.mem !curr_freq !reached_freqs) then found := true;
-    pos := ((!pos + 1) mod (List.length input));
-    reached_freqs := Ints.add !curr_freq !reached_freqs;
-  done;  
-  string_of_int !curr_freq
-;;
+let part2 input =
+  let all_freqs = List.map int_of_string input in
+  let rec check_next seen_freqs curr_sum freqs = 
+    match freqs with
+    | [] -> check_next seen_freqs curr_sum all_freqs
+    | freq::tail -> 
+      let new_sum = curr_sum + freq in
+      if Ints.mem new_sum seen_freqs then new_sum
+      else check_next (Ints.add new_sum seen_freqs) new_sum tail
+    in
+  check_next (Ints.of_list []) 0 all_freqs |> string_of_int;;
 
 
 let input = read_file "input.txt";;
