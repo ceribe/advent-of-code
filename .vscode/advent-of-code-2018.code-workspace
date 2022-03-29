@@ -5,7 +5,7 @@
     }
   ],
   "settings": {
-    "workspaceKeybindings.ocaml.enabled": true,
+    "workspaceKeybindings.dart.enabled": true,
     "ocaml.sandbox": {
       "kind": "global"
     }
