@@ -13,3 +13,9 @@ let read_file filename =
 
 let check expected actual =
   if expected <> actual then printf "Expected %s, but got %s\n" expected actual;;
+
+(* Converts string to a list of chars *)
+let char_list_of_string s = List.init (String.length s) (String.get s)
+
+(* Converts char list to a string *)
+let string_of_char_list l = String.of_seq (List.to_seq l)
