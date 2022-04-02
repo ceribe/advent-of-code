@@ -4,8 +4,8 @@ dynamic part1(List<String> input) {
   var doubles = 0;
   var triples = 0;
   for (var line in input) {
-    var chars = line.split('');
-    var counts = <String, int>{};
+    var chars = line.codeUnits;
+    var counts = <int, int>{};
     for (var char in chars) {
       counts[char] = (counts[char] ?? 0) + 1;
     }
