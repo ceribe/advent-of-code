@@ -32,13 +32,13 @@ Map<String, int> getFabricWithClaims(List<Claim> claims) {
 }
 
 dynamic part1(List<String> input) {
-  var claims = input.map((line) => Claim(line)).toList();
+  var claims = input.map(Claim.new).toList();
   var fabric = getFabricWithClaims(claims);
   return fabric.values.where((v) => v > 1).length;
 }
 
 dynamic part2(List<String> input) {
-  var claims = input.map((line) => Claim(line)).toList();
+  var claims = input.map(Claim.new).toList();
   var fabric = getFabricWithClaims(claims);
   for (var claim in claims) {
     var overlaps = false;
