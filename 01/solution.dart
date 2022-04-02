@@ -1,11 +1,11 @@
 import '../utils.dart';
 
 dynamic part1(List<String> input) {
-  return input.map((e) => int.parse(e)).reduce((a, b) => a + b);
+  return input.map(int.parse).sum;
 }
 
 dynamic part2(List<String> input) {
-  var freqs = input.map((e) => int.parse(e));
+  var freqs = input.map(int.parse);
   var seen = {0};
   var current = 0;
   while (true) {
