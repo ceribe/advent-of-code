@@ -25,7 +25,7 @@ class Event {
 }
 
 Map<int, Map<int, int>> getMinutesMap(List<String> input) {
-  var events = input.map((line) => Event(line)).toList();
+  var events = input.map(Event.new).toList();
   events.sort((a, b) => a.getDateAsNumber().compareTo(b.getDateAsNumber()));
   var guardMinutesMap = <int, Map<int, int>>{};
   var guard = 0;
@@ -53,7 +53,7 @@ dynamic part1(List<String> input) {
   var maxMinutes = 0;
   for (var guard in guardMinutesMap.keys) {
     var minutesMap = guardMinutesMap[guard];
-    var sumMins = minutesMap?.values.reduce((a, b) => a + b) ?? 0;
+    var sumMins = minutesMap?.values.sum ?? 0;
     if (sumMins > maxMinutes) {
       maxGuard = guard;
       maxMinutes = sumMins;
