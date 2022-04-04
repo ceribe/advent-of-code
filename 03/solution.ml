@@ -49,8 +49,8 @@ let part1 input =
 ;; 
 
 let part2 input = "";;
-(* I give up on this language. The syntax is unpleasant, execution speed is bad and to do even a simple thing
-I have to write a lot of code. The fact that I cannot even create a Map where key is a String and value is an Int was just too much. *)
+(* I give up on this language. The syntax is unpleasant and doing even a simple thing requires a lot of code. 
+The fact that I cannot even create a Map where key is a String and value is an Int was just too much. *)
 
 let input = read_file "input.txt";;
 let test_input = read_file "test_input.txt";;
