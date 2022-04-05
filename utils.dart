@@ -14,7 +14,7 @@ void check<T>(T expected, T actual) {
 }
 
 extension UtilsIterableExtensions on Iterable<int> {
-  int get sum => reduce((a, b) => a + b);
+  int get sum => fold(0, (a, b) => a + b);
   int get min => reduce(math.min);
   int get max => reduce(math.max);
 }
