@@ -27,7 +27,7 @@ class Point {
 
 bool moreThan80PercentOfPointsHaveNeighbours(List<Point> points) {
   var neighboursCount = 0;
-  // This could be reduced from 0(n^2) to 0(n) by using a 2D matrix or set and marking points there so checking for
+  // This could be reduced from 0(n^2) to 0(n) by using a 2D matrix or a set and marking points there so checking for
   // neightbours would be O(1), but since the input is small (about 300 points) it's not worth it
   for (var point in points) {
     for (var otherPoint in points) {
