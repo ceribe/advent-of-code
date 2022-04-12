@@ -41,9 +41,9 @@ func getNextPos(currentDir Direction, x int, y int, value int) (int, int) {
 }
 
 func part1(input string) string {
-	var instructions = strings.Split(input, ", ")
-	var x, y = 0, 0
-	var currentDir = North
+	instructions := strings.Split(input, ", ")
+	x, y := 0, 0
+	currentDir := North
 	for _, instruction := range instructions {
 		currentDir = getNextDir(currentDir, string(instruction[0]))
 		value, _ := strconv.Atoi(instruction[1:])
@@ -53,10 +53,10 @@ func part1(input string) string {
 }
 
 func part2(input string) string {
-	var instructions = strings.Split(input, ", ")
-	var x, y = 0, 0
-	var currentDir = North
-	var locations = make(map[int]int)
+	instructions := strings.Split(input, ", ")
+	x, y := 0, 0
+	currentDir := North
+	locations := make(map[int]int)
 	for _, instruction := range instructions {
 		currentDir = getNextDir(currentDir, string(instruction[0]))
 		value, _ := strconv.Atoi(instruction[1:])
