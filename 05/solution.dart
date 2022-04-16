@@ -1,6 +1,6 @@
 import '../utils.dart';
 
-// Checks if given letters are the same, but of different cases.
+/// Checks if given letters are the same, but of different cases.
 bool shouldBeDestroyed(String unit1, String unit2) {
   return unit1.toLowerCase() == unit2.toLowerCase() && unit1 != unit2;
 }
@@ -26,17 +26,17 @@ List<String> getFullyReactedPolymer(List<String> polymer) {
   return polymer;
 }
 
-dynamic part1(List<String> input) {
-  var polymer = input[0].split("");
+dynamic part1(String input) {
+  final polymer = input.split("");
   return getFullyReactedPolymer(polymer).length;
 }
 
-dynamic part2(List<String> input) {
-  var shortenedPolymer = getFullyReactedPolymer(input[0].split(""));
+dynamic part2(String input) {
+  final shortenedPolymer = getFullyReactedPolymer(input.split(""));
   return Iterable<int>.generate(26).toList().map((i) {
-    var lLetter = String.fromCharCode(97 + i);
-    var uLetter = lLetter.toUpperCase();
-    var polymer = shortenedPolymer
+    final lLetter = String.fromCharCode(97 + i);
+    final uLetter = lLetter.toUpperCase();
+    final polymer = shortenedPolymer
         .where((unit) => unit != lLetter && unit != uLetter)
         .toList();
     return getFullyReactedPolymer(polymer).length;
@@ -44,8 +44,8 @@ dynamic part2(List<String> input) {
 }
 
 main() {
-  var input = readFile('input.txt');
-  var testInput = readFile('test_input.txt');
+  final input = readFile('input.txt')[0];
+  final testInput = readFile('test_input.txt')[0];
 
   check(10, part1(testInput));
   print(part1(input));
