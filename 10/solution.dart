@@ -8,7 +8,7 @@ class Point {
   int xSpeed = 0;
   int ySpeed = 0;
   Point(String line) {
-    var match = RegExp(
+    final match = RegExp(
             r'^position=<\s*(-?\d+),\s*(-?\d+)> velocity=<\s*(-?\d+),\s*(-?\d+)>$')
         .firstMatch(line);
     if (match != null) {
@@ -49,12 +49,12 @@ bool moreThan80PercentOfPointsHaveNeighbours(List<Point> points) {
 }
 
 void printMessage(List<Point> points) {
-  var minX = points.map((point) => point.x).min;
-  var maxX = points.map((point) => point.x).max;
-  var minY = points.map((point) => point.y).min;
-  var maxY = points.map((point) => point.y).max;
+  final minX = points.map((point) => point.x).min;
+  final maxX = points.map((point) => point.x).max;
+  final minY = points.map((point) => point.y).min;
+  final maxY = points.map((point) => point.y).max;
 
-  var lightMap = Set<int>();
+  final lightMap = Set<int>();
   points.forEach((point) {
     lightMap.add(point.x * 1000 + point.y);
   });
@@ -72,7 +72,7 @@ void printMessage(List<Point> points) {
 }
 
 dynamic part1and2(List<String> input) {
-  var points = input.map(Point.new).toList();
+  final points = input.map(Point.new).toList();
   var seconds = 0;
   while (!moreThan80PercentOfPointsHaveNeighbours(points)) {
     points.forEach((point) => point.move());
@@ -83,8 +83,8 @@ dynamic part1and2(List<String> input) {
 }
 
 main() {
-  var input = readFile('input.txt');
-  var testInput = readFile('test_input.txt');
+  final input = readFile('input.txt');
+  final testInput = readFile('test_input.txt');
 
   check(3, part1and2(testInput));
   print(part1and2(input));
