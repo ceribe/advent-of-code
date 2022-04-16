@@ -13,7 +13,7 @@ Map<int, int> getInitialPots(String pots) {
 }
 
 /// Returns a map of rules. The key is the pattern of pots interpreted as a binary
-//. number, and the value is the result of applying the rule to the pattern.
+/// number, and the value is the result of applying the rule to the pattern.
 Map<int, int> getRules(List<String> input) {
   final rules = <int, int>{};
   for (var i = 0; i < input.length; i++) {
