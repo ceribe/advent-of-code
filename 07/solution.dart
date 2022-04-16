@@ -1,7 +1,7 @@
 import '../utils.dart';
 
 Map<String, List<String>> getTasks(input) {
-  var tasks = <String, List<String>>{};
+  final tasks = <String, List<String>>{};
   for (var line in input) {
     var match =
         RegExp(r'^Step (\w+) must be finished before step (\w+) can begin.')
@@ -14,7 +14,7 @@ Map<String, List<String>> getTasks(input) {
   return tasks;
 }
 
-// Removes task from map of tasks and removes it from other tasks' lists
+/// Removes task from map of tasks and removes it from other tasks' lists
 void removeTask(Map<String, List<String>> tasks, String task) {
   tasks.remove(task);
   for (var key in tasks.keys) {
@@ -23,15 +23,15 @@ void removeTask(Map<String, List<String>> tasks, String task) {
 }
 
 dynamic part1(List<String> input) {
-  var tasks = getTasks(input);
+  final tasks = getTasks(input);
   var result = '';
   while (tasks.isNotEmpty) {
     // Gets ready tasks in alfabetical order
-    var readyTasks = tasks.keys.where((key) => tasks[key]!.isEmpty).toList();
+    final readyTasks = tasks.keys.where((key) => tasks[key]!.isEmpty).toList();
     readyTasks.sort();
 
     // Mark the first task as completed
-    var task = readyTasks.first;
+    final task = readyTasks.first;
     result += task;
     removeTask(tasks, task);
   }
@@ -43,12 +43,12 @@ int getTimeForTask(String task, int duration) {
 }
 
 dynamic part2(List<String> input, int workersCount, int duration) {
-  var tasks = getTasks(input);
+  final tasks = getTasks(input);
   var result = 0;
-  var workers = <String, int>{};
+  final workers = <String, int>{};
   while (tasks.isNotEmpty) {
     // Get all tasks which are ready and not being worked on
-    var readyTasks = tasks.keys
+    final readyTasks = tasks.keys
         .where((key) => tasks[key]!.isEmpty && !workers.keys.contains(key))
         .toList();
     readyTasks.sort();
@@ -77,8 +77,8 @@ dynamic part2(List<String> input, int workersCount, int duration) {
 }
 
 main() {
-  var input = readFile('input.txt');
-  var testInput = readFile('test_input.txt');
+  final input = readFile('input.txt');
+  final testInput = readFile('test_input.txt');
 
   check("CABDFE", part1(testInput));
   print(part1(input));
