@@ -13,7 +13,7 @@ int getPowerLevel(int x, int y, int serial, Map<int, int> cache) {
 }
 
 dynamic part1(int input) {
-  var cache = Map<int, int>();
+  final cache = Map<int, int>();
   var maxPower = 0;
   var maxCoords = "";
   for (var x = 1; x <= 298; x++) {
@@ -34,7 +34,7 @@ dynamic part1(int input) {
 }
 
 dynamic part2(int input) {
-  var cache = Map<int, int>();
+  final cache = Map<int, int>();
   var maxPower = 0;
   var maxIdentifier = "";
   for (var size = 1; size <= 19; size++) {
@@ -57,9 +57,9 @@ dynamic part2(int input) {
 }
 
 main() {
-  var input = 7672;
-  var testInput1 = 18;
-  var testInput2 = 42;
+  final input = 7672;
+  final testInput1 = 18;
+  final testInput2 = 42;
 
   check("33,45", part1(testInput1));
   check("21,61", part1(testInput2));
