@@ -25,9 +25,9 @@ class Event {
 }
 
 Map<int, Map<int, int>> getMinutesMap(List<String> input) {
-  var events = input.map(Event.new).toList();
+  final events = input.map(Event.new).toList();
   events.sort((a, b) => a.getDateAsNumber().compareTo(b.getDateAsNumber()));
-  var guardMinutesMap = <int, Map<int, int>>{};
+  final guardMinutesMap = <int, Map<int, int>>{};
   var guard = 0;
   var minute = 0;
   for (var event in events) {
@@ -48,12 +48,12 @@ Map<int, Map<int, int>> getMinutesMap(List<String> input) {
 }
 
 dynamic part1(List<String> input) {
-  var guardMinutesMap = getMinutesMap(input);
+  final guardMinutesMap = getMinutesMap(input);
   var maxGuard = 0;
   var maxMinutes = 0;
   for (var guard in guardMinutesMap.keys) {
-    var minutesMap = guardMinutesMap[guard];
-    var sumMins = minutesMap?.values.sum ?? 0;
+    final minutesMap = guardMinutesMap[guard];
+    final sumMins = minutesMap?.values.sum ?? 0;
     if (sumMins > maxMinutes) {
       maxGuard = guard;
       maxMinutes = sumMins;
@@ -62,7 +62,7 @@ dynamic part1(List<String> input) {
   var maxMinute = 0;
   var maxMinuteCount = 0;
   for (var minute in guardMinutesMap[maxGuard]!.keys) {
-    var minuteCount = guardMinutesMap[maxGuard]![minute] ?? 0;
+    final minuteCount = guardMinutesMap[maxGuard]![minute] ?? 0;
     if (minuteCount > maxMinuteCount) {
       maxMinute = minute;
       maxMinuteCount = minuteCount;
@@ -72,15 +72,15 @@ dynamic part1(List<String> input) {
 }
 
 dynamic part2(List<String> input) {
-  var guardMinutesMap = getMinutesMap(input);
+  final guardMinutesMap = getMinutesMap(input);
   var maxGuard = 0;
   var maxMinute = 0;
   var maxMinuteCount = 0;
   // Iterates through all guards and all minutes for that guard finding the minute that has the highest count
   for (var guard in guardMinutesMap.keys) {
-    var minutesMap = guardMinutesMap[guard];
+    final minutesMap = guardMinutesMap[guard];
     for (var minute in minutesMap!.keys) {
-      var minuteCount = minutesMap[minute] ?? 0;
+      final minuteCount = minutesMap[minute] ?? 0;
       if (minuteCount > maxMinuteCount) {
         maxGuard = guard;
         maxMinute = minute;
@@ -92,8 +92,8 @@ dynamic part2(List<String> input) {
 }
 
 main() {
-  var input = readFile('input.txt');
-  var testInput = readFile('test_input.txt');
+  final input = readFile('input.txt');
+  final testInput = readFile('test_input.txt');
 
   check(240, part1(testInput));
   print(part1(input));
