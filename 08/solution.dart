@@ -20,10 +20,10 @@ class Node {
   }
 }
 
-// Recursively adds children to given node and returns new position
+/// Recursively adds children to given node and returns new position
 int addChildren(Node node, List<int> numbers, int pos) {
-  int numChildren = numbers[pos++];
-  int numMetadata = numbers[pos++];
+  final numChildren = numbers[pos++];
+  final numMetadata = numbers[pos++];
 
   for (int i = 0; i < numChildren; i++) {
     node.children.add(Node());
@@ -38,25 +38,25 @@ int addChildren(Node node, List<int> numbers, int pos) {
 }
 
 Node getTree(List<String> input) {
-  var numbers = input[0].split(' ').map(int.parse).toList();
-  Node root = Node();
+  final numbers = input[0].split(' ').map(int.parse).toList();
+  final root = Node();
   addChildren(root, numbers, 0);
   return root;
 }
 
 dynamic part1(List<String> input) {
-  var root = getTree(input);
+  final root = getTree(input);
   return root.recursiveMetadataSum;
 }
 
 dynamic part2(List<String> input) {
-  var root = getTree(input);
+  final root = getTree(input);
   return root.value;
 }
 
 main() {
-  var input = readFile('input.txt');
-  var testInput = readFile('test_input.txt');
+  final input = readFile('input.txt');
+  final testInput = readFile('test_input.txt');
 
   check(138, part1(testInput));
   print(part1(input));
