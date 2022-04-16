@@ -19,11 +19,11 @@ class Claim {
 }
 
 Map<String, int> getFabricWithClaims(List<Claim> claims) {
-  var fabric = <String, int>{};
+  final fabric = <String, int>{};
   for (var claim in claims) {
     for (var x = claim.x; x < claim.x + claim.width; x++) {
       for (var y = claim.y; y < claim.y + claim.height; y++) {
-        var key = "$x,$y";
+        final key = "$x,$y";
         fabric[key] = (fabric[key] ?? 0) + 1;
       }
     }
@@ -32,14 +32,14 @@ Map<String, int> getFabricWithClaims(List<Claim> claims) {
 }
 
 dynamic part1(List<String> input) {
-  var claims = input.map(Claim.new).toList();
-  var fabric = getFabricWithClaims(claims);
+  final claims = input.map(Claim.new).toList();
+  final fabric = getFabricWithClaims(claims);
   return fabric.values.where((v) => v > 1).length;
 }
 
 dynamic part2(List<String> input) {
-  var claims = input.map(Claim.new).toList();
-  var fabric = getFabricWithClaims(claims);
+  final claims = input.map(Claim.new).toList();
+  final fabric = getFabricWithClaims(claims);
   for (var claim in claims) {
     var overlaps = false;
     for (var x = claim.x; x < claim.x + claim.width; x++) {
@@ -58,8 +58,8 @@ dynamic part2(List<String> input) {
 }
 
 main() {
-  var input = readFile('input.txt');
-  var testInput = readFile('test_input.txt');
+  final input = readFile('input.txt');
+  final testInput = readFile('test_input.txt');
 
   check(4, part1(testInput));
   print(part1(input));
