@@ -5,8 +5,8 @@ dynamic part1(List<String> input) {
 }
 
 dynamic part2(List<String> input) {
-  var freqs = input.map(int.parse);
-  var seen = {0};
+  final freqs = input.map(int.parse);
+  final seen = {0};
   var current = 0;
   while (true) {
     for (var freq in freqs) {
@@ -20,8 +20,8 @@ dynamic part2(List<String> input) {
 }
 
 main() {
-  var input = readFile('input.txt');
-  var testInput = readFile('test_input.txt');
+  final input = readFile('input.txt');
+  final testInput = readFile('test_input.txt');
 
   check(3, part1(testInput));
   print(part1(input));
