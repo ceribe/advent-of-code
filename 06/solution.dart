@@ -21,15 +21,15 @@ List<Point> parseInput(List<String> input) {
 }
 
 dynamic part1(List<String> input) {
-  var points = parseInput(input);
-  var xSize = points.map((point) => point.x).max + 1;
-  var ySize = points.map((point) => point.y).max + 1;
-  var map = new List<List<List<int>>>.generate(
+  final points = parseInput(input);
+  final xSize = points.map((point) => point.x).max + 1;
+  final ySize = points.map((point) => point.y).max + 1;
+  final map = new List<List<List<int>>>.generate(
       xSize, (x) => new List<List<int>>.generate(ySize, (y) => [-1, 99999]));
 
   // Find closest point for each coordinate.
   // -1 means that there is no closest point
-  // (so far or there are two or more with equal distance)
+  // so far or there are two or more with equal distance.
   for (var x = 0; x < map.length; x++) {
     for (var y = 0; y < map[x].length; y++) {
       for (var p = 0; p < points.length; p++) {
@@ -43,7 +43,7 @@ dynamic part1(List<String> input) {
   }
 
   // Check which areas are infinite
-  var inifinite = <int>{};
+  final inifinite = <int>{};
   for (var x = 0; x < xSize; x++) {
     inifinite.add(map[x][0][0]);
     inifinite.add(map[x][ySize - 1][0]);
@@ -54,7 +54,7 @@ dynamic part1(List<String> input) {
   }
 
   // Find the biggest finite area
-  var finite = <int, int>{};
+  final finite = <int, int>{};
   for (var x = 0; x < xSize; x++) {
     for (var y = 0; y < ySize; y++) {
       if (map[x][y][0] != -1 && !inifinite.contains(map[x][y][0])) {
@@ -66,9 +66,9 @@ dynamic part1(List<String> input) {
 }
 
 dynamic part2(List<String> input, int maxDist) {
-  var points = parseInput(input);
-  var xSize = points.map((point) => point.x).max + 1;
-  var ySize = points.map((point) => point.y).max + 1;
+  final points = parseInput(input);
+  final xSize = points.map((point) => point.x).max + 1;
+  final ySize = points.map((point) => point.y).max + 1;
   var count = 0;
   for (var x = 0; x < xSize; x++) {
     for (var y = 0; y < ySize; y++) {
@@ -85,8 +85,8 @@ dynamic part2(List<String> input, int maxDist) {
 }
 
 main() {
-  var input = readFile('input.txt');
-  var testInput = readFile('test_input.txt');
+  final input = readFile('input.txt');
+  final testInput = readFile('test_input.txt');
 
   check(17, part1(testInput));
   print(part1(input));
