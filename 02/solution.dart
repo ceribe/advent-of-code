@@ -4,9 +4,8 @@ dynamic part1(List<String> input) {
   var doubles = 0;
   var triples = 0;
   for (var line in input) {
-    var chars = line.codeUnits;
-    var counts = <int, int>{};
-    for (var char in chars) {
+    final counts = <int, int>{};
+    for (var char in line.codeUnits) {
       counts[char] = (counts[char] ?? 0) + 1;
     }
     if (counts.values.contains(2)) {
@@ -41,9 +40,9 @@ dynamic part2(List<String> input) {
 }
 
 main() {
-  var input = readFile('input.txt');
-  var testInput = readFile('test_input.txt');
-  var testInput2 = readFile('test_input_2.txt');
+  final input = readFile('input.txt');
+  final testInput = readFile('test_input.txt');
+  final testInput2 = readFile('test_input_2.txt');
 
   check(12, part1(testInput));
   print(part1(input));
