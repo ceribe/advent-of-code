@@ -1,0 +1,7 @@
+name: advent_of_code
+
+environment:
+  sdk: '>=2.16.0 <3.0.0'
+
+dependencies:
+  a_star: ^1.0.0
