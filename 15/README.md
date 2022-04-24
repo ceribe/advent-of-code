@@ -4,4 +4,6 @@ had to be done perfectly or the whole thing didn't work. Part 1 took me about 3h
 why the test inputs work, but the real one does not. As it turns out using A* was a mistake and a simple BFS
 would be sufficient. A* was problematic, because I used the wrong heurestic. Due to this mistake A* was sometimes
 not finding the most optimal solution. Part 2 was trivial as the only thing i needed to do was to contiuously
-increase elves damage and check if none of the elves died.
+increase elves damage and check if none of the elves died. One thing to say here is that my solution is not optimal
+and I didn't even try to optimize it, because when a task is so big I prefer readability over performance. Some obvious
+improvement would be using a pure BFS instead of A* and not creating tile map in each iteration.
