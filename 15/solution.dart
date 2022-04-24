@@ -243,7 +243,7 @@ void moveUnitTowardsTile(List<Unit> units, TileMap map, Unit unit, Tile tile) {
   unit.moveToTile(nextTile);
 }
 
-/// Makes the unit attack lowest health enemy in range
+/// Makes the unit attack the lowest health enemy in range
 void attack(List<Unit> units, Unit unit) {
   final neighboringEnemies = units
       .where((u) => u.type == unit.enemyType)
@@ -270,8 +270,7 @@ void attack(List<Unit> units, Unit unit) {
 //   }
 // }
 
-dynamic part1(List<String> input, [int elfAttackPower = 3]) {
-  Unit.elfAtk = elfAttackPower;
+dynamic part1(List<String> input) {
   final units = getUnits(input);
   var roundsCount = 0;
   while (true) {
@@ -307,7 +306,8 @@ dynamic part2(List<String> input) {
   var elfAttackPower = 4;
   while (true) {
     try {
-      final outcome = part1(input, elfAttackPower);
+      Unit.elfAtk = elfAttackPower;
+      final outcome = part1(input);
       return outcome;
     } catch (e) {
       elfAttackPower++;
