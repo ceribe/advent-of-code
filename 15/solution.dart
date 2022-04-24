@@ -97,6 +97,7 @@ class Unit {
 
   void getHit() {
     hp -= type == UnitType.goblin ? elfAtk : goblinAtk;
+    // Because in part 2 no elf can die an exception is thrown
     if (type == UnitType.elf && hp <= 0 && elfAtk != 3) {
       throw 'Elf died  :(';
     }
@@ -216,7 +217,7 @@ Tile? getNearestTileNearEnemy(List<Unit> units, TileMap map, Unit unit) {
   return nearestTiles.first;
 }
 
-/// Moves [unit] towards  the [tile] by one step. If there are multiple shortest paths,
+/// Moves [unit] towards the [tile] by one step. If there are multiple shortest paths,
 /// the step which is first in reading direction is taken
 void moveUnitTowardsTile(List<Unit> units, TileMap map, Unit unit, Tile tile) {
   final possibleMoves = map.getNeighboursOf(Tile(unit.x, unit.y));
@@ -226,7 +227,7 @@ void moveUnitTowardsTile(List<Unit> units, TileMap map, Unit unit, Tile tile) {
   }
   final pathFinder = AStar(map);
   // This lines looks completely useless, but it's not. Due to the fact that I use
-  // the same TileMap object in two functions, but each function creates it's own
+  // the same TileMap object in two functions, but each function creates its own
   // pathFinder, I have to use this hack to make sure that the nodes are removed
   // from open and closed sets. Otherwise, the first path will most likely be
   // skipped.
