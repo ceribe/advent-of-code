@@ -236,7 +236,7 @@ void moveUnitTowardsTile(List<Unit> units, TileMap map, Unit unit, Tile tile) {
       .map((move) => pathFinder.findPathSync(move, tile))
       .where((path) => path.length > 0)
       .toList();
-  var shortestPathLength = paths.map((path) => path.length).min;
+  final shortestPathLength = paths.map((path) => path.length).min;
   paths = paths.where((path) => path.length == shortestPathLength).toList();
   paths.sort((a, b) => a.first.compareTo(b.first));
   final path = paths.first;
@@ -287,7 +287,6 @@ dynamic part1(List<String> input) {
       if (nearestTile == null) {
         continue;
       }
-      // If unit isn't already on the tile, move it one step closer
       if (!unit.isOnTile(nearestTile)) {
         moveUnitTowardsTile(units, map, unit, nearestTile);
       }
@@ -317,13 +316,13 @@ dynamic part2(List<String> input) {
 }
 
 main() {
-  var input = readFile('input.txt');
-  var testInput1 = readFile('test_input_1.txt');
-  var testInput2 = readFile('test_input_2.txt');
-  var testInput3 = readFile('test_input_3.txt');
-  var testInput4 = readFile('test_input_4.txt');
-  var testInput5 = readFile('test_input_5.txt');
-  var testInput6 = readFile('test_input_6.txt');
+  final input = readFile('input.txt');
+  final testInput1 = readFile('test_input_1.txt');
+  final testInput2 = readFile('test_input_2.txt');
+  final testInput3 = readFile('test_input_3.txt');
+  final testInput4 = readFile('test_input_4.txt');
+  final testInput5 = readFile('test_input_5.txt');
+  final testInput6 = readFile('test_input_6.txt');
 
   check(27730, part1(testInput1));
   check(36334, part1(testInput2));
