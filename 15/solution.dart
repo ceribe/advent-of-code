@@ -97,8 +97,9 @@ class Unit {
 
   void getHit() {
     hp -= type == UnitType.goblin ? elfAtk : goblinAtk;
-    // Because in part 2 no elf can die an exception is thrown
-    if (type == UnitType.elf && hp <= 0 && elfAtk != 3) {
+    final elfDied = type == UnitType.elf && hp <= 0;
+    final isPart2 = elfAtk != 3;
+    if (elfDied && isPart2) {
       throw 'Elf died  :(';
     }
   }
