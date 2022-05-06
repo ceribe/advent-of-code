@@ -18,12 +18,12 @@ class Claim {
   }
 }
 
-Map<String, int> getFabricWithClaims(List<Claim> claims) {
-  final fabric = <String, int>{};
+Map<Point, int> getFabricWithClaims(List<Claim> claims) {
+  final fabric = <Point, int>{};
   for (var claim in claims) {
     for (var x = claim.x; x < claim.x + claim.width; x++) {
       for (var y = claim.y; y < claim.y + claim.height; y++) {
-        final key = "$x,$y";
+        final key = Point(x, y);
         fabric[key] = (fabric[key] ?? 0) + 1;
       }
     }
@@ -44,7 +44,7 @@ dynamic part2(List<String> input) {
     var overlaps = false;
     for (var x = claim.x; x < claim.x + claim.width; x++) {
       for (var y = claim.y; y < claim.y + claim.height; y++) {
-        if (fabric["$x,$y"] != 1) {
+        if (fabric[Point(x, y)] != 1) {
           overlaps = true;
           break;
         }

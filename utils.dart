@@ -18,3 +18,32 @@ extension UtilsIterableExtensions on Iterable<int> {
   int get min => reduce(math.min);
   int get max => reduce(math.max);
 }
+
+/// Parsers given [line] and returns a list of found integers
+List<int> getIntegersFromLine(String line) {
+  return line
+      .replaceAll(RegExp(r'[^0-9]'), " ")
+      .split(RegExp(r'\s+'))
+      .where((x) => x.isNotEmpty)
+      .map(int.parse)
+      .toList();
+}
+
+class Point {
+  final int x;
+  final int y;
+
+  Point(this.x, this.y);
+
+  Point get left => Point(x - 1, y);
+  Point get right => Point(x + 1, y);
+  Point get up => Point(x, y - 1);
+  Point get down => Point(x, y + 1);
+
+  @override
+  int get hashCode => x.hashCode * 100000 + y.hashCode;
+
+  @override
+  bool operator ==(Object other) =>
+      other is Point && other.x == x && other.y == y;
+}
