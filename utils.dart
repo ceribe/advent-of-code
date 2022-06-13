@@ -6,6 +6,11 @@ List<String> readFile(String path) {
   return File(path).readAsLinesSync();
 }
 
+/// Reads first line of file located at [path] and returns its content as a string
+String readFirstLine(String path) {
+  return File(path).readAsStringSync().split('\n').first;
+}
+
 /// Checks if given values are equal
 void check<T>(T expected, T actual) {
   if (expected != actual) {

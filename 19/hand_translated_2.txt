@@ -1,0 +1,31 @@
+a,b,c,d,e,f = [0,0,0,0,0,0]
+e += 16
+:0 d = 1
+while d <= f:
+    b = 1
+    while b <= f:
+        c = b * d
+        if c == f:
+            a += d
+        b++
+    d++
+goto :exit
+f += 2
+f = f * f
+f = 23 * f
+f = f * 11
+c += 4
+c = c * 26
+c += 5
+f += c
+e += a
+goto :0
+c = 31
+c = c * 32
+c += 33
+c = c * 34
+c = c * 14
+c = c * 36
+f += c
+a = 0
+goto :0

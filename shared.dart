@@ -21,6 +21,32 @@ enum Opcode {
   eqrr
 }
 
+final opcodes = <String, Opcode>{
+  'addr': Opcode.addr,
+  'addi': Opcode.addi,
+  'mulr': Opcode.mulr,
+  'muli': Opcode.muli,
+  'banr': Opcode.banr,
+  'bani': Opcode.bani,
+  'borr': Opcode.borr,
+  'bori': Opcode.bori,
+  'setr': Opcode.setr,
+  'seti': Opcode.seti,
+  'gtir': Opcode.gtir,
+  'gtri': Opcode.gtri,
+  'gtrr': Opcode.gtrr,
+  'eqir': Opcode.eqir,
+  'eqri': Opcode.eqri,
+  'eqrr': Opcode.eqrr,
+};
+
+class Instruction {
+  final Opcode opcode;
+  final List<int> params;
+
+  Instruction(this.opcode, this.params);
+}
+
 class State {
   List<int> registers;
 
@@ -91,4 +117,7 @@ class State {
         break;
     }
   }
+
+  void executeInstruction(Instruction ins) =>
+      executeOpcode(ins.opcode, ins.params);
 }
