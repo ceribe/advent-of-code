@@ -51,4 +51,21 @@ class Point {
   @override
   bool operator ==(Object other) =>
       other is Point && other.x == x && other.y == y;
+
+  Point operator +(Point other) => Point(x + other.x, y + other.y);
+
+  static getOffsetFromChar(String char) {
+    switch (char) {
+      case 'N':
+        return Point(0, -1);
+      case 'E':
+        return Point(-1, 0);
+      case 'S':
+        return Point(0, 1);
+      case 'W':
+        return Point(1, 0);
+      default:
+        throw Exception('Unknown direction: $char');
+    }
+  }
 }
