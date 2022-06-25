@@ -1,10 +1,10 @@
 package d06
 
 import check
-import readInput
+import readFirstLine
 
-fun part1and2(input: List<String>, days: Int): Long {
-    val fishList = input[0].split(',').map { it.toInt() }
+fun part1and2(input: String, days: Int): Long {
+    val fishList = input.split(',').map { it.toInt() }
     val fishMap = buildMap<Int, Long> {
         fishList.forEach { set(it, getOrDefault(it, 0) + 1) }
         repeat(days) {
@@ -20,8 +20,8 @@ fun part1and2(input: List<String>, days: Int): Long {
 }
 
 fun main() {
-    val testInput = readInput("06", "input_test")
-    val input = readInput("06", "input")
+    val testInput = readFirstLine("06", "input_test")
+    val input = readFirstLine("06", "input")
 
     check(5934L, part1and2(testInput, 80))
     println(part1and2(input, 80)) // 391888
