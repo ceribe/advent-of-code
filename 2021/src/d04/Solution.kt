@@ -62,7 +62,7 @@ class Board(input: List<String>) {
 
 /**
  * Checks given [boards] whether a board is won while ignoring boards with indexes present in [wonBoardsIndexes]
- * After finding a newly won board its index is added to [wonBoardsIndexes] and returned. Otherwise null is returned.
+ * After finding a newly won board its index is added to [wonBoardsIndexes] and returned. Otherwise, null is returned.
  */
 fun getNextWonBoardIndex(boards: List<Board>, wonBoardsIndexes: MutableSet<Int>): Int? {
     boards.forEachIndexed { idx, board ->
