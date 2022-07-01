@@ -28,3 +28,7 @@ This was the only day when I had to take a break between parts.
 
 It was hard to choose the most fun one, because all the days were fun. Well... except for 23 and 16 (finding out that my 
 code was not working, because I used Int instead of Long was the opposite of fun).
+
+# How to run
+
+Since this is a standard Intellij IDEA project just launch it and run whichever "Solution.kt" you want.
