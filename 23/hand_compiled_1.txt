@@ -1,0 +1,35 @@
+b = 99
+c = 99
+
+
+b *= 100
+b += 100_000
+c = b
+c += 17_000
+f = 1
+d = 2
+e = 2
+g = d
+g *= e
+g -= b
+if g == 0
+  f = 0
+end
+e += 1
+g = e
+g -= b
+goto 12 if g != 0
+d += 1
+g = d
+g -= b
+goto 11 if g != 0
+if f == 0
+  h += 1
+end
+g = b
+g -= c
+if g == 0
+  exit
+end
+b -= 17
+goto 9
