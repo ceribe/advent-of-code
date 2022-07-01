@@ -1,11 +1,10 @@
-# Welcome to Advent of Code[^aoc]
+# How tu run
 
-This repository will contain solutions for Advent of Code 2018.
+Open the project in VSCode.
 
-[^aoc]:
-    [Advent of Code][aoc] – an annual event in December since 2015.
-    Every year since then, with the first day of December, a programming puzzles contest is published every day for twenty-four days.
-    A set of Christmas-oriented challenges provide any input you have to use to answer using the language of your choice.
+```sh
+dart pub get
+```
 
-[aoc]: https://adventofcode.com
+Open whichever "solution.dart" you need and hit "Ctrl + F5".
 
