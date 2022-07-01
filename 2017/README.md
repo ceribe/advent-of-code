@@ -8,3 +8,7 @@ It was not exactly hard, but was tedious and the code I wrote looks horrible. No
 but if I had to pick one day, I would pick day 23 as it required the most time to finish. If day
 [24](https://github.com/ceribe/advent-of-code-2017/tree/master/24) was not bruteforce-able (eg. 100 components instead of 57),
 then I would pick it as I have no idea how to solve it effectively.
+
+# How to run
+
+Enter a "day" directory using terminal and run "ruby solution.rb".
