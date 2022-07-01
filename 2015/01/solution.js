@@ -1,29 +1,34 @@
-import {check, readInput} from "../Utils.js";
+import { check, readFirstLine } from "../utils.js";
 
 function part1(input) {
-    return input[0].split('').map(a => {
-        if (a === '(') return 1; else return -1
-    }).sum()
+  return input
+    .split("")
+    .map((char) => (char === "(" ? 1 : -1))
+    .sum();
 }
 
 function part2(input) {
-    let floor = 0
-    const chars = input[0].split('')
-    for (let idx = 0; idx < chars.length; idx++) {
-        if (chars[idx] === '(')
-            floor++
-        else
-            floor--
-        if (floor === -1)
-            return idx + 1
-    }
+  let floor = 0;
+  const chars = input.split("");
+  for (let idx = 0; idx < chars.length; idx++) {
+    chars[idx] === "(" ? floor++ : floor--;
+    if (floor === -1) return idx + 1;
+  }
 }
 
-const testInput = readInput("test_input.txt")
-const input = readInput("input.txt")
+const input = readFirstLine("01", "input.txt");
 
-check(part1(testInput), -1)
-console.log("Part 1: " + part1(input))
+check(0, part1("(())"));
+check(0, part1("()()"));
+check(3, part1("((("));
+check(3, part1("(()(()("));
+check(3, part1("))((((("));
+check(-1, part1("())"));
+check(-1, part1("))("));
+check(-3, part1(")))"));
+check(-3, part1(")())())"));
+console.log("Part 1: " + part1(input)); // 280
 
-check(part2(testInput), 5)
-console.log("Part 2: " + part2(input))
+check(1, part2(")"));
+check(5, part2("()())"));
+console.log("Part 2: " + part2(input)); // 1797
