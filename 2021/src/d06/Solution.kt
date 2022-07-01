@@ -24,8 +24,8 @@ fun main() {
     val input = readFirstLine("06", "input")
 
     check(5934L, part1and2(testInput, 80))
-    println(part1and2(input, 80)) // 391888
+    println("Part 1: " + part1and2(input, 80)) // 391888
 
     check(26984457539L, part1and2(testInput, 256))
-    println(part1and2(input, 256)) // 1754597645339
+    println("Part 2: " + part1and2(input, 256)) // 1754597645339
 }

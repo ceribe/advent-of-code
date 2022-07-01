@@ -113,6 +113,6 @@ fun part1and2(input: List<String>, searchMax: Boolean): Long {
 
 fun main() {
     val input = readInput("24", "input")
-    println(part1and2(input, true)) // 74929995999389
-    println(part1and2(input, false)) // 11118151637112
+    println("Part 1: " + part1and2(input, true)) // 74929995999389
+    println("Part 2: " + part1and2(input, false)) // 11118151637112
 }

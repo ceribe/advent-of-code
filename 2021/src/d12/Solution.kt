@@ -59,10 +59,10 @@ fun main() {
     check(10, part1(testInput1))
     check(19, part1(testInput2))
     check(226, part1(testInput3))
-    println(part1(input)) // 4775
+    println("Part 1: " + part1(input)) // 4775
 
     check(36, part2(testInput1))
     check(103, part2(testInput2))
     check(3509, part2(testInput3))
-    println(part2(input)) // 152480
+    println("Part 2: " + part2(input)) // 152480
 }

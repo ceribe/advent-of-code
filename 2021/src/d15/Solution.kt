@@ -50,8 +50,8 @@ fun main() {
     val input = readInput("15", "input")
 
     check(40, part1and2(testInput, 1))
-    println(part1and2(input, 1)) // 687
+    println("Part 1: " + part1and2(input, 1)) // 687
 
     check(315, part1and2(testInput, 5))
-    println(part1and2(input, 5)) // 2957
+    println("Part 2: " + part1and2(input, 5)) // 2957
 }

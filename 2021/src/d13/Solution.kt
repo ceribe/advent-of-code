@@ -89,5 +89,6 @@ fun main() {
     val input = readInput("13", "input")
 
     part1and2(testInput)
+    println("\nPart 1 and 2:")
     part1and2(input) // 592 & JGAJEFKU
 }

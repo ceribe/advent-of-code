@@ -40,5 +40,5 @@ fun main() {
     val input = "target area: x=235..259, y=-118..-62"
 
     check(45 to 112, part1and2(testInput))
-    println(part1and2(input)) // 1: 6903, 2: 2351
+    println("Part 1 and 2: " + part1and2(input)) // 1: 6903, 2: 2351
 }

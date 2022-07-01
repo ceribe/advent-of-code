@@ -89,8 +89,8 @@ fun main() {
     val input = readInput("10", "input")
 
     check(26397, part1(testInput))
-    println(part1(input)) // 392043
+    println("Part 1: " + part1(input)) // 392043
 
     check(288957, part2(testInput))
-    println(part2(input)) // 1605968119
+    println("Part 2: " + part2(input)) // 1605968119
 }

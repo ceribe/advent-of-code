@@ -59,5 +59,5 @@ fun main() {
     val input = readInput("25", "input")
 
     check(58, part1(testInput))
-    println(part1(input)) // 374
+    println("Part 1: " + part1(input)) // 374
 }

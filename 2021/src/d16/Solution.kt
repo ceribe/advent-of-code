@@ -98,7 +98,7 @@ fun main() {
     check(12, part1("620080001611562C8802118E34"))
     check(23, part1("C0015000016115A2E0802F182340"))
     check(31, part1("A0016C880162017C3686B18A3D4780"))
-    println(part1(input)) // 895
+    println("Part 1: " + part1(input)) // 895
 
     check(3, part2("C200B40A82"))
     check(54, part2("04005AC33890"))
@@ -108,5 +108,5 @@ fun main() {
     check(0, part2("F600BC2D8F"))
     check(0, part2("9C005AC2F8F0"))
     check(1, part2("9C0141080250320F1802104A08"))
-    println(part2(input)) // 1148595959144
+    println("Part 2: " + part2(input)) // 1148595959144
 }
