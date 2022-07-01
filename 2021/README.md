@@ -31,4 +31,4 @@ code was not working, because I used Int instead of Long was the opposite of fun
 
 # How to run
 
-Since this is a standard Intellij IDEA project just launch it and run whichever "Solution.kt" you want.
+Since this is a standard Intellij IDEA project just launch Intellij and run whichever "Solution.kt" you want.
