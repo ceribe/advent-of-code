@@ -15,3 +15,7 @@ TODO
 ## The Most Fun One
 
 TODO
+
+# How to run
+
+Open the project in VSCode and hit "Ctrl + F5" while having one of the "solution.js" open.
