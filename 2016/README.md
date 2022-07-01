@@ -8,3 +8,7 @@ and [23](https://github.com/ceribe/advent-of-code-2016/tree/master/23)) were als
 I liked the fact that days 12, 23 and 25 used the same base (assembunny). If I knew about
 that beforehand then I would write assembunny interpreter as a separate module instead of
 copy pasting it for each day. Maybe in the future I will extract it to not have duplicated code.
+
+# How to run
+
+Since this is a standard GoLand project just launch it and run whichever "solution.go" you want.
