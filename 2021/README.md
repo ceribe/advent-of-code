@@ -19,7 +19,7 @@ This year had multiple hard challenges, so I should also mention them:
 ### [Day 23: Amphipod](https://github.com/ceribe/advent-of-code/tree/main/2021/src/d23)
 
 The amount of code that had to be written to get an even half working solution was painful. On top of that finishing part 1
-only to discover that all the code that I wrote is useless for part 2 and I have to heavily refactor everything was too much.
+only to discover that all the code I wrote is useless for part 2 and I have to heavily refactor everything was too much.
 This was the only day when I had to take a break between parts.
 
 ## The Most Fun One
