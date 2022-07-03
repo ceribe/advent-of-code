@@ -18,4 +18,13 @@ TODO
 
 # How to run
 
-Open the project in VSCode and hit "Ctrl + F5" while having one of the "solution.js" open.
+After cloning enter "2015" directory and run "npm install".
+Then you can run any of the "solution.js" using node. You can
+either run it directly from terminal:
+
+```bash
+node /XX/solution.js
+```
+
+or using VSCode. In this case open "2015" directory with VSCode,
+open the solution.js you want to run and press "Ctrl + F5".
