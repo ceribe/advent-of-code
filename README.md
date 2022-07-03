@@ -12,6 +12,14 @@ This repository will contain my solutions for all years. Currently I'm in the pr
 | 2020 | 0/25     | |
 | 2021 | 25/25    | <img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-444444.svg?logo=Kotlin"> |
 
+# Code Organization
+
+Each year has its own directory. In each year directory there is a README, a year specific gitignore, files needed for project 
+(gradle.build for Kotlin, package.json for JS, go.mod for Go and etc.) and "src" directory containing
+all the solutions. In "src" each day has its own directory either named "XX" or "dXX" depending on language requirements.
+Additionaly in "src" there is a "utils" file containing code shared between days (like reading input, checking results
+and some more).
+
 [^aoc]:
     [Advent of Code][aoc] – an annual event in December since 2015.
     Every year since then, with the first day of December, a programming puzzles contest is published every day for twenty-four days.
