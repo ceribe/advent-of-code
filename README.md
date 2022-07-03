@@ -15,7 +15,7 @@ This repository will contain my solutions for all years. Currently I'm in the pr
 # Code Organization
 
 Each year has its own directory. In each year directory there is a README, a year specific gitignore, files needed for project 
-(gradle.build for Kotlin, package.json for JS, go.mod for Go and etc.) and "src" directory containing
+(build.gradle.kts for Kotlin, package.json for JS, go.mod for Go and etc.) and "src" directory containing
 all the solutions. In "src" each day has its own directory either named "XX" or "dXX" depending on language requirements.
 Additionaly in "src" there is a "utils" file containing code shared between days (like reading input, checking results
 and some more).
