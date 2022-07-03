@@ -18,7 +18,8 @@ Each year has its own directory. In each year directory there is a README, a yea
 (build.gradle.kts for Kotlin, package.json for JS, go.mod for Go and etc.) and "src" directory containing
 all the solutions. In "src" each day has its own directory either named "XX" or "dXX" depending on language requirements.
 Additionaly in "src" there is a "utils" file containing code shared between days (like reading input, checking results
-and some more).
+and some more). In each day directory there is a solution file containing the code for both parts, README with a link to respective
+challange and inputs for days where this applies.
 
 [^aoc]:
     [Advent of Code][aoc] – an annual event in December since 2015.
