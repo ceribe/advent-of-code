@@ -1,8 +1,7 @@
-import { check, readFirstLine, readInput } from "../utils.js";
+import { check, readFirstLine } from "../utils.js";
 
 function part1(input) {
-  const visited = new Set();
-  visited.add("0,0");
+  const visited = new Set([0]);
   let currentX = 0;
   let currentY = 0;
   input.split("").forEach((direction) => {
@@ -20,14 +19,13 @@ function part1(input) {
         currentY++;
         break;
     }
-    visited.add("" + currentX + "," + currentY);
+    visited.add(currentX * 1000000 + currentY);
   });
   return visited.size;
 }
 
 function part2(input) {
-  const visited = new Set();
-  visited.add("0,0");
+  const visited = new Set([0]);
   const currentX = [0, 0];
   const currentY = [0, 0];
   let turn = 0;
@@ -46,7 +44,7 @@ function part2(input) {
         currentY[turn]++;
         break;
     }
-    visited.add("" + currentX[turn] + "," + currentY[turn]);
+    visited.add(currentX[turn] * 1000000 + currentY[turn]);
     turn = (turn + 1) % 2;
   });
   return visited.size;
