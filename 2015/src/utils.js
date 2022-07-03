@@ -19,7 +19,7 @@ Array.prototype.last = function () {
 };
 
 export function readInput(day, filename) {
-  return fs.readFileSync(`${day}/${filename}`, "utf8").toString().lines();
+  return fs.readFileSync(`src/${day}/${filename}`, "utf8").toString().lines();
 }
 
 export function readFirstLine(day, filename) {
