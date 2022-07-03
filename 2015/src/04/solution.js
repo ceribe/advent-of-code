@@ -14,11 +14,13 @@ function part1and2(input, zerosCount) {
   return counter - 1;
 }
 
-const testInput = "abcdef";
+const testInput1 = "abcdef";
+const testInput2 = "pqrstuv";
 const input = "bgvyzdsv";
 
-check(609043, part1and2(testInput, 5));
+check(609043, part1and2(testInput1, 5));
+check(1048970, part1and2(testInput2, 5));
 console.log("Part 1: " + part1and2(input, 5)); // 254575
 
-check(6742839, part1and2(testInput, 6));
+check(6742839, part1and2(testInput1, 6));
 console.log("Part 2: " + part1and2(input, 6)); // 1038736
