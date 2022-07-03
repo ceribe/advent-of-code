@@ -50,17 +50,14 @@ function part2(input) {
   return visited.size;
 }
 
-const testInput1 = readFirstLine("03", "input_test_1.txt");
-const testInput2 = readFirstLine("03", "input_test_2.txt");
-const testInput3 = readFirstLine("03", "input_test_3.txt");
 const input = readFirstLine("03", "input.txt");
 
-check(2, part1(testInput1));
-check(4, part1(testInput2));
-check(2, part1(testInput3));
+check(2, part1(">"));
+check(4, part1("^>v<"));
+check(2, part1("^v^v^v^v^v"));
 console.log("Part 1: " + part1(input)); // 2592
 
-check(2, part2(testInput1));
-check(3, part2(testInput2));
-check(11, part2(testInput3));
+check(3, part2("^v"));
+check(3, part2("^>v<"));
+check(11, part2("^v^v^v^v^v"));
 console.log("Part 2: " + part2(input)); // 2360
