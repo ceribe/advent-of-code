@@ -1,3 +1,5 @@
+# [Day 9: All in a Single Night](https://adventofcode.com/2015/day/9)
+
 To solved part 1 I created a map of all possible connections with their costs.
 Then for each city (map keys) recursively tried each route starting in that city.
 During each recursive call function checks to which city can santa go and if that city was
