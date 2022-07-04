@@ -68,5 +68,5 @@ function part2(input) {
 
 const input = readInput("06", "input.txt");
 
-console.log("Part 1: " + part1(input));
-console.log("Part 2: " + part2(input));
+console.log("Part 1: " + part1(input)); // 543903
+console.log("Part 2: " + part2(input)); // 14687245
