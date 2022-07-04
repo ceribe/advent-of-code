@@ -1,96 +1,96 @@
-import {check, readInput} from "../Utils.js";
+import { check, readInput } from "../utils.js";
 
 /**
  * Generates all possible permutations of given array
  */
 function generatePerms(xs) {
-    let ret = []
-    for (let i = 0; i < xs.length; i++) {
-        let rest = generatePerms(xs.slice(0, i).concat(xs.slice(i + 1)))
+  let ret = [];
+  for (let i = 0; i < xs.length; i++) {
+    let rest = generatePerms(xs.slice(0, i).concat(xs.slice(i + 1)));
 
-        if (!rest.length) {
-            ret.push([xs[i]])
-        } else {
-            for (let j = 0; j < rest.length; j++) {
-                ret.push([xs[i]].concat(rest[j]))
-            }
-        }
+    if (!rest.length) {
+      ret.push([xs[i]]);
+    } else {
+      for (let j = 0; j < rest.length; j++) {
+        ret.push([xs[i]].concat(rest[j]));
+      }
     }
-    return ret
+  }
+  return ret;
 }
 
 /**
  * Parses the input creating  map of happiness for each person
  */
 function getHappinessMap(input) {
+  const happinessMap = new Map();
+  input.forEach((line) => {
+    const words = line.split(" ");
+    const name = words[0];
+    const otherPersonName = words[10].slice(0, -1);
+    const happinessUnits = parseInt(words[3]);
+    const multiplier = words[2] === "gain" ? 1 : -1;
 
-    class Info {
-        constructor(line) {
-            this.who = line[0]
-            this.gain = line[3] * (line[2] === "gain" ? 1 : -1)
-            this.to = line[10].slice(0, -1)
-        }
+    if (!happinessMap.has(name)) {
+      happinessMap.set(name, new Map());
     }
-
-    const happinessMap = new Map()
-    const infos = input.map(value => {
-        const tmp = value.split(' ')
-        happinessMap.set(tmp[0], new Map())
-        return new Info(tmp)
-    })
-    for (const info of infos) {
-        happinessMap.get(info.who).set(info.to, info.gain)
-    }
-    return happinessMap
+    happinessMap.get(name).set(otherPersonName, happinessUnits * multiplier);
+  });
+  return happinessMap;
 }
 
 /**
- * Calculates to maximum possible total happiness from given happinessMap by generating all permutations and checking
+ * Calculates the maximum possible total happiness from given happinessMap by generating all permutations and checking
  * their total happiness.
  */
 function calculateMaxTotalHappiness(happinessMap) {
-    const perms = generatePerms([...happinessMap.keys()])
-    let maxTotalHappiness = Number.MIN_VALUE
-    perms.forEach(perm => {
-        const happiness = perm.map((value, index) => {
-            const prevIdx = index - 1 < 0 ? perm.length - 1 : index - 1
-            const nextIdx = index + 1 === perm.length ? 0 : index + 1
-            return happinessMap.get(value).get(perm[prevIdx]) + happinessMap.get(value).get(perm[nextIdx])
-        }).sum()
-        maxTotalHappiness = Math.max(maxTotalHappiness, happiness)
-    })
-    return maxTotalHappiness
+  const namesPermutations = generatePerms([...happinessMap.keys()]);
+  let maxTotalHappiness = Number.MIN_VALUE;
+  namesPermutations.forEach((names) => {
+    const happiness = names
+      .map((name, index) => {
+        const prevIdx = index - 1 < 0 ? names.length - 1 : index - 1;
+        const nextIdx = index + 1 === names.length ? 0 : index + 1;
+        return (
+          happinessMap.get(name).get(names[prevIdx]) +
+          happinessMap.get(name).get(names[nextIdx])
+        );
+      })
+      .sum();
+    maxTotalHappiness = Math.max(maxTotalHappiness, happiness);
+  });
+  return maxTotalHappiness;
 }
 
 function part1(input) {
-    const happinessMap = getHappinessMap(input)
-    return calculateMaxTotalHappiness(happinessMap)
+  const happinessMap = getHappinessMap(input);
+  return calculateMaxTotalHappiness(happinessMap);
 }
 
 /**
  * Adds new person to happinessMap with all values equal to 0
  */
 function insertMe(happinessMap) {
-    const people = [...happinessMap.keys()]
-    happinessMap.set("Me", new Map())
-    for (const person of people) {
-        happinessMap.get(person).set("Me", 0)
-        happinessMap.get("Me").set(person, 0)
-    }
-    return happinessMap
+  const people = [...happinessMap.keys()];
+  happinessMap.set("Me", new Map());
+  for (const person of people) {
+    happinessMap.get(person).set("Me", 0);
+    happinessMap.get("Me").set(person, 0);
+  }
+  return happinessMap;
 }
 
 function part2(input) {
-    const happinessMap = getHappinessMap(input)
-    insertMe(happinessMap)
-    return calculateMaxTotalHappiness(happinessMap)
+  const happinessMap = getHappinessMap(input);
+  insertMe(happinessMap);
+  return calculateMaxTotalHappiness(happinessMap);
 }
 
-const testInput = readInput("test_input.txt")
-const input = readInput("input.txt")
+const testInput = readInput("13", "input_test.txt");
+const input = readInput("13", "input.txt");
 
-check(part1(testInput), 330)
-console.log("Part 1: " + part1(input))
+check(330, part1(testInput));
+console.log("Part 1: " + part1(input)); // 618
 
-check(part2(testInput), 286)
-console.log("Part 2: " + part2(input))
+check(286, part2(testInput));
+console.log("Part 2: " + part2(input)); // 601
