@@ -1,3 +1,5 @@
+# [Day 6: Probably a Fire Hazard](https://adventofcode.com/2015/day/6)
+
 Solution for part 1 is to create an array of instructions from input file.
 Then for each instruction and for each light of this instruction perform said instruction.
 Information about which lights are 'on' are stored in a set. Thanks to the fact that set is unique
@@ -9,3 +11,6 @@ Solution for part 2 is almost the same, but set was replaced by map which stores
 I decided to initialize the map with all possible light, so I don't have to check if a light is already in map
 or not when processing instructions. This step could be skipped, but since it has almost no impact on performance
 there is no need.
+
+Both parts are highly unoptimal so they take 10s each to process. They could be improved by using the
+same mechanism as [Day 19](https://github.com/ceribe/advent-of-code/tree/main/2021/src/d22) from 2021.
