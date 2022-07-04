@@ -92,4 +92,4 @@ const testInput = readInput("07", "input_test.txt");
 const input = readInput("07", "input.txt");
 
 check(114, part1and2(testInput));
-console.log("Part 1 or 2: " + part1and2(input));
+console.log("Part 1 or 2: " + part1and2(input)); // 956 or 40149
