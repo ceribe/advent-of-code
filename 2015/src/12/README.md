@@ -1,4 +1,6 @@
-Part 1 made it easy to just skip all the JSON stuff and instead pick all the numbers from 
+# [Day 12: JSAbacusFramework.io](https://adventofcode.com/2015/day/12)
+
+Part 1 made it easy to just skip all the JSON stuff and instead pick all the numbers from
 string adding them, so that's what I did.
 
 Part 2 sadly required to actually parse the string and discard all objects where any value
