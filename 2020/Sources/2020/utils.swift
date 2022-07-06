@@ -1,0 +1,3 @@
+func readInput() {
+    print("Hello")
+}
