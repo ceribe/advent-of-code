@@ -29,11 +29,11 @@ func part2(input: [String]) -> Int {
     return -1
 }
 
-var testInput = Util.readInput(day: "01", filename: "input_test.txt")
-var input = Util.readInput(day: "01", filename: "input.txt")
+let testInput = Util.readInput(day: "01", filename: "input_test.txt")
+let input = Util.readInput(day: "01", filename: "input.txt")
 
 Util.check(expected: 514579, actual: part1(input: testInput))
-print(part1(input: input))
+print(part1(input: input)) // 290784
 
 Util.check(expected: 241861950, actual: part2(input: testInput))
-print(part2(input: input))
+print(part2(input: input)) // 290784

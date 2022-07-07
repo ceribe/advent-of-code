@@ -8,8 +8,8 @@ func part2(input: [String]) -> Int {
     return 0
 }
 
-var testInput = Util.readInput(day: "template", filename: "input_test.txt")
-var input = Util.readInput(day: "template", filename: "input.txt")
+let testInput = Util.readInput(day: "template", filename: "input_test.txt")
+let input = Util.readInput(day: "template", filename: "input.txt")
 
 Util.check(expected: 0, actual: part1(input: testInput))
 print(part1(input: input))
