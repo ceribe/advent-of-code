@@ -1,4 +1,10 @@
-# Welcome to Advent of Code[^aoc]
+# :christmas_tree: :santa: :christmas_tree: Advent of Code :christmas_tree: :santa: :christmas_tree:
+
+[Advent of Code](https://adventofcode.com/) is an annual event in December since 2015.
+Every year since then, with the first day of December, a programming puzzles contest is published every day for twenty-four days.
+A set of Christmas-oriented challenges provide any input you have to use to answer using the language of your choice.
+
+# Description
 
 This repository will contain my solutions for all years. Currently I'm in the process of merging separate repos into this one.
 
