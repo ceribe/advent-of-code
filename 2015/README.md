@@ -18,6 +18,28 @@ TODO
 
 # How to run
 
+## Preconditions
+
+Steps below assume you are using a Linux distribution which has access to AUR. If you are
+using a different distro then you are on your own.
+
+- Install nodejs and npm
+
+```bash
+yay -S npm nodejs
+```
+
+- Optionally install VSCode
+
+```bash
+yay -S visual-studio-code-bin
+```
+
+- If you want to be able to edit the code and browse it easly install some JS extensions for VSCode.
+The ones I'm using are ESLint, Inline Parameters for VSCode, npm, npm Intellisense, Prettier - Code formatter.
+
+## Run
+
 After cloning enter "2015" directory and run "npm install".
 Then you can run any of the "solution.js" using node. You can
 either run it directly from terminal:
