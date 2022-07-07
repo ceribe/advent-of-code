@@ -1,9 +1,8 @@
 # [Advent of Code 2020](https://adventofcode.com/2020)
 
-This year's project structure is a bit different than other years, because I could not
-figure out how to change it to the usual one without breaking everything (having a
-grand total of 30min of Swift experience did not help). So "src" directory is replaced
-with "Sources/2020". Then instead of the usual "solution.sth" file there is a "main.swift" file.
+Swift enforces a project structure so it is a bit different than in other years.
+"src" directory is replaced with "Sources". Then instead of the usual "solution.sth" file
+there is a "main.swift" file. Additionaly utils file is in an additional package.
 
 ## The Hardest One
 
@@ -19,5 +18,26 @@ TODO
 
 # How to run
 
-After cloning open "2020" directory in VSCode. Then assuming you have Swift and Swift extension
-installed the only thing you need to do is to open the wanted "main.swift" and run it (Ctrl + F5).
+## Preconditions
+
+Steps below assume you are using a Linux distribution which has access to AUR. If you are
+using a different distro then you are on your own.
+
+- Install Swift
+
+```bash
+yay -S swift-bin
+```
+
+- Install VSCode
+
+```bash
+yay -S visual-studio-code-bin
+```
+
+- Install [Swift Extension](https://marketplace.visualstudio.com/items?itemName=sswg.swift-lang) for VSCode
+
+## Run
+
+After cloning open "2020" directory in VSCode. Switch to the "Run and Debug" tab and run
+one of the configurations. For each day there is a release/debug configuration.

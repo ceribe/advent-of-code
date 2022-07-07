@@ -7,20 +7,20 @@
     {
       "type": "lldb",
       "request": "launch",
-      "name": "Debug 2020",
-      "program": ".build/debug/2020",
+      "name": "Debug 01",
+      "program": ".build/debug/01",
       "args": [],
       "cwd": "${workspaceFolder:2020}",
-      "preLaunchTask": "swift: Build Debug 2020"
+      "preLaunchTask": "swift: Build Debug 01"
     },
     {
       "type": "lldb",
       "request": "launch",
-      "name": "Release 2020",
-      "program": ".build/release/2020",
+      "name": "Release 01",
+      "program": ".build/release/01",
       "args": [],
       "cwd": "${workspaceFolder:2020}",
-      "preLaunchTask": "swift: Build Release 2020"
+      "preLaunchTask": "swift: Build Release 01"
     }
   ]
 }
