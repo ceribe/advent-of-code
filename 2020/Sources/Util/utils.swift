@@ -13,3 +13,13 @@ public func readInput(day: String, filename: String) -> [String] {
     }
     return content.split(whereSeparator: \.isNewline).map(String.init)
 }
+
+enum CheckError: Error {
+    case runtimeError(String)
+}
+
+public func check<T: Equatable>(expected: T, actual: T) throws {
+    if expected != actual {
+        throw CheckError.runtimeError("Expected \(expected), got \(actual)")
+    }
+}
