@@ -18,19 +18,42 @@ Array.prototype.last = function () {
   return this[this.length - 1];
 };
 
+/**
+ * Reads lines from the given input txt file.
+ * @param {String} day
+ * @param {String} filename
+ * @returns {String[]} file divided into lines
+ */
 export function readInput(day, filename) {
   return fs.readFileSync(`src/${day}/${filename}`, "utf8").toString().lines();
 }
 
+/**
+ * Reads first line from the given input txt file.
+ * @param {String} day
+ * @param {String} filename
+ * @returns {String} first line of the file
+ */
 export function readFirstLine(day, filename) {
   return readInput(day, filename)[0];
 }
 
+/**
+ * Checks if given parameters are equal. If not throws an exception.
+ * @param {any} expected
+ * @param {any} actual
+ */
 export function check(expected, actual) {
   if (expected !== actual)
     throw new Error(`Expected ${expected}, got ${actual}`);
 }
 
+/**
+ * Returns an array of all subsets of the given array.
+ * @param {any[]} a array of elements
+ * @param {number} min minimum size of subsets
+ * @param {number} max maximum size of subsets
+ */
 export function findSubsets(a, min, max = a.length) {
   function fn(n, src, got, all) {
     if (n === 0) {
