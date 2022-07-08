@@ -8,7 +8,7 @@ way too many bruteforce solutions and surprisingly most of them worked, so I had
 
 ### [Day 24: It Hangs in the Balance](https://github.com/ceribe/advent-of-code/tree/main/2015/src/24)
 
-To be honest there was not almost no hard days. I chose day 24 as the hardest, because it was the only
+To be honest all days were quite easy. I chose day 24 as the hardest, because it was the only
 one where I had to actually think about the problem for more than a few minutes. Had I not used brute
 force so many times I would most likely found some other days challenging too.
 
