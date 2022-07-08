@@ -30,8 +30,8 @@ dynamic part2(List<String> input) {
 }
 
 main() {
-  final input = readFile('input.txt');
-  final testInput = readFile('test_input.txt');
+  final input = readInput("19", 'input.txt');
+  final testInput = readInput("19", 'test_input.txt');
 
   check(7, part1(testInput));
   print(part1(input));

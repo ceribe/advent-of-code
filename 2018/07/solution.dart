@@ -77,8 +77,8 @@ dynamic part2(List<String> input, int workersCount, int duration) {
 }
 
 main() {
-  final input = readFile('input.txt');
-  final testInput = readFile('test_input.txt');
+  final input = readInput("07", 'input.txt');
+  final testInput = readInput("07", 'test_input.txt');
 
   check("CABDFE", part1(testInput));
   print(part1(input));

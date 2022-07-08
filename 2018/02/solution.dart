@@ -40,9 +40,9 @@ dynamic part2(List<String> input) {
 }
 
 main() {
-  final input = readFile('input.txt');
-  final testInput = readFile('test_input.txt');
-  final testInput2 = readFile('test_input_2.txt');
+  final input = readInput("02", 'input.txt');
+  final testInput = readInput("02", 'test_input.txt');
+  final testInput2 = readInput("02", 'test_input_2.txt');
 
   check(12, part1(testInput));
   print(part1(input));

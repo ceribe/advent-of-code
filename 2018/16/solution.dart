@@ -96,8 +96,8 @@ dynamic part2(List<String> input, List<String> input2) {
 }
 
 main() {
-  final input1 = readFile('input_1.txt');
-  final input2 = readFile('input_2.txt');
+  final input1 = readInput("16", 'input_1.txt');
+  final input2 = readInput("16", 'input_2.txt');
 
   print(part1(input1));
   print(part2(input1, input2));

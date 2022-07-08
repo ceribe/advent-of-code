@@ -85,8 +85,8 @@ dynamic part2(List<String> input, int maxDist) {
 }
 
 main() {
-  final input = readFile('input.txt');
-  final testInput = readFile('test_input.txt');
+  final input = readInput("06", 'input.txt');
+  final testInput = readInput("06", 'test_input.txt');
 
   check(17, part1(testInput));
   print(part1(input));

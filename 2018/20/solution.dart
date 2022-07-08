@@ -49,13 +49,13 @@ dynamic part2(String input) {
 }
 
 main() {
-  final input = readFirstLine('input.txt');
+  final input = readFirstLine("20", 'input.txt');
 
-  final testInput1 = readFirstLine('test_input_1.txt');
-  final testInput2 = readFirstLine('test_input_2.txt');
-  final testInput3 = readFirstLine('test_input_3.txt');
-  final testInput4 = readFirstLine('test_input_4.txt');
-  final testInput5 = readFirstLine('test_input_5.txt');
+  final testInput1 = readFirstLine("20", 'test_input_1.txt');
+  final testInput2 = readFirstLine("20", 'test_input_2.txt');
+  final testInput3 = readFirstLine("20", 'test_input_3.txt');
+  final testInput4 = readFirstLine("20", 'test_input_4.txt');
+  final testInput5 = readFirstLine("20", 'test_input_5.txt');
 
   check(3, part1(testInput1));
   check(10, part1(testInput2));

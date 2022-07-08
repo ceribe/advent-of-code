@@ -76,8 +76,8 @@ List<String> getAdjecentAcres(List<List<String>> map, int x, int y) {
 dynamic part2(List<String> input) {}
 
 main() {
-  final input = readFile('input.txt');
-  final testInput = readFile('test_input.txt');
+  final input = readInput("18", 'input.txt');
+  final testInput = readInput("18", 'test_input.txt');
 
   check(1147, part1(testInput, 10));
   print(part1(input, 10));

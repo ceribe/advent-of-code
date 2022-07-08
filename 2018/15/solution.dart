@@ -316,13 +316,13 @@ dynamic part2(List<String> input) {
 }
 
 main() {
-  final input = readFile('input.txt');
-  final testInput1 = readFile('test_input_1.txt');
-  final testInput2 = readFile('test_input_2.txt');
-  final testInput3 = readFile('test_input_3.txt');
-  final testInput4 = readFile('test_input_4.txt');
-  final testInput5 = readFile('test_input_5.txt');
-  final testInput6 = readFile('test_input_6.txt');
+  final input = readInput("15", 'input.txt');
+  final testInput1 = readInput("15", 'test_input_1.txt');
+  final testInput2 = readInput("15", 'test_input_2.txt');
+  final testInput3 = readInput("15", 'test_input_3.txt');
+  final testInput4 = readInput("15", 'test_input_4.txt');
+  final testInput5 = readInput("15", 'test_input_5.txt');
+  final testInput6 = readInput("15", 'test_input_6.txt');
 
   check(27730, part1(testInput1));
   check(36334, part1(testInput2));

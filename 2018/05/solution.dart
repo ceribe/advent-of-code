@@ -44,8 +44,8 @@ dynamic part2(String input) {
 }
 
 main() {
-  final input = readFile('input.txt')[0];
-  final testInput = readFile('test_input.txt')[0];
+  final input = readFirstLine("05", 'input.txt');
+  final testInput = readFirstLine("05", 'test_input.txt');
 
   check(10, part1(testInput));
   print(part1(input));

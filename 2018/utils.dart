@@ -2,13 +2,13 @@ import 'dart:io';
 import 'dart:math' as math;
 
 /// Reads file located at [path] and returns its content as a list of lines
-List<String> readFile(String path) {
-  return File(path).readAsLinesSync();
+List<String> readInput(String day, String path) {
+  return File("${day}/${path}").readAsLinesSync();
 }
 
 /// Reads first line of file located at [path] and returns its content as a string
-String readFirstLine(String path) {
-  return File(path).readAsStringSync().split('\n').first;
+String readFirstLine(String day, String path) {
+  return readInput(day, path).first;
 }
 
 /// Checks if given values are equal
