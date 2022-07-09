@@ -10,7 +10,8 @@ way too many bruteforce solutions and surprisingly most of them worked, so I had
 
 To be honest there was not almost no hard days. I chose day 24 as the hardest, because it was the only
 one where I had to actually think about the problem for more than a few minutes. Had I not used brute
-force so many times I would most likely found some other days challenging too.
+force so many times I would most likely found some other days challenging too. For example day 20 was
+quite hard, but since it was possible to brute force it I counted it as easy.
 
 ## The Most Tedious One
 
