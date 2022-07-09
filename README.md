@@ -8,6 +8,14 @@ A set of Christmas-oriented challenges provide any input you have to use to answ
 
 This repository will contain my solutions for all years. Currently I'm in the process of merging separate repos into this one.
 
+Solutions in this repo prioritize readability and minimize the amount of time it takes to write them. So for example if I can solve
+a problem in 5min using bruteforce or some hack I will do it instead of spending 2h writing a proper solution. That is why some
+solutions are less than optimal and when run may require more time. The only reason why I would do this is the fact that I only
+need the program to run once. I'll most likely never run it again so execution speed does not matter. Despite that I like when my
+code is clean and readable so I try to keep it as such.
+
+Difficulty is ranked from 0 to 10 where 0 is the easiest year and 10 is the hardest one.
+
 | Year | Status    | Language                                                                                        | Difficulty |
 | ---- | --------- | ----------------------------------------------------------------------------------------------- | ---------- |
 | 2015 | 50 :star: | <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-444444.svg?logo=javascript"> | 0          |
@@ -18,7 +26,6 @@ This repository will contain my solutions for all years. Currently I'm in the pr
 | 2020 | DOING     | <img alt="Swift" src="https://img.shields.io/badge/Swift-444444.svg?logo=swift">                |            |
 | 2021 | 50 :star: | <img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-444444.svg?logo=Kotlin">             | 10         |
 
-Difficulty is ranked from 0 to 10 where 0 is the easiest year and 10 is the hardest one.
 
 # Code Organization
 
