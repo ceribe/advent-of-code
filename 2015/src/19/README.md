@@ -1,3 +1,5 @@
+# [Day 19: Medicine for Rudolph](https://adventofcode.com/2015/day/19)
+
 First part was quite straightforward. Check all possible replacements and count the number
 of unique molecules.
 
