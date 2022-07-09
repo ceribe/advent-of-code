@@ -1,4 +1,4 @@
-import { getDivisors } from "../Utils.js";
+import { getDivisors } from "../utils.js";
 
 function part1(input) {
   let houseNumber = 1;
