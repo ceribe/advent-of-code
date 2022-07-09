@@ -121,5 +121,5 @@ function part1and2(isHard) {
   return currentMinManaUsed;
 }
 
-console.log("Part 1: " + part1and2(false));
-console.log("Part 2: " + part1and2(true));
+console.log("Part 1: " + part1and2(false)); // 1824
+console.log("Part 2: " + part1and2(true)); // 1937
