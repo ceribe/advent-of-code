@@ -47,8 +47,10 @@ one of the configurations. For each day there is a release/debug configuration.
 Overall this language seems nice. Syntax is pleasant and it has a lot of modern features.
 Looks quite similiar to Kotlin, especially when it comes to passing lambdas as arguments.
 Now for the bad parts. Tooling for Linux could be better. While plugin does quite a lot
-it does not highlight errors on the fly, but only after compilation. Also reading a file
-was surprisingly challenging, because I could not use any of the built-in functions, because
-they work only on Apple platforms. Another thing that seemed surreal was the fact that you
-cannot subscript Strings with Ints. I wrote an extension function to "fix" that, but even
-after reading about why it is this way it seemed bizarre.
+it does not highlight errors on the fly, but only after compilation. Additionaly it shows
+errors saying that it does not knows about functions from "Utils" so there are red squiggles
+but when running it works fine. Also reading a file was surprisingly challenging, because I
+could not use any of the built-in functions, because they work only on Apple platforms.
+Another thing that seemed surreal was the fact that you cannot subscript Strings with Ints.
+I wrote an extension function to "fix" that, but even after reading about why it is this way
+it seemed bizarre.
