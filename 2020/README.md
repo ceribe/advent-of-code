@@ -41,3 +41,14 @@ yay -S visual-studio-code-bin
 
 After cloning open "2020" directory in VSCode. Switch to the "Run and Debug" tab and run
 one of the configurations. For each day there is a release/debug configuration.
+
+# My thoughts about Swift
+
+Overall this language seems nice. Syntax is pleasant and it has a lot of modern features.
+Looks quite similiar to Kotlin, especially when it comes to passing lambdas as arguments.
+Now for the bad parts. Tooling for Linux could be better. While plugin does quite a lot
+it does not highlight errors on the fly, but only after compilation. Also reading a file
+was surprisingly challenging, because I could not use any of the built-in functions, because
+they work only on Apple platforms. Another thing that seemed surreal was the fact that you
+cannot subscript Strings with Ints. I wrote an extension function to "fix" that, but even
+after reading about why it is this way it seemed bizarre.
