@@ -19,5 +19,9 @@ let package = Package(
             name: "01",
             dependencies: ["Util"],
             exclude: ["README.md", "input_test.txt", "input.txt"]),
+        .executableTarget(
+            name: "02",
+            dependencies: ["Util"],
+            exclude: ["README.md", "input_test.txt", "input.txt"]),
     ]
 )

@@ -19,3 +19,10 @@ public func check<T: Equatable>(expected: T, actual: T) {
         print("Expected \(expected), got \(actual)")
     }
 }
+
+// I can't believe I have to write this. It's surreal that this language does not allow me to index Strings with Ints.
+public extension String {
+    subscript (i: Int) -> String.Element {
+        return self[index(startIndex, offsetBy: i)]
+    }
+}
