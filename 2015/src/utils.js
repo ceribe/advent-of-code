@@ -75,22 +75,3 @@ export function findSubsets(a, min, max = a.length) {
   }
   return all;
 }
-
-/**
- * Finds all divisors of the given number.
- * @param {number} num
- * @returns {number[]} array of divisors
- */
-export function getDivisors(num) {
-  const divisors = [];
-  const sqrt = Math.sqrt(num);
-  for (let i = 2; i <= sqrt; i++) {
-    if (num % i === 0) {
-      divisors.push(i);
-      if (i !== num / i) {
-        divisors.push(num / i);
-      }
-    }
-  }
-  return divisors;
-}
