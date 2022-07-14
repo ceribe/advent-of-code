@@ -16,15 +16,15 @@ code is clean and readable so I try to keep it as such.
 
 Difficulty is ranked from 0 to 10 where 0 is the easiest year and 10 is the hardest one.
 
-| Year | Status    | Language                                                                                        | Difficulty |
-| ---- | --------- | ----------------------------------------------------------------------------------------------- | ---------- |
-| 2015 | 50 :star: | <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-444444.svg?logo=javascript"> | 0          |
-| 2016 | 50 :star: | <img alt="Go" src="https://img.shields.io/badge/Go-444444.svg?logo=go">                         | 6          |
-| 2017 | 50 :star: | <img alt="Ruby" src="https://img.shields.io/badge/Ruby-444444.svg?logo=ruby&logoColor=CC342D">  | 4          |
-| 2018 | DOING     | <img alt="Dart" src="https://img.shields.io/badge/Dart-444444.svg?logo=dart&logoColor=0175C2">  | 9          |
-| 2019 | 0/25      |                                                                                                 |            |
-| 2020 | DOING     | <img alt="Swift" src="https://img.shields.io/badge/Swift-444444.svg?logo=swift">                |            |
-| 2021 | 50 :star: | <img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-444444.svg?logo=Kotlin">             | 10         |
+| Year | Status    | Language                                                                                        | Difficulty | Refactored? |
+| ---- | --------- | ----------------------------------------------------------------------------------------------- | ---------- | -- |
+| 2015 | 50 :star: | <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-444444.svg?logo=javascript"> | 0          | :heavy_check_mark: |
+| 2016 | 50 :star: | <img alt="Go" src="https://img.shields.io/badge/Go-444444.svg?logo=go">                         | 6          ||
+| 2017 | 50 :star: | <img alt="Ruby" src="https://img.shields.io/badge/Ruby-444444.svg?logo=ruby&logoColor=CC342D">  | 4          ||
+| 2018 | DOING     | <img alt="Dart" src="https://img.shields.io/badge/Dart-444444.svg?logo=dart&logoColor=0175C2">  | 9          ||
+| 2019 | 0/25      |                                                                                                 |            ||
+| 2020 | DOING     | <img alt="Swift" src="https://img.shields.io/badge/Swift-444444.svg?logo=swift">                |            ||
+| 2021 | 50 :star: | <img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-444444.svg?logo=Kotlin">             | 10         | :heavy_check_mark: |
 
 
 # Code Organization
