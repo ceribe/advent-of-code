@@ -39,6 +39,24 @@
       "args": [],
       "cwd": "${workspaceFolder:2020}",
       "preLaunchTask": "swift: Build Release 02"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Debug 03",
+      "program": ".build/debug/03",
+      "args": [],
+      "cwd": "${workspaceFolder:2020}",
+      "preLaunchTask": "swift: Build Debug 03"
+    },
+    {
+      "type": "lldb",
+      "request": "launch",
+      "name": "Release 03",
+      "program": ".build/release/03",
+      "args": [],
+      "cwd": "${workspaceFolder:2020}",
+      "preLaunchTask": "swift: Build Release 03"
     }
   ]
 }
