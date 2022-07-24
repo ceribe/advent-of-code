@@ -1,7 +1,7 @@
 package main
 
 import (
-	utils "2016"
+	utils "2016/src"
 	"fmt"
 	"log"
 	"strconv"
@@ -64,7 +64,7 @@ func part2(input string) string {
 		if nextX != x {
 			for i := x; i < nextX; i++ {
 				if _, ok := locations[i*10000+y]; ok {
-					return strconv.Itoa(utils.Abs(x) + utils.Abs(y))
+					return strconv.Itoa(utils.Abs(i) + utils.Abs(y))
 				}
 				locations[i*10000+y] = 0
 			}
@@ -72,7 +72,7 @@ func part2(input string) string {
 		if nextY != y {
 			for i := y; i < nextY; i++ {
 				if _, ok := locations[x*10000+i]; ok {
-					return strconv.Itoa(utils.Abs(x) + utils.Abs(y))
+					return strconv.Itoa(utils.Abs(x) + utils.Abs(i))
 				}
 				locations[x*10000+i] = 0
 			}

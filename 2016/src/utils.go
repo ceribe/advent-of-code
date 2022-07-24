@@ -1,4 +1,4 @@
-package advent_of_code_2016
+package src
 
 import (
 	"crypto/md5"
@@ -11,7 +11,7 @@ import (
 
 // ReadInput reads lines from given input txt file and returns them
 func ReadInput(day string, filename string) []string {
-	content, err := ioutil.ReadFile(day + "/" + filename)
+	content, err := ioutil.ReadFile("src/" + day + "/" + filename)
 	if err != nil {
 		log.Fatal(err)
 	}
