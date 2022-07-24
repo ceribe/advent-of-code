@@ -1,15 +1,15 @@
 package main
 
 import (
-	utils "advent-of-code-2016"
+	utils "2016"
 	"fmt"
 	"strconv"
 )
 
-func part1(input string) string {
+func part1(input []string) string {
 	x, y := 1, 1
 	code := ""
-	for _, line := range utils.SplitIntoLines(input) {
+	for _, line := range input {
 		for _, instruction := range line {
 			switch string(instruction) {
 			case "U":
@@ -27,11 +27,11 @@ func part1(input string) string {
 	return code
 }
 
-func part2(input string) string {
+func part2(input []string) string {
 	x, y := 0, 2
 	numpad := [5]string{"  1  ", " 234 ", "56789", " ABC ", "  D  "}
 	code := ""
-	for _, line := range utils.SplitIntoLines(input) {
+	for _, line := range input {
 		for _, instruction := range line {
 			switch string(instruction) {
 			case "U":
@@ -62,12 +62,12 @@ func part2(input string) string {
 }
 
 func main() {
-	testInput := utils.ReadInput("02", "test_input.txt")
+	testInput := utils.ReadInput("02", "input_test.txt")
 	input := utils.ReadInput("02", "input.txt")
 
 	utils.Check("1985", part1(testInput))
-	fmt.Printf("Part 1: %s\n", part1(input))
+	fmt.Println("Part 1:", part1(input)) // 14894
 
 	utils.Check("5DB3", part2(testInput))
-	fmt.Printf("Part 2: %s\n", part2(input))
+	fmt.Println("Part 2:", part2(input)) // 26B96
 }
