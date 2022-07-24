@@ -8,13 +8,13 @@ duplicated code.
 
 ## The Hardest One
 
-### [Day 11: Radioisotope Thermoelectric Generators](https://github.com/ceribe/advent-of-code/tree/main/2016/11)
+### [Day 11: Radioisotope Thermoelectric Generators](https://github.com/ceribe/advent-of-code/tree/main/2016/src/11)
 
 This day was definitely the hardest to find the solution, but after finding it, it does not seem that hard anymore.
 
 Other notably difficult days:
-- [Day 22: Grid Computing](https://github.com/ceribe/advent-of-code/tree/main/2016/22)
-- [Day 23: Safe Cracking](https://github.com/ceribe/advent-of-code/tree/main/2016/23)
+- [Day 22: Grid Computing](https://github.com/ceribe/advent-of-code/tree/main/2016/src/22)
+- [Day 23: Safe Cracking](https://github.com/ceribe/advent-of-code/tree/main/2016/src/23)
 
 ## The Most Tedious One
 
