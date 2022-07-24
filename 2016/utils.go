@@ -9,17 +9,24 @@ import (
 	"strings"
 )
 
-func ReadInput(dayNumber string, fileName string) string {
-	content, err := ioutil.ReadFile(dayNumber + "/" + fileName)
+// ReadInput reads lines from given input txt file and returns them
+func ReadInput(day string, filename string) []string {
+	content, err := ioutil.ReadFile(day + "/" + filename)
 	if err != nil {
 		log.Fatal(err)
 	}
-	return string(content)
+	return SplitIntoLines(string(content))
 }
 
-func Check(expected string, value string) {
-	if expected != value {
-		log.Fatal("Expected ", expected, " got ", value+"\n")
+// ReadFirstLine reads given input txt file and returns it's first line
+func ReadFirstLine(day string, filename string) string {
+	return ReadInput(day, filename)[0]
+}
+
+// Check checks if given parameters are equal. If not throws an exception.
+func Check(expected string, actual string) {
+	if expected != actual {
+		log.Fatal("Expected ", expected, ", got ", actual, "\n")
 	}
 }
 
@@ -35,6 +42,13 @@ func Max(a, b int) int {
 		return a
 	}
 	return b
+}
+
+func Abs(a int) int {
+	if a < 0 {
+		return -a
+	}
+	return a
 }
 
 func Sort(w string) string {
