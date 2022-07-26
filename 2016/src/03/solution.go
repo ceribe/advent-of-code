@@ -1,16 +1,15 @@
 package main
 
 import (
-	utils "advent-of-code-2016"
+	utils "2016/src"
 	"fmt"
 	"strconv"
 	"strings"
 )
 
-func part1(input string) string {
-	lines := utils.SplitIntoLines(input)
+func part1(input []string) string {
 	count := 0
-	for _, line := range lines {
+	for _, line := range input {
 		numbers := strings.Fields(line)
 		a, _ := strconv.Atoi(numbers[0])
 		b, _ := strconv.Atoi(numbers[1])
@@ -22,13 +21,12 @@ func part1(input string) string {
 	return strconv.Itoa(count)
 }
 
-func part2(input string) string {
-	lines := utils.SplitIntoLines(input)
+func part2(input []string) string {
 	count := 0
-	for i := 0; i < len(lines); i += 3 {
-		firstRow := strings.Fields(lines[i])
-		secondRow := strings.Fields(lines[i+1])
-		thirdRow := strings.Fields(lines[i+2])
+	for i := 0; i < len(input); i += 3 {
+		firstRow := strings.Fields(input[i])
+		secondRow := strings.Fields(input[i+1])
+		thirdRow := strings.Fields(input[i+2])
 		for j := 0; j < 3; j++ {
 			a, _ := strconv.Atoi(firstRow[j])
 			b, _ := strconv.Atoi(secondRow[j])
@@ -44,6 +42,6 @@ func part2(input string) string {
 
 func main() {
 	input := utils.ReadInput("03", "input.txt")
-	fmt.Printf("Part 1: %s\n", part1(input))
-	fmt.Printf("Part 2: %s\n", part2(input))
+	fmt.Printf("Part 1: %s\n", part1(input)) // 983
+	fmt.Printf("Part 2: %s\n", part2(input)) // 1836
 }
