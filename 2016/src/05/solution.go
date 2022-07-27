@@ -1,7 +1,7 @@
 package main
 
 import (
-	utils "advent-of-code-2016"
+	utils "2016/src"
 	"fmt"
 	"strconv"
 	"strings"
@@ -21,11 +21,19 @@ func part1(input string) string {
 	return password
 }
 
+func isPasswordGuessed(password []string) bool {
+	for _, char := range password {
+		if char == "_" {
+			return false
+		}
+	}
+	return true
+}
+
 func part2(input string) string {
 	counter := 0
 	password := strings.Split("________", "")
-	// Joining here is a waste, but result is produced almost immediately, so it does not matter
-	for strings.Count(strings.Join(password, ""), "_") != 0 {
+	for !isPasswordGuessed(password) {
 		data := input + strconv.Itoa(counter)
 		hashString := utils.Hash(data)
 		if hashString[:5] == "00000" {
@@ -42,6 +50,6 @@ func part2(input string) string {
 
 func main() {
 	input := "ffykfhsq"
-	fmt.Printf("Part 1: %s\n", part1(input))
-	fmt.Printf("Part 2: %s\n", part2(input))
+	fmt.Printf("Part 1: %s\n", part1(input)) // c6697b55
+	fmt.Printf("Part 2: %s\n", part2(input)) // 8c35d1ab
 }
