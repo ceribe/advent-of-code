@@ -1,7 +1,7 @@
 package main
 
 import (
-	utils "advent-of-code-2016"
+	utils "2016/src"
 	"fmt"
 	"strconv"
 	"strings"
@@ -38,10 +38,9 @@ func isRoomReal(encryptedName string, checksum string) bool {
 	return checksum == calculatedChecksum
 }
 
-func part1(input string) string {
-	lines := utils.SplitIntoLines(input)
+func part1(input []string) string {
 	sum := 0
-	for _, line := range lines {
+	for _, line := range input {
 		splitLine := strings.Split(line, "-")
 		encryptedName := strings.Join(splitLine[:len(splitLine)-1], "")
 		SIDAndChecksum := strings.Split(strings.ReplaceAll(splitLine[len(splitLine)-1], "]", ""), "[")
@@ -65,9 +64,8 @@ func decrypt(encryptedName string, SID int) string {
 	return name
 }
 
-func part2(input string) string {
-	lines := utils.SplitIntoLines(input)
-	for _, line := range lines {
+func part2(input []string) string {
+	for _, line := range input {
 		splitLine := strings.Split(line, "-")
 		encryptedName := strings.Join(splitLine[:len(splitLine)-1], "")
 		SIDAndChecksum := strings.Split(strings.ReplaceAll(splitLine[len(splitLine)-1], "]", ""), "[")
@@ -84,11 +82,11 @@ func part2(input string) string {
 }
 
 func main() {
-	testInput := utils.ReadInput("04", "test_input.txt")
+	testInput := utils.ReadInput("04", "input_test.txt")
 	input := utils.ReadInput("04", "input.txt")
 
 	utils.Check("1514", part1(testInput))
-	fmt.Printf("Part 1: %s\n", part1(input))
+	fmt.Printf("Part 1: %s\n", part1(input)) // 409147
 
-	fmt.Printf("Part 2: %s\n", part2(input))
+	fmt.Printf("Part 2: %s\n", part2(input)) // 991
 }
