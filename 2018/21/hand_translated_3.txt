@@ -11,6 +11,7 @@ while True:
         b = b & 16777215
         if 256 > c:
             print(b)
+            break
         f = 0
 
         while True:
