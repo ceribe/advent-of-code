@@ -27,7 +27,7 @@ extension UtilsIterableExtensions on Iterable<int> {
 /// Parsers given [line] and returns a list of found integers
 List<int> getIntegersFromLine(String line) {
   return line
-      .replaceAll(RegExp(r'[^0-9]'), " ")
+      .replaceAll(RegExp(r'[^0-9\-]'), " ")
       .split(RegExp(r'\s+'))
       .where((x) => x.isNotEmpty)
       .map(int.parse)
