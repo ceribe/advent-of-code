@@ -1,0 +1,23 @@
+while true:
+    c = 65536
+    b = 10605201
+    while true:
+        f = c & 255
+        b += f
+        b = b & 16777215
+        b *= 65899
+        b = b & 16777215
+        if 256 > c and b == a:
+            exit
+        f = 0
+
+        while true:
+            e = f + 1
+            e *= 256
+            e = e > c ? 1 : 0
+            if e != 1:
+                f += 1
+            if e == 1:
+                break
+
+        c = f
