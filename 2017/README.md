@@ -1,3 +1,5 @@
+# [Advent of Code 2017](https://adventofcode.com/2017)
+
 TODO
 
 This repository contains solutions for all 25 days of Advent of Code 2017. This year was
@@ -8,6 +10,18 @@ It was not exactly hard, but was tedious and the code I wrote looks horrible. No
 but if I had to pick one day, I would pick day 23 as it required the most time to finish. If day
 [24](https://github.com/ceribe/advent-of-code-2017/tree/master/24) was not bruteforce-able (eg. 100 components instead of 57),
 then I would pick it as I have no idea how to solve it effectively.
+
+## The Hardest One
+
+TODO
+
+## The Most Tedious One
+
+TODO
+
+## The Most Fun One
+
+TODO
 
 # How to run
 
