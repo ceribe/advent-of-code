@@ -1,10 +1,10 @@
 package main
 
 import (
-	utils "advent-of-code-2016"
+	utils "2016/src"
 	"fmt"
+	"regexp"
 	"strconv"
-	"strings"
 )
 
 func hasABBA(text string) bool {
@@ -16,12 +16,10 @@ func hasABBA(text string) bool {
 	return false
 }
 
-func part1(input string) string {
-	input = strings.ReplaceAll(input, "]", "[")
-	lines := utils.SplitIntoLines(input)
+func part1(input []string) string {
 	count := 0
-	for _, line := range lines {
-		parts := strings.Split(line, "[")
+	for _, line := range input {
+		parts := regexp.MustCompile(`]|\[`).Split(line, -1)
 		supportsTLS := false
 		for i, part := range parts {
 			if !hasABBA(part) {
@@ -41,12 +39,10 @@ func part1(input string) string {
 	return strconv.Itoa(count)
 }
 
-func part2(input string) string {
-	input = strings.ReplaceAll(input, "]", "[")
-	lines := utils.SplitIntoLines(input)
+func part2(input []string) string {
 	count := 0
-	for _, line := range lines {
-		parts := strings.Split(line, "[")
+	for _, line := range input {
+		parts := regexp.MustCompile(`]|\[`).Split(line, -1)
 
 		//Collect all ABAs from IPv7 address
 		ABASet := make(map[string]bool)
@@ -65,12 +61,13 @@ func part2(input string) string {
 		for i := 1; i < len(parts); i += 2 {
 			part := parts[i]
 			for j := 0; j < len(part)-2; j++ {
-				if part[j] == part[j+2] && part[j] != part[j+1] {
-					ABA := string(part[j+1]) + string(part[j]) + string(part[j+1])
-					if ABASet[ABA] {
-						count++
-						break LOOP
-					}
+				if part[j] != part[j+2] || part[j] == part[j+1] {
+					continue
+				}
+				ABA := string(part[j+1]) + string(part[j]) + string(part[j+1])
+				if ABASet[ABA] {
+					count++
+					break LOOP
 				}
 			}
 		}
@@ -79,13 +76,13 @@ func part2(input string) string {
 }
 
 func main() {
-	testInput := utils.ReadInput("07", "test_input.txt")
-	testInput2 := utils.ReadInput("07", "test_input2.txt")
+	testInput := utils.ReadInput("07", "input_test.txt")
+	testInput2 := utils.ReadInput("07", "input_test_2.txt")
 	input := utils.ReadInput("07", "input.txt")
 
 	utils.Check("2", part1(testInput))
-	fmt.Printf("Part 1: %s\n", part1(input))
+	fmt.Printf("Part 1: %s\n", part1(input)) // 118
 
 	utils.Check("3", part2(testInput2))
-	fmt.Printf("Part 2: %s\n", part2(input))
+	fmt.Printf("Part 2: %s\n", part2(input)) // 260
 }
