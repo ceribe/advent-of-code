@@ -1,7 +1,7 @@
 package main
 
 import (
-	utils "advent-of-code-2016"
+	utils "2016/src"
 	"fmt"
 	"strconv"
 	"strings"
@@ -49,14 +49,13 @@ func rotateColumn(idx int, offset int, screen [][]uint8) {
 	}
 }
 
-func part1and2(input string) {
+func part1and2(input []string) {
 	screen := make([][]uint8, 50)
 	for i := range screen {
 		screen[i] = make([]uint8, 6)
 	}
 
-	instructions := utils.SplitIntoLines(input)
-	for _, instruction := range instructions {
+	for _, instruction := range input {
 		applyInstruction(screen, instruction)
 	}
 	counter := 0
@@ -85,5 +84,5 @@ func part1and2(input string) {
 
 func main() {
 	input := utils.ReadInput("08", "input.txt")
-	part1and2(input)
+	part1and2(input) // 106 and CFLELOYFCS
 }
