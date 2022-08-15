@@ -1,7 +1,7 @@
 package main
 
 import (
-	utils "advent-of-code-2016"
+	utils "2016/src"
 	"fmt"
 	"strconv"
 )
@@ -71,7 +71,7 @@ func main() {
 	testInput6 := "X(8x2)(3x3)ABCY"
 	testInput7 := "(27x12)(20x12)(13x14)(7x10)(1x12)A"
 	testInput8 := "(25x3)(3x3)ABC(2x3)XY(5x2)PQRSTX(18x9)(3x2)TWO(5x7)SEVEN"
-	input := utils.ReadInput("09", "input.txt")
+	input := utils.ReadFirstLine("09", "input.txt")
 
 	utils.Check("6", part1(testInput1))
 	utils.Check("7", part1(testInput2))
@@ -79,11 +79,11 @@ func main() {
 	utils.Check("11", part1(testInput4))
 	utils.Check("6", part1(testInput5))
 	utils.Check("18", part1(testInput6))
-	fmt.Printf("Part 1: %s\n", part1(input))
+	fmt.Printf("Part 1: %s\n", part1(input)) // 97714
 
 	utils.Check("9", part2(testInput3))
 	utils.Check("20", part2(testInput6))
 	utils.Check("241920", part2(testInput7))
 	utils.Check("445", part2(testInput8))
-	fmt.Printf("Part 2: %s\n", part2(input))
+	fmt.Printf("Part 2: %s\n", part2(input)) // 10762972461
 }
