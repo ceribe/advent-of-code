@@ -1,7 +1,7 @@
 package main
 
 import (
-	utils "advent-of-code-2016"
+	utils "2016/src"
 	"fmt"
 	"strconv"
 	"strings"
@@ -16,11 +16,10 @@ type Bot struct {
 	output2 int
 }
 
-func initBots(input string) []Bot {
+func initBots(input []string) []Bot {
 	numberOfBots := 210
 	bots := make([]Bot, numberOfBots)
-	lines := utils.SplitIntoLines(input)
-	for _, line := range lines {
+	for _, line := range input {
 		split := strings.Split(line, " ")
 		if split[0] == "value" {
 			value, _ := strconv.Atoi(split[1])
@@ -59,7 +58,7 @@ func giveChip(bot *Bot, chip int) {
 	}
 }
 
-func part1(input string) string {
+func part1(input []string) string {
 	bots := initBots(input)
 	for true {
 		for idx, bot := range bots {
@@ -84,30 +83,31 @@ func part1(input string) string {
 	return ""
 }
 
-func part2(input string) string {
+func part2(input []string) string {
 	bots := initBots(input)
 	numberOfOutputs := 21
 	outputs := make([]int, numberOfOutputs)
 LOOP:
 	for true {
 		for idx, bot := range bots {
-			if bot.chip1 != 0 && bot.chip2 != 0 {
-				lowerChip := utils.Min(bot.chip1, bot.chip2)
-				higherChip := utils.Max(bot.chip1, bot.chip2)
-				bots[idx].chip1 = 0
-				bots[idx].chip2 = 0
-				if bot.bot1 != -1 {
-					giveChip(&bots[bot.bot1], lowerChip)
-				} else {
-					outputs[bot.output1] = lowerChip
-				}
-				if bot.bot2 != -1 {
-					giveChip(&bots[bot.bot2], higherChip)
-				} else {
-					outputs[bot.output2] = higherChip
-				}
-				continue LOOP
+			if bot.chip1 == 0 || bot.chip2 == 0 {
+				continue
 			}
+			lowerChip := utils.Min(bot.chip1, bot.chip2)
+			higherChip := utils.Max(bot.chip1, bot.chip2)
+			bots[idx].chip1 = 0
+			bots[idx].chip2 = 0
+			if bot.bot1 != -1 {
+				giveChip(&bots[bot.bot1], lowerChip)
+			} else {
+				outputs[bot.output1] = lowerChip
+			}
+			if bot.bot2 != -1 {
+				giveChip(&bots[bot.bot2], higherChip)
+			} else {
+				outputs[bot.output2] = higherChip
+			}
+			continue LOOP
 		}
 		break
 	}
@@ -117,6 +117,6 @@ LOOP:
 
 func main() {
 	input := utils.ReadInput("10", "input.txt")
-	fmt.Printf("Part 1: %s\n", part1(input))
-	fmt.Printf("Part 2: %s\n", part2(input))
+	fmt.Printf("Part 1: %s\n", part1(input)) // 101
+	fmt.Printf("Part 2: %s\n", part2(input)) // 37789
 }
