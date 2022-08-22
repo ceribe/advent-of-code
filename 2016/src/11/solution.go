@@ -1,7 +1,7 @@
 package main
 
 import (
-	utils "advent-of-code-2016"
+	utils "2016/src"
 	"fmt"
 	"strconv"
 )
@@ -14,7 +14,7 @@ type State struct {
 }
 
 /*
-If this state is the one in which all generators in microchips are on floor 4
+If this state is the one in which all generators and microchips are on floor 4
 this function returns true
 */
 func (state *State) isFinal() bool {
@@ -126,26 +126,27 @@ func part1(input State) string {
 				iFloor := state.getFloor(i)
 				jFloor := state.getFloor(j)
 				//Only move microchips/generators if they are on the same floor as elevator
-				if iFloor == state.elevator && iFloor == jFloor {
-					move := func(offset int) {
-						//Deep copy state
-						newState := state
-						newState.microchips = append([]int(nil), state.microchips...)
-						newState.generators = append([]int(nil), state.generators...)
-						newState.elevator += offset
-						//Move microchips/generators
-						newState.setFloor(i, newState.elevator)
-						newState.setFloor(j, newState.elevator)
-						//Call recursively on new state
-						goToNextStep(newState)
-					}
-					if state.elevator < 4 {
-						move(1)
-					}
-					//It is pointless to move 2 microchips/generators down at once so only allow to move 1
-					if state.elevator > 1 && i == j {
-						move(-1)
-					}
+				if iFloor != state.elevator || iFloor != jFloor {
+					continue
+				}
+				move := func(offset int) {
+					//Deep copy state
+					newState := state
+					newState.microchips = append([]int(nil), state.microchips...)
+					newState.generators = append([]int(nil), state.generators...)
+					newState.elevator += offset
+					//Move microchips/generators
+					newState.setFloor(i, newState.elevator)
+					newState.setFloor(j, newState.elevator)
+					//Call recursively on new state
+					goToNextStep(newState)
+				}
+				if state.elevator < 4 {
+					move(1)
+				}
+				//It is pointless to move 2 microchips/generators down at once so only allow to move 1
+				if state.elevator > 1 && i == j {
+					move(-1)
 				}
 			}
 		}
@@ -176,6 +177,6 @@ func main() {
 	}
 
 	utils.Check("11", part1(testInput))
-	fmt.Printf("Part 1: %s\n", part1(input))
-	fmt.Printf("Part 2: %s\n", part2(input))
+	fmt.Printf("Part 1: %s\n", part1(input)) // 31
+	fmt.Printf("Part 2: %s\n", part2(input)) // 55
 }
