@@ -1,7 +1,7 @@
 package main
 
 import (
-	utils "advent-of-code-2016"
+	utils "2016/src"
 	"fmt"
 	"strconv"
 	"strings"
@@ -53,10 +53,9 @@ func (instruction *Instruction) do(a *int, b *int, c *int, d *int, pos *int) {
 	*pos++
 }
 
-func parseInput(input string) []Instruction {
+func parseInput(input []string) []Instruction {
 	instructions := make([]Instruction, 0)
-	lines := utils.SplitIntoLines(input)
-	for _, line := range lines {
+	for _, line := range input {
 		//Empty element is added, so I don't have to check range for inc/dec
 		split := append(strings.Split(line, " "), "")
 		instruction := Instruction{code: split[0], param1: split[1], param2: split[2]}
@@ -65,7 +64,7 @@ func parseInput(input string) []Instruction {
 	return instructions
 }
 
-func part1and2(input string, initialC int) string {
+func part1and2(input []string, initialC int) string {
 	instructions := parseInput(input)
 	a, b, c, d, pointer := 0, 0, initialC, 0, 0
 	instructionsCount := len(instructions)
@@ -76,12 +75,12 @@ func part1and2(input string, initialC int) string {
 }
 
 func main() {
-	testInput := utils.ReadInput("12", "test_input.txt")
+	testInput := utils.ReadInput("12", "input_test.txt")
 	input := utils.ReadInput("12", "input.txt")
 
 	utils.Check("42", part1and2(testInput, 0))
-	fmt.Printf("Part 1: %s\n", part1and2(input, 0))
+	fmt.Printf("Part 1: %s\n", part1and2(input, 0)) // 318007
 
 	utils.Check("42", part1and2(testInput, 1))
-	fmt.Printf("Part 2: %s\n", part1and2(input, 1))
+	fmt.Printf("Part 2: %s\n", part1and2(input, 1)) // 9227661
 }
