@@ -1,7 +1,7 @@
 package main
 
 import (
-	utils "advent-of-code-2016"
+	utils "2016/src"
 	"fmt"
 	"strconv"
 	"strings"
@@ -80,7 +80,7 @@ func part2(input int) string {
 		move(x, y-1, steps)
 	}
 
-	//called with -1 steps because entering 1, 1 is counted as a step by recursive function
+	//called with -1 steps because entering 1,1 is counted as a step by recursive function
 	move(1, 1, -1)
 	return strconv.Itoa(counter)
 }
@@ -89,6 +89,6 @@ func main() {
 	testInput := 10
 	input := 1350
 	utils.Check("11", part1(testInput, 7, 4))
-	fmt.Printf("Part 1: %s\n", part1(input, 31, 39))
-	fmt.Printf("Part 2: %s\n", part2(input))
+	fmt.Printf("Part 1: %s\n", part1(input, 31, 39)) // 92
+	fmt.Printf("Part 2: %s\n", part2(input))         // 124
 }
