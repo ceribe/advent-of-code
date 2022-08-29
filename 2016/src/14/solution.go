@@ -1,7 +1,7 @@
 package main
 
 import (
-	utils "advent-of-code-2016"
+	utils "2016/src"
 	"fmt"
 	"regexp"
 	"strconv"
@@ -56,8 +56,8 @@ func main() {
 	input := "cuanljph"
 
 	utils.Check("22728", part1and2(testInput, false))
-	fmt.Printf("Part 1: %s\n", part1and2(input, false))
+	fmt.Printf("Part 1: %s\n", part1and2(input, false)) // 23769
 
 	utils.Check("22551", part1and2(testInput, true))
-	fmt.Printf("Part 2: %s\n", part1and2(input, true))
+	fmt.Printf("Part 2: %s\n", part1and2(input, true)) // 20606
 }

@@ -61,6 +61,7 @@ func SplitIntoLines(text string) []string {
 	return strings.Split(strings.ReplaceAll(text, "\r\n", "\n"), "\n")
 }
 
+// Hash calculates md5 sum of given string and returns the hash as a string
 func Hash(data string) string {
 	h := md5.Sum([]byte(data))
 	return hex.EncodeToString(h[:])
