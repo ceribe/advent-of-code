@@ -1,7 +1,7 @@
 package main
 
 import (
-	utils "advent-of-code-2016"
+	utils "2016/src"
 	"fmt"
 	"strconv"
 )
@@ -64,6 +64,6 @@ func main() {
 
 	utils.Check("6", part1and2(testInput1, 3))
 	utils.Check("38", part1and2(testInput2, 10))
-	fmt.Printf("Part 1: %s\n", part1and2(input, 40))
-	fmt.Printf("Part 2: %s\n", part1and2(input, 400000))
+	fmt.Printf("Part 1: %s\n", part1and2(input, 40))     // 2013
+	fmt.Printf("Part 2: %s\n", part1and2(input, 400000)) // 20006289
 }
