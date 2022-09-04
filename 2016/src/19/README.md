@@ -1,3 +1,5 @@
+# [Day 19: An Elephant Named Joseph](https://adventofcode.com/2016/day/19)
+
 Part 1 is explained in this video: https://www.youtube.com/watch?v=uCsD3ZGzMgE
 
 Part 2 works in a similar way. To solve it I wrote an ineffective O(n²) solution and
