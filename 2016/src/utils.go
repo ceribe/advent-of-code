@@ -1,6 +1,7 @@
 package src
 
 import (
+	"constraints"
 	"crypto/md5"
 	"encoding/hex"
 	"io/ioutil"
@@ -30,14 +31,14 @@ func Check(expected string, actual string) {
 	}
 }
 
-func Min(a, b int) int {
+func Min[T constraints.Ordered](a, b T) T {
 	if a < b {
 		return a
 	}
 	return b
 }
 
-func Max(a, b int) int {
+func Max[T constraints.Ordered](a, b T) T {
 	if a > b {
 		return a
 	}

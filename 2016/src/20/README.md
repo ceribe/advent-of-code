@@ -1,3 +1,5 @@
+# [Day 20: Firewall Rules](https://adventofcode.com/2016/day/20)
+
 Part 1: Not much to say as it was trivial. Try a number if it is inside some range then
 change that number to that range's max + 1 and try again until that number isn't inside any
 of the ranges.
