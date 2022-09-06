@@ -1,16 +1,15 @@
 package main
 
 import (
-	utils "advent-of-code-2016"
+	utils "2016/src"
 	"fmt"
 	"strconv"
 	"strings"
 )
 
-func part1(input string, password string) string {
-	lines := utils.SplitIntoLines(input)
+func part1(input []string, password string) string {
 	currPassword := strings.Split(password, "")
-	for _, line := range lines {
+	for _, line := range input {
 		op := strings.Split(line, " ")
 		currPassword = applyOperation(currPassword, op)
 	}
@@ -103,7 +102,7 @@ func move(password []string, x int, y int) []string {
 
 //No need to write an unscrambler. Input is so small that generating all possible passwords and
 //scrambling them is enough to find the correct one.
-func part2(input string, password string) (res string) {
+func part2(input []string, password string) (res string) {
 	var generatePermutation func(sampleRune []rune, left, right int)
 	generatePermutation = func(sampleRune []rune, left, right int) {
 		if left == right {
@@ -125,10 +124,10 @@ func part2(input string, password string) (res string) {
 }
 
 func main() {
-	testInput := utils.ReadInput("21", "test_input.txt")
+	testInput := utils.ReadInput("21", "input_test.txt")
 	input := utils.ReadInput("21", "input.txt")
 
 	utils.Check("decab", part1(testInput, "abcde"))
-	fmt.Printf("Part 1: %s\n", part1(input, "abcdefgh"))
-	fmt.Printf("Part 2: %s\n", part2(input, "fbgdceah"))
+	fmt.Printf("Part 1: %s\n", part1(input, "abcdefgh")) // gfdhebac
+	fmt.Printf("Part 2: %s\n", part2(input, "fbgdceah")) // dhaegfbc
 }
