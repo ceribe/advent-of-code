@@ -1,7 +1,7 @@
 package main
 
 import (
-	utils "advent-of-code-2016"
+	utils "2016/src"
 	"fmt"
 	"strconv"
 	"strings"
@@ -14,8 +14,8 @@ type Node struct {
 	used int
 }
 
-func parseInput(input string) []Node {
-	lines := utils.SplitIntoLines(input)[2:]
+func parseInput(input []string) []Node {
+	lines := input[2:]
 	nodes := make([]Node, 0)
 	for _, line := range lines {
 		fields := strings.Fields(line)
@@ -29,7 +29,7 @@ func parseInput(input string) []Node {
 	return nodes
 }
 
-func part1(input string) string {
+func part1(input []string) string {
 	nodes := parseInput(input)
 	count := 0
 	for i, iNode := range nodes {
@@ -49,7 +49,7 @@ func calc(y int, x int, height int, wallsCount int) int {
 	return y + height - x - 1 + (x-(height-wallsCount)+1)*2 + 5*(height-2)
 }
 
-func part2(input string) string {
+func part2(input []string) string {
 	nodes := parseInput(input)
 	emptyNodeX, emptyNodeY, wallsCount, maxX := 0, 0, 0, 0
 	for _, node := range nodes {
@@ -70,6 +70,6 @@ func part2(input string) string {
 
 func main() {
 	input := utils.ReadInput("22", "input.txt")
-	fmt.Printf("Part 1: %s\n", part1(input))
-	fmt.Printf("Part 2: %s\n", part2(input))
+	fmt.Printf("Part 1: %s\n", part1(input)) // 1024
+	fmt.Printf("Part 2: %s\n", part2(input)) // 230
 }

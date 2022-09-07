@@ -1,3 +1,5 @@
+# [Day 22: Grid Computing](https://adventofcode.com/2016/day/22)
+
 Part 2 looked quite complicated, but turned out to be not that hard after some thinking. Task consists of
 two parts. Moving empty node to (maxX, 0) and then moving data towards (0, 0). Each move
 costs 5 (blank node needs to be placed in front of data after every move). Additionally,
