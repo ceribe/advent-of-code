@@ -1,7 +1,7 @@
 package main
 
 import (
-	utils "advent-of-code-2016"
+	utils "2016/src"
 	"fmt"
 	"strconv"
 	"strings"
@@ -84,10 +84,9 @@ func (instruction *Instruction) do(a *int, b *int, c *int, d *int, pos *int, ins
 	*pos++
 }
 
-func parseInput(input string) []Instruction {
+func parseInput(input []string) []Instruction {
 	instructions := make([]Instruction, 0)
-	lines := utils.SplitIntoLines(input)
-	for _, line := range lines {
+	for _, line := range input {
 		//Empty element is added, so I don't have to check range for inc/dec
 		split := append(strings.Split(line, " "), "")
 		instruction := Instruction{code: split[0], param1: split[1], param2: split[2]}
@@ -96,7 +95,7 @@ func parseInput(input string) []Instruction {
 	return instructions
 }
 
-func part1(input string) string {
+func part1(input []string) string {
 	instructions := parseInput(input)
 	a, b, c, d, pointer := 7, 0, 0, 0, 0
 	instructionsCount := len(instructions)
@@ -106,7 +105,7 @@ func part1(input string) string {
 	return strconv.Itoa(a)
 }
 
-func part2(input string) string {
+func part2(input []string) string {
 	//instructions := parseInput(input)
 	//a, b, c, d, pointer := 12, 0, 0, 0, 0
 	//instructionsCount := len(instructions)
@@ -121,10 +120,10 @@ func part2(input string) string {
 }
 
 func main() {
-	testInput := utils.ReadInput("23", "test_input.txt")
+	testInput := utils.ReadInput("23", "input_test.txt")
 	input := utils.ReadInput("23", "input.txt")
 
 	utils.Check("3", part1(testInput))
-	fmt.Printf("Part 1: %s\n", part1(input))
-	fmt.Printf("Part 2: %s\n", part2(input))
+	fmt.Printf("Part 1: %s\n", part1(input)) // 12000
+	fmt.Printf("Part 2: %s\n", part2(input)) // 479008560
 }

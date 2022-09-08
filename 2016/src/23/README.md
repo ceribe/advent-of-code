@@ -1,3 +1,5 @@
+# [Day 23: Safe Cracking](https://adventofcode.com/2016/day/23)
+
 Once again part 1 was trivial, so I will not write about it.
 
 Part 2 was easier to solve by hand instead of trying to translate instructions to
