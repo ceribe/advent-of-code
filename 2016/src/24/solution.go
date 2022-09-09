@@ -1,14 +1,14 @@
 package main
 
 import (
-	utils "advent-of-code-2016"
+	utils "2016/src"
 	"fmt"
 	"github.com/nickdavies/go-astar/astar"
 	"strconv"
 	"strings"
 )
 
-func part1and2(input string, maxNumber int, returnToStart bool) string {
+func part1and2(input []string, maxNumber int, returnToStart bool) string {
 	//Map of the shortest paths between each number
 	//e.g. paths[0][4] would be the shortest path between 0 and 4
 	paths := make([][]int, maxNumber+1)
@@ -23,15 +23,14 @@ func part1and2(input string, maxNumber int, returnToStart bool) string {
 /*
 Populates given paths matrix with the shortest distances between each pair of points using A*
 */
-func calculatePaths(paths [][]int, input string) [][]int {
-	lines := utils.SplitIntoLines(input)
-	y := len(lines)
-	x := len(lines[0])
+func calculatePaths(paths [][]int, input []string) [][]int {
+	y := len(input)
+	x := len(input[0])
 	a := astar.NewAStar(y, x)
 	p2p := astar.NewPointToPoint()
 	pointsPos := make([][]astar.Point, len(paths))
 
-	for i, line := range lines {
+	for i, line := range input {
 		for j, char := range line {
 			if char == '#' {
 				a.FillTile(astar.Point{Row: i, Col: j}, -1)
@@ -83,10 +82,10 @@ func findShortestDistance(paths [][]int, returnToStart bool) int {
 }
 
 func main() {
-	testInput := utils.ReadInput("24", "test_input.txt")
+	testInput := utils.ReadInput("24", "input_test.txt")
 	input := utils.ReadInput("24", "input.txt")
 
 	utils.Check("14", part1and2(testInput, 4, false))
-	fmt.Printf("Part 1: %s\n", part1and2(input, 7, false))
-	fmt.Printf("Part 2: %s\n", part1and2(input, 7, true))
+	fmt.Printf("Part 1: %s\n", part1and2(input, 7, false)) // 518
+	fmt.Printf("Part 2: %s\n", part1and2(input, 7, true))  // 716
 }
