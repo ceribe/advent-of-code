@@ -1,7 +1,7 @@
 package main
 
 import (
-	utils "advent-of-code-2016"
+	utils "2016/src"
 	"fmt"
 	"strconv"
 	"strings"
@@ -57,10 +57,9 @@ func (instruction *Instruction) do(a *int, b *int, c *int, d *int, pos *int) int
 	return 2
 }
 
-func parseInput(input string) []Instruction {
+func parseInput(input []string) []Instruction {
 	instructions := make([]Instruction, 0)
-	lines := utils.SplitIntoLines(input)
-	for _, line := range lines {
+	for _, line := range input {
 		//Empty element is added, so I don't have to check range for inc/dec
 		split := append(strings.Split(line, " "), "")
 		instruction := Instruction{code: split[0], param1: split[1], param2: split[2]}
@@ -69,7 +68,7 @@ func parseInput(input string) []Instruction {
 	return instructions
 }
 
-func part1(input string) string {
+func part1(input []string) string {
 	currInt := 1
 LOOP:
 	for true {
