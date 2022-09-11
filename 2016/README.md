@@ -16,13 +16,9 @@ Other notably difficult days:
 - [Day 22: Grid Computing](https://github.com/ceribe/advent-of-code/tree/main/2016/src/22)
 - [Day 23: Safe Cracking](https://github.com/ceribe/advent-of-code/tree/main/2016/src/23)
 
-## The Most Tedious One
-
-TODO
-
 ## The Most Fun One
 
-TODO
+### [Day 24: Air Duct Spelunking](https://github.com/ceribe/advent-of-code/tree/main/2016/src/24)
 
 # How to run
 
