@@ -13,10 +13,6 @@ one where I had to actually think about the problem for more than a few minutes.
 force so many times I would most likely found some other days challenging too. For example day 20 was
 quite hard, but since it was possible to brute force it I counted it as easy.
 
-## The Most Tedious One
-
-Surprisingly none. All days were fast and easy.
-
 ## The Most Fun One
 
 ### [Day 22: Wizard Simulator 20XX](https://github.com/ceribe/advent-of-code/tree/main/2015/src/22)
