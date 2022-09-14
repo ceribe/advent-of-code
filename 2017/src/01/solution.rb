@@ -17,12 +17,12 @@ def part2(input)
     .reduce(:+)
 end
 
-input = read_input("input")
 test_input_1 = "91212129"
 test_input_2 = "12131415"
+input = read_first_line("input.txt")
 
 check(9, part1(test_input_1))
-puts "Part 1: #{part1(input[0])}"
+puts "Part 1: #{part1(input)}" # 1047
 
 check(4, part2(test_input_2))
-puts "Part 2: #{part2(input[0])}"
+puts "Part 2: #{part2(input)}" # 982

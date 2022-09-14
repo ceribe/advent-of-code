@@ -1,11 +1,15 @@
 module Utils
-  def read_input(name)
-    File.read("#{name}.txt").lines
+  def read_input(filename)
+    File.read(filename).lines
+  end
+
+  def read_first_line(filename)
+    read_input(filename).first
   end
 
   def check(expected, actual)
     if expected != actual
-      puts "Expected #{expected}, but got #{actual}"
+      throw "Expected #{expected}, got #{actual}"
     end
   end
 
