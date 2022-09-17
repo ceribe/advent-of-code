@@ -96,5 +96,5 @@ test_input_4 = 1024
 check(3, part1(test_input_2))
 check(2, part1(test_input_3))
 check(31, part1(test_input_4))
-puts "Part 1: #{part1(input)}"
-puts "Part 2: #{part2(input)}"
+puts "Part 1: #{part1(input)}" # 430
+puts "Part 2: #{part2(input)}" # 312453
