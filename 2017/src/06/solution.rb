@@ -49,11 +49,11 @@ def part2(input)
   count
 end
 
-input = read_input("input")
-test_input = read_input("test_input")
+input = read_input("input.txt")
+test_input = read_input("input_test.txt")
 
 check(5, part1(test_input))
-puts "Part 1: #{part1(input)}"
+puts "Part 1: #{part1(input)}" # 11137
 
 check(4, part2(test_input))
-puts "Part 2: #{part2(input)}"
+puts "Part 2: #{part2(input)}" # 1037
