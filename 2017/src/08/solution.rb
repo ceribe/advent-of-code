@@ -35,11 +35,11 @@ def part2(input)
   max_value
 end
 
-input = read_input("input")
-test_input = read_input("test_input")
+input = read_input("input.txt")
+test_input = read_input("input_test.txt")
 
 check(1, part1(test_input))
-puts "Part 1: #{part1(input)}"
+puts "Part 1: #{part1(input)}" # 5075
 
 check(10, part2(test_input))
-puts "Part 2: #{part2(input)}"
+puts "Part 2: #{part2(input)}" # 7310
