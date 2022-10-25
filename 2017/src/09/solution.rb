@@ -57,7 +57,7 @@ def part2(input)
     garbage_count
 end
 
-input = read_input("input")[0]
+input = read_first_line("input.txt")
 test_input_1 = "{{<a!>},{<a!>},{<a!>},{<ab>}}"
 test_input_2 = "{{<!!>},{<!!>},{<!!>},{<!!>}}"
 test_input_3 = "{{{},{},{{}}}}"
