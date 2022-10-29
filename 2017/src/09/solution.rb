@@ -69,8 +69,8 @@ check(3, part1(test_input_1))
 check(9, part1(test_input_2))
 check(16, part1(test_input_3))
 check(5, part1(test_input_4))
-puts "Part 1: #{part1(input)}"
+puts "Part 1: #{part1(input)}" # 11898
 
 check(10, part2(test_input_5))
 check(17, part2(test_input_6))
-puts "Part 2: #{part2(input)}"
+puts "Part 2: #{part2(input)}" # 5601
