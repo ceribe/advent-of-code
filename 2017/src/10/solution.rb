@@ -20,7 +20,7 @@ def part2(input)
     calculate_knot_hash(input) 
 end
 
-input = read_input("input")[0]
+input = read_first_line("input.txt")
 
 check(12, part1("3, 4, 1, 5", 5))
 puts "Part 1: #{part1(input, 256)}"
