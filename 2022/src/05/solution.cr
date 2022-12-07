@@ -54,7 +54,7 @@ test_input = read_input("input_test")
 input = read_input("input")
 
 check("CMZ", part1(test_input))
-puts "Part 1: #{part1(input)}"
+puts "Part 1: #{part1(input)}" # TLNGFGMFN
 
 check("MCD", part2(test_input))
-puts "Part 2: #{part2(input)}"
+puts "Part 2: #{part2(input)}" # FGLQJCMBD

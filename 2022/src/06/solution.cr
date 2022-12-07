@@ -26,11 +26,11 @@ check(5, part1and2(test_input_2, 4))
 check(6, part1and2(test_input_3, 4))
 check(10, part1and2(test_input_4, 4))
 check(11, part1and2(test_input_5, 4))
-puts "Part 1: #{part1and2(input, 4)}"
+puts "Part 1: #{part1and2(input, 4)}" # 1766
 
 check(19, part1and2(test_input_1, 14))
 check(23, part1and2(test_input_2, 14))
 check(23, part1and2(test_input_3, 14))
 check(29, part1and2(test_input_4, 14))
 check(26, part1and2(test_input_5, 14))
-puts "Part 2: #{part1and2(input, 14)}"
+puts "Part 2: #{part1and2(input, 14)}" # 2383
