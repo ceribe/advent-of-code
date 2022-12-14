@@ -1,7 +1,7 @@
 require "../utils.cr"
 
 def part1(input)
-    visible_trees = Hash(String, Nil).new
+    visible_trees = Set(String).new
     height = input.size
     width = input[0].size
 
@@ -11,7 +11,7 @@ def part1(input)
         (0...width).each do |x|
             tree_height = input[y][x].to_i
             if tree_height > current_max_tree_height
-                visible_trees["#{x},#{y}"] = nil
+                visible_trees << "#{x},#{y}"
                 current_max_tree_height = tree_height
             end
         end
@@ -22,7 +22,7 @@ def part1(input)
         (0...width).to_a.reverse.each do |x|
             tree_height = input[y][x].to_i
             if tree_height > current_max_tree_height
-                visible_trees["#{x},#{y}"] = nil
+                visible_trees << "#{x},#{y}"
                 current_max_tree_height = tree_height
             end
         end
@@ -33,7 +33,7 @@ def part1(input)
         (0...height).each do |y|
             tree_height = input[y][x].to_i
             if tree_height > current_max_tree_height
-                visible_trees["#{x},#{y}"] = nil
+                visible_trees << "#{x},#{y}"
                 current_max_tree_height = tree_height
             end
         end
@@ -44,7 +44,7 @@ def part1(input)
         (0...height).to_a.reverse.each do |y|
             tree_height = input[y][x].to_i
             if tree_height > current_max_tree_height
-                visible_trees["#{x},#{y}"] = nil
+                visible_trees << "#{x},#{y}"
                 current_max_tree_height = tree_height
             end
         end
