@@ -38,7 +38,7 @@ def part1and2(input, part)
             while (!monkey.items.empty?)
                 monkey.items_inpected_count += 1
                 item = monkey.items.shift
-                
+
                 if (monkey.operation[0] == "+")
                     item += monkey.operation[1].to_i
                 elsif (monkey.operation[1] == "old")
@@ -70,7 +70,7 @@ test_input = read_input("input_test")
 input = read_input("input")
 
 check(10605, part1and2(test_input, 1))
-puts "Part 1: #{part1and2(input, 1)}"
+puts "Part 1: #{part1and2(input, 1)}" # 120384
 
 check(2713310158, part1and2(test_input, 2))
-puts "Part 2: #{part1and2(input, 2)}"
+puts "Part 2: #{part1and2(input, 2)}" # 32059801242

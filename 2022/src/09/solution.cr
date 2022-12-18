@@ -83,8 +83,8 @@ test_input_2 = read_input("input_test_2")
 input = read_input("input")
 
 check(13, part1and2(test_input_1, 2))
-puts "Part 1: #{part1and2(input, 2)}"
+puts "Part 1: #{part1and2(input, 2)}" # 6563
 
 check(1, part1and2(test_input_1, 10))
 check(36, part1and2(test_input_2, 10))
-puts "Part 2: #{part1and2(input, 10)}"
+puts "Part 2: #{part1and2(input, 10)}" # 2653
