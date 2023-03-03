@@ -25,7 +25,7 @@ Difficulty is ranked from 0 to 10 where 0 is the easiest year and 10 is the hard
 | 2019 | 0/25      |                                                                                                 |            ||
 | 2020 | SUSPENDED | <img alt="Swift" src="https://img.shields.io/badge/Swift-444444.svg?logo=swift">                |            ||
 | 2021 | 50 :star: | <img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-444444.svg?logo=Kotlin">             | 10         | :heavy_check_mark: |
-| 2022 | DOING     | <img alt="Crystal" src="https://img.shields.io/badge/Crystal-444444.svg?logo=Crystal">          | ?          ||
+| 2022 | SUSPENDED | <img alt="Crystal" src="https://img.shields.io/badge/Crystal-444444.svg?logo=Crystal">          | ?          ||
 
 
 # Code Organization
