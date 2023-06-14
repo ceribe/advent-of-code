@@ -6,7 +6,7 @@ A set of Christmas-oriented challenges provide any input you have to use to answ
 
 # Description
 
-This repository will contain my solutions for all years. Currently I'm in the process of merging separate repos into this one.
+This repository will contains my solutions for all years. Some of them are refactored, some are not. Some look nice, some are horrible to look at.
 
 Solutions in this repo prioritize readability and minimize the amount of time it takes to write them. So for example if I can solve
 a problem in 5min using bruteforce or some hack I will do it instead of spending 2h writing a proper solution. That is why some
