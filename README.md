@@ -22,8 +22,8 @@ Difficulty is ranked from 0 to 10 where 0 is the easiest year and 10 is the hard
 | 2016 | 50 :star: | <img alt="Go" src="https://img.shields.io/badge/Go-444444.svg?logo=go">                         | 6          | :heavy_check_mark: |
 | 2017 | 50 :star: | <img alt="Ruby" src="https://img.shields.io/badge/Ruby-444444.svg?logo=ruby&logoColor=CC342D">  | 4          ||
 | 2018 | 46 :star: | <img alt="Dart" src="https://img.shields.io/badge/Dart-444444.svg?logo=dart&logoColor=0175C2">  | 9          ||
-| 2019 | 0/25      |                                                                                                 |            ||
-| 2020 | 6  :star: | <img alt="Swift" src="https://img.shields.io/badge/Swift-444444.svg?logo=swift">                | ?          ||
+| 2019 | 00 :star: |                                                                                                 |            ||
+| 2020 | 06 :star: | <img alt="Swift" src="https://img.shields.io/badge/Swift-444444.svg?logo=swift">                | ?          ||
 | 2021 | 50 :star: | <img alt="Kotlin" src="https://img.shields.io/badge/Kotlin-444444.svg?logo=Kotlin">             | 10         | :heavy_check_mark: |
 | 2022 | 22 :star: | <img alt="Crystal" src="https://img.shields.io/badge/Crystal-444444.svg?logo=Crystal">          | ?          ||
 
