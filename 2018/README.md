@@ -14,7 +14,7 @@ TODO
 
 TODO
 
-# How tu run
+# How to run
 
 Open the project in VSCode.
 
