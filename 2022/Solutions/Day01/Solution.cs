@@ -30,7 +30,7 @@ namespace Solutions.Day01
         {
             var list = ParseInput(input);
             return list
-                .Select((elem, _) => elem.Sum())
+                .Select((elem) => elem.Sum())
                 .Max()
                 .ToString();
         }
@@ -39,7 +39,7 @@ namespace Solutions.Day01
         {
             var list = ParseInput(input);
             return list
-                .Select((elem, _) => elem.Sum()).ToList()
+                .Select((elem) => elem.Sum()).ToList()
                 .OrderByDescending(i => i)
                 .Take(3)
                 .Sum()

@@ -20,7 +20,7 @@ namespace Solutions.Day02
                 {"C Z", 6}
             };
 
-            return input.Select((elem, _) => pointsMap[elem]).Sum().ToString();
+            return input.Select((elem) => pointsMap[elem]).Sum().ToString();
         }
 
         public static string Part2(List<string> input)
@@ -38,7 +38,7 @@ namespace Solutions.Day02
                 {"C Z", 7}
             };
 
-            return input.Select((elem, _) => pointsMap[elem]).Sum().ToString();
+            return input.Select((elem) => pointsMap[elem]).Sum().ToString();
         }
     }
 }
